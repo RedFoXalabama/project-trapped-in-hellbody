@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Project-trapped-in-hellbody"
-run/main_scene="res://Overworld/Level 0/Tileset/Level 0.tscn"
+run/main_scene="res://Combat System/Demo Fight/Demo Fight.tscn"
 config/icon="res://icon.png"
 
 [display]
