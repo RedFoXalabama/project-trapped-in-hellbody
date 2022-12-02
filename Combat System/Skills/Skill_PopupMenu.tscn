@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="Skill_PopupMenu" type="PopupMenu"]
+margin_right = 256.0
+margin_bottom = 128.0
+items = [ "Rapido", null, 0, false, false, 0, 0, null, "", false, "Distanza", null, 0, false, false, 1, 0, null, "", false ]
