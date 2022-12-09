@@ -1,23 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Combat System/Demo Fight/Demo_Fight.cs" type="Script" id=1]
 [ext_resource path="res://Combat System/Demo Fight/DemoFight_Background.png" type="Texture" id=2]
 [ext_resource path="res://Combat System/Skills/Skill_PopupMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Combat System/Characters Animation/Player_BattleAnimation.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Combat System/Characters Animation/Ally/Demo_Ally_BattleAnimation.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Combat System/Characters Animation/Enemy/Demo_Enemy_BattleAnimation.tscn" type="PackedScene" id=6]
 
 [node name="Demo Fight Node" type="Node"]
 
 [node name="Demo_Fight" type="Node2D" parent="."]
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="Demo_Fight"]
+[node name="Background" type="Sprite" parent="Demo_Fight"]
 texture = ExtResource( 2 )
 offset = Vector2( 640, 360 )
 
 [node name="PopupMenu" type="PopupMenu" parent="Demo_Fight"]
 margin_left = 832.0
-margin_top = 512.0
+margin_top = 328.0
 margin_right = 1088.0
-margin_bottom = 640.0
+margin_bottom = 456.0
 items = [ "Attack", null, 0, false, false, 0, 0, null, "", false, "Magic", null, 0, false, false, 1, 0, null, "", false, "Potion", null, 0, false, false, 2, 0, null, "", false, "Escape", null, 0, false, false, 3, 0, null, "", false ]
 
 [node name="Skill_PopupMenu" parent="Demo_Fight/PopupMenu" instance=ExtResource( 3 )]
@@ -25,5 +28,15 @@ margin_left = 64.0
 margin_top = -64.0
 margin_right = 320.0
 margin_bottom = 64.0
+items = [ "Rapido", null, 0, false, false, 0, 0, null, "", false, "Distanza", null, 0, false, false, 1, 0, null, "", false ]
+
+[node name="Player_BattleAnimation" parent="." instance=ExtResource( 4 )]
+position = Vector2( 640, 488 )
+
+[node name="Demo_Ally_BattleAnimation" parent="." instance=ExtResource( 5 )]
+position = Vector2( 208, 504 )
+
+[node name="Demo_Enemy_BattleAnimation" parent="." instance=ExtResource( 6 )]
+position = Vector2( 640, 176 )
 
 [connection signal="id_focused" from="Demo_Fight/PopupMenu" to="Demo_Fight" method="_on_PopupMenu_id_focused"]

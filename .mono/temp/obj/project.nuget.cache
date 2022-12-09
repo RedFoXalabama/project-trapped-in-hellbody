@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "NH/J21oJOJNLw7bSmp8xlCPswH3DqU6/vNv1p/zGTcjeLc6V0iFMHmcQX5eOcwNquc0oGR09HkHOhhXIc5FHFg==",
+  "dgSpecHash": "cz6sFEg2qiZvRkMrfyXbCplCeRStzWgaa6JmKLSujF7Of5mfWKl/mDGqj3d5gUInSM/5TVo313XMD3wcrLcuhA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Gianfranco Baccarell\\Desktop\\RedFoX Studio\\Creator\\project-trapped-in-hellbody\\Project-trapped-in-hellbody.csproj",
+  "projectFilePath": "/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Gianfranco Baccarell\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.2\\microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
-    "C:\\Users\\Gianfranco Baccarell\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.2\\microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512"
+    "/home/gianfranco/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.2/microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
+    "/home/gianfranco/.nuget/packages/microsoft.netframework.referenceassemblies.net472/1.0.2/microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512"
   ],
   "logs": []
 }

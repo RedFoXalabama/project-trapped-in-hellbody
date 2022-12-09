@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gianfranco Baccarell\\Desktop\\RedFoX Studio\\Creator\\project-trapped-in-hellbody\\Project-trapped-in-hellbody.csproj": {}
+    "/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gianfranco Baccarell\\Desktop\\RedFoX Studio\\Creator\\project-trapped-in-hellbody\\Project-trapped-in-hellbody.csproj": {
+    "/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gianfranco Baccarell\\Desktop\\RedFoX Studio\\Creator\\project-trapped-in-hellbody\\Project-trapped-in-hellbody.csproj",
+        "projectUniqueName": "/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj",
         "projectName": "Project-trapped-in-hellbody",
-        "projectPath": "C:\\Users\\Gianfranco Baccarell\\Desktop\\RedFoX Studio\\Creator\\project-trapped-in-hellbody\\Project-trapped-in-hellbody.csproj",
-        "packagesPath": "C:\\Users\\Gianfranco Baccarell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gianfranco Baccarell\\Desktop\\RedFoX Studio\\Creator\\project-trapped-in-hellbody\\.mono\\temp\\obj\\",
+        "projectPath": "/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj",
+        "packagesPath": "/home/gianfranco/.nuget/packages/",
+        "outputPath": "/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.mono/temp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Gianfranco Baccarell\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/gianfranco/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net472"
@@ -45,7 +45,7 @@
               "autoReferenced": true
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }

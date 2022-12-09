@@ -1,0 +1,114 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Characters/Ally/Demo_Ally/Battle Ally.png" type="Texture" id=1]
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Attack"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Damage"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachine" id=1]
+states/Attack/node = SubResource( 7 )
+states/Attack/position = Vector2( 520.333, 79 )
+states/Damage/node = SubResource( 8 )
+states/Damage/position = Vector2( 179, 79 )
+states/Idle/node = SubResource( 9 )
+states/Idle/position = Vector2( 344.333, 80.3333 )
+transitions = [ "Idle", "Attack", SubResource( 10 ), "Attack", "Idle", SubResource( 11 ), "Idle", "Damage", SubResource( 12 ), "Damage", "Idle", SubResource( 13 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Attack"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Damage"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[node name="Demo_Ally_BattleAnimation" type="Sprite"]
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 1 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationTree")
+anims/Attack = SubResource( 3 )
+anims/Damage = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/RESET = SubResource( 6 )
