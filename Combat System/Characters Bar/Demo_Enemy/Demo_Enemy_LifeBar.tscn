@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Combat System/Characters Bar/Demo_Enemy/Demo_Enemy_LifeBar.cs" type="Script" id=2]
+[ext_resource path="res://Combat System/Characters Bar/Demo_Enemy/enemy_bar_theme.tres" type="Theme" id=3]
+
+[node name="Demo_Enemy_LifeBar" type="ProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -960.0
+margin_bottom = -704.0
+theme = ExtResource( 3 )
+value = 100.0
+script = ExtResource( 2 )

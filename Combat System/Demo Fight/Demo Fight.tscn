@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Combat System/Demo Fight/Demo_Fight.cs" type="Script" id=1]
 [ext_resource path="res://Combat System/Demo Fight/DemoFight_Background.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Combat System/Characters Animation/Player_BattleAnimation.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Combat System/Characters Animation/Ally/Demo_Ally_BattleAnimation.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Combat System/Characters Animation/Enemy/Demo_Enemy_BattleAnimation.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Combat System/Characters Bar/Demo_Enemy/Demo_Enemy_LifeBar.tscn" type="PackedScene" id=7]
 
 [node name="Demo Fight Node" type="Node"]
 
@@ -38,5 +39,11 @@ position = Vector2( 208, 504 )
 
 [node name="Demo_Enemy_BattleAnimation" parent="." instance=ExtResource( 6 )]
 position = Vector2( 640, 176 )
+
+[node name="Demo_Enemy_LifeBar" parent="." instance=ExtResource( 7 )]
+margin_left = 480.0
+margin_top = 112.0
+margin_right = -480.0
+margin_bottom = -592.0
 
 [connection signal="id_focused" from="Demo_Fight/PopupMenu" to="Demo_Fight" method="_on_PopupMenu_id_focused"]

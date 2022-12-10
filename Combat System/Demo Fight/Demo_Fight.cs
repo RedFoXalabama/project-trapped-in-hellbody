@@ -16,13 +16,14 @@ public class Demo_Fight : Node2D
 		if (combat_menu.Visible){
 			if(is_focused && Input.IsActionJustPressed("ui_selection")){
 				switch(id_selected){
-					case 0:
+					case 0: //Attack //funzioni da mettere nei relativi menu con singole funzioni da chiamare
 					is_focused = false;
 					var skill_PopupMenu = GetNode<PopupMenu>("PopupMenu/Skill_PopupMenu");
 					var skill_PopupMenu_Rect = new Rect2(skill_PopupMenu.RectPosition, skill_PopupMenu.RectSize);
 					skill_PopupMenu_Rect.Position += combat_menu_Rect.Position;
-					//skill_PopupMenu.y += combat_menu_Rect.y;
 					skill_PopupMenu.Popup_(skill_PopupMenu_Rect);
+					var demo_Enemy_LifeBar = GetNode<Demo_Enemy_LifeBar>("../Demo_Enemy_LifeBar");
+					demo_Enemy_LifeBar.ChangeValue(80); // cambio vita da mettere al posto giusto
 					break;
 				}
 			}
