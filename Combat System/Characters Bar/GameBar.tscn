@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Combat System/Characters Bar/GameBar.cs" type="Script" id=1]
+
+[node name="GameBar" type="ProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -960.0
+margin_bottom = -704.0
+value = 100.0
+percent_visible = false
+script = ExtResource( 1 )
+
+[node name="Bar_Background" type="Sprite" parent="."]
+offset = Vector2( 160, 8 )

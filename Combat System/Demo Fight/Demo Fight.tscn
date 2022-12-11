@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Combat System/Demo Fight/Demo_Fight.cs" type="Script" id=1]
 [ext_resource path="res://Combat System/Demo Fight/DemoFight_Background.png" type="Texture" id=2]
@@ -6,7 +6,13 @@
 [ext_resource path="res://Combat System/Characters Animation/Player_BattleAnimation.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Combat System/Characters Animation/Ally/Demo_Ally_BattleAnimation.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Combat System/Characters Animation/Enemy/Demo_Enemy_BattleAnimation.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Combat System/Characters Bar/Demo_Enemy/Demo_Enemy_LifeBar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Combat System/Characters Bar/GameBar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Combat System/Bar Theme/enemy_bar_theme.tres" type="Theme" id=8]
+[ext_resource path="res://Characters/Enemy/Demo_Enemy/Enemy LifeBar.png" type="Texture" id=9]
+[ext_resource path="res://Characters/Ally/Demo_Ally/Ally LifeBar.png" type="Texture" id=10]
+[ext_resource path="res://Characters/Player/Player LifeBar.png" type="Texture" id=11]
+[ext_resource path="res://Combat System/Bar Theme/player_bar_theme.tres" type="Theme" id=12]
+[ext_resource path="res://Combat System/Bar Theme/ally_bar_theme.tres" type="Theme" id=13]
 
 [node name="Demo Fight Node" type="Node"]
 
@@ -29,21 +35,68 @@ margin_left = 64.0
 margin_top = -64.0
 margin_right = 320.0
 margin_bottom = 64.0
-items = [ "Rapido", null, 0, false, false, 0, 0, null, "", false, "Distanza", null, 0, false, false, 1, 0, null, "", false ]
 
-[node name="Player_BattleAnimation" parent="." instance=ExtResource( 4 )]
+[node name="BattleAnimation" type="Node" parent="."]
+
+[node name="Player_BattleAnimation" parent="BattleAnimation" instance=ExtResource( 4 )]
 position = Vector2( 640, 488 )
 
-[node name="Demo_Ally_BattleAnimation" parent="." instance=ExtResource( 5 )]
-position = Vector2( 208, 504 )
+[node name="Demo_Ally_BattleAnimation" parent="BattleAnimation" instance=ExtResource( 5 )]
+position = Vector2( 208, 520 )
+scale = Vector2( 0.7, 0.7 )
 
-[node name="Demo_Enemy_BattleAnimation" parent="." instance=ExtResource( 6 )]
+[node name="Demo_CEnemy_BattleAnimation" parent="BattleAnimation" instance=ExtResource( 6 )]
 position = Vector2( 640, 176 )
 
-[node name="Demo_Enemy_LifeBar" parent="." instance=ExtResource( 7 )]
+[node name="Demo_SEnemy_BattleAnimation2" parent="BattleAnimation" instance=ExtResource( 6 )]
+position = Vector2( 200, 120 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="GameBar" type="Node" parent="."]
+
+[node name="CEnemy_LifeBar" parent="GameBar" instance=ExtResource( 7 )]
 margin_left = 480.0
-margin_top = 112.0
+margin_top = 176.0
 margin_right = -480.0
+margin_bottom = -528.0
+theme = ExtResource( 8 )
+
+[node name="Bar_Background" parent="GameBar/CEnemy_LifeBar" index="0"]
+texture = ExtResource( 9 )
+
+[node name="SEnemy_LifeBar2" parent="GameBar" instance=ExtResource( 7 )]
+margin_left = 56.0
+margin_top = 112.0
+margin_right = -904.0
 margin_bottom = -592.0
+theme = ExtResource( 8 )
+
+[node name="Bar_Background" parent="GameBar/SEnemy_LifeBar2" index="0"]
+texture = ExtResource( 9 )
+
+[node name="Player_LIfeBar" parent="GameBar" instance=ExtResource( 7 )]
+margin_left = 480.0
+margin_top = 496.0
+margin_right = -480.0
+margin_bottom = -208.0
+theme = ExtResource( 12 )
+
+[node name="Bar_Background" parent="GameBar/Player_LIfeBar" index="0"]
+texture = ExtResource( 11 )
+
+[node name="SAlly_LifeBar" parent="GameBar" instance=ExtResource( 7 )]
+margin_left = 48.0
+margin_top = 520.0
+margin_right = -912.0
+margin_bottom = -184.0
+theme = ExtResource( 13 )
+
+[node name="Bar_Background" parent="GameBar/SAlly_LifeBar" index="0"]
+texture = ExtResource( 10 )
 
 [connection signal="id_focused" from="Demo_Fight/PopupMenu" to="Demo_Fight" method="_on_PopupMenu_id_focused"]
+
+[editable path="GameBar/CEnemy_LifeBar"]
+[editable path="GameBar/SEnemy_LifeBar2"]
+[editable path="GameBar/Player_LIfeBar"]
+[editable path="GameBar/SAlly_LifeBar"]

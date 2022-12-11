@@ -22,8 +22,8 @@ public class Demo_Fight : Node2D
 					var skill_PopupMenu_Rect = new Rect2(skill_PopupMenu.RectPosition, skill_PopupMenu.RectSize);
 					skill_PopupMenu_Rect.Position += combat_menu_Rect.Position;
 					skill_PopupMenu.Popup_(skill_PopupMenu_Rect);
-					var demo_Enemy_LifeBar = GetNode<Demo_Enemy_LifeBar>("../Demo_Enemy_LifeBar");
-					demo_Enemy_LifeBar.ChangeValue(80); // cambio vita da mettere al posto giusto
+					var cEnemy_LifeBar = GetNode<GameBar>("../GameBar/CEnemy_LifeBar");
+					cEnemy_LifeBar.ChangeValue(80); // cambio vita da mettere al posto giusto
 					break;
 				}
 			}
