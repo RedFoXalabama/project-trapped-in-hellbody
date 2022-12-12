@@ -415,19 +415,19 @@
     ]
   },
   "packageFolders": {
-    "/home/gianfranco/.nuget/packages/": {}
+    "C:\\Users\\Gianfranco Baccarell\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj",
+      "projectUniqueName": "C:\\Users\\Gianfranco Baccarell\\Desktop\\RedFoX Studio\\Creator\\project-trapped-in-hellbody\\Project-trapped-in-hellbody.csproj",
       "projectName": "Project-trapped-in-hellbody",
-      "projectPath": "/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj",
-      "packagesPath": "/home/gianfranco/.nuget/packages/",
-      "outputPath": "/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.mono/temp/obj/",
+      "projectPath": "C:\\Users\\Gianfranco Baccarell\\Desktop\\RedFoX Studio\\Creator\\project-trapped-in-hellbody\\Project-trapped-in-hellbody.csproj",
+      "packagesPath": "C:\\Users\\Gianfranco Baccarell\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Gianfranco Baccarell\\Desktop\\RedFoX Studio\\Creator\\project-trapped-in-hellbody\\.mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/gianfranco/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Gianfranco Baccarell\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net472"
@@ -458,7 +458,7 @@
             "autoReferenced": true
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

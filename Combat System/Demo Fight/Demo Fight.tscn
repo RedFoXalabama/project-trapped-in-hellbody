@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Combat System/Demo Fight/Demo_Fight.cs" type="Script" id=1]
 [ext_resource path="res://Combat System/Demo Fight/DemoFight_Background.png" type="Texture" id=2]
@@ -11,8 +11,20 @@
 [ext_resource path="res://Characters/Enemy/Demo_Enemy/Enemy LifeBar.png" type="Texture" id=9]
 [ext_resource path="res://Characters/Ally/Demo_Ally/Ally LifeBar.png" type="Texture" id=10]
 [ext_resource path="res://Characters/Player/Player LifeBar.png" type="Texture" id=11]
-[ext_resource path="res://Combat System/Bar Theme/player_bar_theme.tres" type="Theme" id=12]
-[ext_resource path="res://Combat System/Bar Theme/ally_bar_theme.tres" type="Theme" id=13]
+[ext_resource path="res://Combat System/Bar Theme/player_life_bar_theme.tres" type="Theme" id=12]
+[ext_resource path="res://Combat System/Bar Theme/ally_life_bar_theme.tres" type="Theme" id=13]
+[ext_resource path="res://Combat System/Bar Theme/player_mana_bar_theme.tres" type="Theme" id=14]
+[ext_resource path="res://Characters/Player/Player ManaBar.png" type="Texture" id=15]
+[ext_resource path="res://Characters/Ally/Demo_Ally/Ally ManaBar.png" type="Texture" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.972549, 0.960784, 0.960784, 1 )
+
+[sub_resource type="Theme" id=3]
+ProgressBar/styles/bg = SubResource( 1 )
+ProgressBar/styles/fg = SubResource( 2 )
 
 [node name="Demo Fight Node" type="Node"]
 
@@ -35,6 +47,7 @@ margin_left = 64.0
 margin_top = -64.0
 margin_right = 320.0
 margin_bottom = 64.0
+items = [ "Rapido", null, 0, false, false, 0, 0, null, "", false, "Distanza", null, 0, false, false, 1, 0, null, "", false ]
 
 [node name="BattleAnimation" type="Node" parent="."]
 
@@ -84,6 +97,16 @@ theme = ExtResource( 12 )
 [node name="Bar_Background" parent="GameBar/Player_LIfeBar" index="0"]
 texture = ExtResource( 11 )
 
+[node name="Player_ManaBar" parent="GameBar" instance=ExtResource( 7 )]
+margin_left = 480.0
+margin_top = 520.0
+margin_right = -480.0
+margin_bottom = -184.0
+theme = ExtResource( 14 )
+
+[node name="Bar_Background" parent="GameBar/Player_ManaBar" index="0"]
+texture = ExtResource( 15 )
+
 [node name="SAlly_LifeBar" parent="GameBar" instance=ExtResource( 7 )]
 margin_left = 48.0
 margin_top = 520.0
@@ -94,9 +117,21 @@ theme = ExtResource( 13 )
 [node name="Bar_Background" parent="GameBar/SAlly_LifeBar" index="0"]
 texture = ExtResource( 10 )
 
+[node name="SAlly_ManaBar" parent="GameBar" instance=ExtResource( 7 )]
+margin_left = 48.0
+margin_top = 544.0
+margin_right = -912.0
+margin_bottom = -160.0
+theme = SubResource( 3 )
+
+[node name="Bar_Background" parent="GameBar/SAlly_ManaBar" index="0"]
+texture = ExtResource( 16 )
+
 [connection signal="id_focused" from="Demo_Fight/PopupMenu" to="Demo_Fight" method="_on_PopupMenu_id_focused"]
 
 [editable path="GameBar/CEnemy_LifeBar"]
 [editable path="GameBar/SEnemy_LifeBar2"]
 [editable path="GameBar/Player_LIfeBar"]
+[editable path="GameBar/Player_ManaBar"]
 [editable path="GameBar/SAlly_LifeBar"]
+[editable path="GameBar/SAlly_ManaBar"]
