@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=6 format=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Risorse/UbuntuMono-BI.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 26
+font_data = SubResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[resource]
+LineEdit/fonts/font = SubResource( 2 )
+LineEdit/styles/focus = SubResource( 3 )
+LineEdit/styles/normal = SubResource( 4 )
+LineEdit/styles/read_only = SubResource( 5 )
