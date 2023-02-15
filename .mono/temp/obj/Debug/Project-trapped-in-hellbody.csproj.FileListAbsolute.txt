@@ -7,12 +7,12 @@
 /home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.mono/temp/obj/Debug/Project-trapped-in-hellbody.csproj.CoreCompileInputs.cache
 /home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.mono/temp/obj/Debug/Project-trapped-in-hellbody.dll
 /home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.mono/temp/obj/Debug/Project-trapped-in-hellbody.pdb
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.mono\temp\bin\Debug\Project-trapped-in-hellbody.dll
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.mono\temp\bin\Debug\Project-trapped-in-hellbody.pdb
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.mono\temp\obj\Debug\Project-trapped-in-hellbody.csproj.AssemblyReference.cache
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.mono\temp\obj\Debug\Project-trapped-in-hellbody.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.mono\temp\obj\Debug\Project-trapped-in-hellbody.AssemblyInfoInputs.cache
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.mono\temp\obj\Debug\Project-trapped-in-hellbody.AssemblyInfo.cs
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.mono\temp\obj\Debug\Project-trapped-in-hellbody.csproj.CoreCompileInputs.cache
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.mono\temp\obj\Debug\Project-trapped-in-hellbody.dll
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.mono\temp\obj\Debug\Project-trapped-in-hellbody.pdb
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.mono/temp/bin/Debug/Project-trapped-in-hellbody.dll
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.mono/temp/bin/Debug/Project-trapped-in-hellbody.pdb
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.mono/temp/obj/Debug/Project-trapped-in-hellbody.csproj.AssemblyReference.cache
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.mono/temp/obj/Debug/Project-trapped-in-hellbody.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.mono/temp/obj/Debug/Project-trapped-in-hellbody.AssemblyInfoInputs.cache
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.mono/temp/obj/Debug/Project-trapped-in-hellbody.AssemblyInfo.cs
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.mono/temp/obj/Debug/Project-trapped-in-hellbody.csproj.CoreCompileInputs.cache
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.mono/temp/obj/Debug/Project-trapped-in-hellbody.dll
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.mono/temp/obj/Debug/Project-trapped-in-hellbody.pdb

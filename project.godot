@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Project-trapped-in-hellbody"
-run/main_scene="res://Combat System/Demo Fight/Demo Fight.tscn"
+run/main_scene="res://Combat System/Demo Fight/TTBC Manager.tscn"
 config/icon="res://icon.png"
 
 [display]
