@@ -10,6 +10,7 @@
 
 [node name="EnemyInfoManager" type="Node2D"]
 script = ExtResource( 7 )
+cname = "Enemy2"
 
 [node name="EnemyMoveSet" type="Node" parent="."]
 
@@ -24,13 +25,12 @@ theme = ExtResource( 2 )
 texture = ExtResource( 5 )
 
 [node name="NameBar" parent="." instance=ExtResource( 3 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 192.0
-margin_bottom = 27.0
 theme = ExtResource( 1 )
-text = "Enemy1"
 
 [node name="BattleTimer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
+[connection signal="timeout" from="BattleTimer" to="." method="_on_BattleTimer_timeout"]
 
 [editable path="LifeBar"]

@@ -13,4 +13,7 @@ public class GameBar : ProgressBar{
     public void ChangeValue(int value){
         this.Value = value;
     }
+    public void ChangeMaxValue(int maxValue){
+        this.MaxValue = maxValue;
+    }
 }

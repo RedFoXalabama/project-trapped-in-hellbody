@@ -9,12 +9,12 @@ public class EnemyInfoManager : Node2D
     [Export] private int attack;
     [Export] private int defense;
     [Export] private int velocity;
-    [Export] private Timer timer;
+    private Timer timer;
+    private Boolean free = true;
     private AnimationNodeStateMachinePlayback animationState;
     private GameBar lifeBar;
-    private GameBar manaBar;
-    //private LineEdit nameBar;
-
+    private NameBar nameBar;
+    private TTBCScript tTBCScript;
 
     public override void _Ready(){
         //Timer
@@ -24,7 +24,12 @@ public class EnemyInfoManager : Node2D
         GetNode<Sprite>("BattleAnimation").GetNode<AnimationTree>("AnimationTree").Active = true;
         //All Bars
         lifeBar = GetNode<GameBar>("LifeBar");
-        //nameBar = GetNode<LineEdit>("NameBar");
+        nameBar = GetNode<NameBar>("NameBar");
+        //Impostazione Bars
+        nameBar.SetNameBar(Cname);
+        lifeBar.ChangeMaxValue(Life); //al momento la vita non avendo un valore esplicito è zero
+        //TTBCSRIPT
+        tTBCScript = GetParent().GetParent<TTBCScript>();
     }
 
     //FUNZIONI INTERFACCIA BASEMOVES
@@ -33,8 +38,12 @@ public class EnemyInfoManager : Node2D
         lifeBar.ChangeValue(Life);
         AnimateCharacter("Damage");
     }
-    public void StartTimer(Timer timer){
+    public void StartTimer(){
         timer.Start();
+    }
+    public void _on_BattleTimer_timeout(){ //METTE IN CODA DI ATTESA DEL TIMER
+        tTBCScript.EnemyWaitingQueue.Enqueue(GetParent<Position2D>());//viene messo in coda alla EnemySelectMove
+        tTBCScript.UpdateEnemySelectMoveQueue(); //aggiorna la Enemyselectmove, nel caso essa sia vuota cosi da poter scegliere la mossa
     }
     public void AnimateCharacter(String animation){
         animationState.Travel(animation);

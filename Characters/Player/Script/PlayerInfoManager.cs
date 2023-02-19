@@ -4,18 +4,20 @@ using System;
 public class PlayerInfoManager : Node2D , BaseMoves
 {
     //PROPRIETIES
-    private String cname;
-    private int life;
-    private int mana;
-    private int attack;
-    private int defense;
-    private int velocity;
+    [Export] private String cname;
+    [Export] private int life;
+    [Export] private int mana;
+    [Export] private int attack;
+    [Export] private int defense;
+    [Export] private int velocity;
+    private Boolean free = true;
     private Timer timer;
     private AnimationNodeStateMachinePlayback animationState;
     private GameBar lifeBar;
     private GameBar manaBar;
-    //private LineEdit nameBar;
-
+    private NameBar nameBar;
+    private PopupMenu battleMenu;
+    private TTBCScript tTBCScript;
 
     public override void _Ready(){
         //Timer
@@ -26,7 +28,15 @@ public class PlayerInfoManager : Node2D , BaseMoves
         //All Bars
         lifeBar = GetNode<GameBar>("LifeBar");
         manaBar = GetNode<GameBar>("ManaBar");
-        //nameBar = GetNode<LineEdit>("NameBar");
+        nameBar = GetNode<NameBar>("NameBar");
+        //Impostazione Bars
+        nameBar.SetNameBar(Cname);
+        lifeBar.ChangeMaxValue(Life); //al momento la vita non avendo un valore esplicito è zero
+        manaBar.ChangeMaxValue(Mana); //al momento il mana non avendo un valore esplicito è zero
+        //ALL Menu
+        battleMenu = GetNode<PopupMenu>("BattleMenu");
+        //TTBCSRIPT
+        tTBCScript = GetParent().GetParent<TTBCScript>();
     }
 
     //FUNZIONI INTERFACCIA BASEMOVES
@@ -35,16 +45,33 @@ public class PlayerInfoManager : Node2D , BaseMoves
         lifeBar.ChangeValue(Life);
         AnimateCharacter("Damage");
     }
-    public void StartTimer(Timer timer){
+    public void StartTimer(){
         timer.Start();
     }
     public void AnimateCharacter(String animation){
         animationState.Travel(animation);
     }
-    public void SelectMove(){}
+    public void _on_BattleTimer_timeout(){ //METTE IN CODA DI ATTESA DEL TIMER
+        tTBCScript.WaitingQueue.Enqueue(GetParent<Position2D>()); //viene messo in coda alla SelectMove
+        tTBCScript.UpdateSelectMoveQueue(); //aggiorna la selectmove, nel caso essa sia vuota cosi da poter scegliere la mossa
+    }
+    public void SelectMove(){
+        battleMenu.Popup_();
+        
 
 
-
+        //fine 
+    }
+    public void EndSelectMove(){ //da inserire quando si scelie una mossa
+        //si libera la SelectMoveQueue
+        tTBCScript.UpdateMoveQueue(tTBCScript.SelectMoveQueue);
+    }
+    //test di prova
+    public void _on_BattleMenu_id_pressed(int id){ //INPUT ACCETTATI: space bar o Invio
+        //selezione mossa con lo switch
+        battleMenu.Hide();
+        EndSelectMove();
+    }
 
     //GETTER AND SETTER
     public String Cname {

@@ -12,14 +12,16 @@
 
 [node name="PlayerInfoManager" type="Node2D"]
 script = ExtResource( 7 )
+cname = "Player"
 
 [node name="BattleMenu" type="PopupMenu" parent="."]
-visible = true
-margin_right = 20.0
-margin_bottom = 20.0
+margin_left = 88.0
+margin_top = -128.0
+margin_right = 190.0
+margin_bottom = -18.0
+items = [ "Attack", null, 0, false, false, 0, 0, null, "", false, "Magic", null, 0, false, false, 1, 0, null, "", false, "Ally Manager", null, 0, false, false, 2, 0, null, "", false, "Inventory", null, 0, false, false, 3, 0, null, "", false, "Escape", null, 0, false, false, 4, 0, null, "", false ]
 
 [node name="SkillBattleMenu" type="PopupMenu" parent="BattleMenu"]
-visible = true
 margin_right = 20.0
 margin_bottom = 20.0
 
@@ -36,8 +38,9 @@ margin_bottom = 20.0
 [node name="BattleAnimation" parent="." instance=ExtResource( 1 )]
 
 [node name="ManaBar" parent="." instance=ExtResource( 4 )]
+margin_top = 24.0
 margin_right = 1.0
-margin_bottom = 1.0
+margin_bottom = 25.0
 theme = ExtResource( 3 )
 
 [node name="Bar_Background" parent="ManaBar" index="0"]
@@ -52,17 +55,15 @@ theme = ExtResource( 5 )
 texture = ExtResource( 8 )
 
 [node name="NameBar" parent="." instance=ExtResource( 2 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 192.0
-margin_bottom = 27.0
 theme = ExtResource( 6 )
-text = "Player"
 caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="BattleTimer" type="Timer" parent="."]
 one_shot = true
+
+[connection signal="id_pressed" from="BattleMenu" to="." method="_on_BattleMenu_id_pressed"]
+[connection signal="timeout" from="BattleTimer" to="." method="_on_BattleTimer_timeout"]
 
 [editable path="ManaBar"]
 [editable path="LifeBar"]

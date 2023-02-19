@@ -1,11 +1,12 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Combat System/Characters Bar/NameBar.cs" type="Script" id=1]
 
 [node name="NameBar" type="LineEdit"]
-margin_left = 480.0
-margin_top = 144.0
-margin_right = 672.0
-margin_bottom = 171.0
+margin_right = 192.0
+margin_bottom = 27.0
 expand_to_text_length = true
 virtual_keyboard_enabled = false
 selecting_enabled = false
 deselect_on_focus_loss_enabled = false
+script = ExtResource( 1 )
