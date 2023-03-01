@@ -15,25 +15,34 @@ script = ExtResource( 7 )
 cname = "Player"
 
 [node name="BattleMenu" type="PopupMenu" parent="."]
+visible = true
 margin_left = 88.0
 margin_top = -128.0
 margin_right = 190.0
 margin_bottom = -18.0
-items = [ "Attack", null, 0, false, false, 0, 0, null, "", false, "Magic", null, 0, false, false, 1, 0, null, "", false, "Ally Manager", null, 0, false, false, 2, 0, null, "", false, "Inventory", null, 0, false, false, 3, 0, null, "", false, "Escape", null, 0, false, false, 4, 0, null, "", false ]
+items = [ "Attack", null, 0, false, false, 0, 0, null, "", false, "Ally Manager", null, 0, false, false, 1, 0, null, "", false, "Inventory", null, 0, false, false, 2, 0, null, "", false, "Escape", null, 0, false, false, 3, 0, null, "", false ]
 
 [node name="SkillBattleMenu" type="PopupMenu" parent="BattleMenu"]
-margin_right = 20.0
-margin_bottom = 20.0
+visible = true
+margin_left = 104.0
+margin_right = 168.0
+margin_bottom = 64.0
 
 [node name="SkillManager" type="Node" parent="BattleMenu/SkillBattleMenu"]
 
 [node name="AllyManagerMenu" type="PopupMenu" parent="BattleMenu"]
-margin_right = 20.0
-margin_bottom = 20.0
+visible = true
+margin_left = 104.0
+margin_top = 24.0
+margin_right = 168.0
+margin_bottom = 80.0
 
 [node name="InventoryBattleMenu" type="PopupMenu" parent="BattleMenu"]
-margin_right = 20.0
-margin_bottom = 20.0
+visible = true
+margin_left = 104.0
+margin_top = 48.0
+margin_right = 168.0
+margin_bottom = 104.0
 
 [node name="BattleAnimation" parent="." instance=ExtResource( 1 )]
 

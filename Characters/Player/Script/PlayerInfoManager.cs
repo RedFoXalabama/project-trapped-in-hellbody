@@ -17,6 +17,9 @@ public class PlayerInfoManager : Node2D , BaseMoves
     private GameBar manaBar;
     private NameBar nameBar;
     private PopupMenu battleMenu;
+    private PopupMenu skillBattleMenu;
+    private PopupMenu allyManagerMenu;
+    private PopupMenu inventoryBattleMenu;
     private TTBCScript tTBCScript;
 
     public override void _Ready(){
@@ -35,6 +38,9 @@ public class PlayerInfoManager : Node2D , BaseMoves
         manaBar.ChangeMaxValue(Mana); //al momento il mana non avendo un valore esplicito è zero
         //ALL Menu
         battleMenu = GetNode<PopupMenu>("BattleMenu");
+        skillBattleMenu = battleMenu.GetNode<PopupMenu>("SkillBattleMenu");
+        allyManagerMenu = battleMenu.GetNode<PopupMenu>("AllyManagerMenu");
+        inventoryBattleMenu = battleMenu.GetNode<PopupMenu>("InventoryBattleMenu");
         //TTBCSRIPT
         tTBCScript = GetParent().GetParent<TTBCScript>();
     }
@@ -57,7 +63,6 @@ public class PlayerInfoManager : Node2D , BaseMoves
     }
     public void SelectMove(){
         battleMenu.Popup_();
-        
 
 
         //fine 
@@ -69,8 +74,32 @@ public class PlayerInfoManager : Node2D , BaseMoves
     //test di prova
     public void _on_BattleMenu_id_pressed(int id){ //INPUT ACCETTATI: space bar o Invio
         //selezione mossa con lo switch
+        switch(id){
+            case 0:
+                SkillBattleMenuPopup();
+                break;
+            case 1:
+                AllyManagerMenuPopup();
+                break;
+            case 2:
+                InventoryBattleMenuPopup();
+                break;
+            case 3:
+                //FUNZIONI ESCAPE
+                break;
+        }
         battleMenu.Hide();
         EndSelectMove();
+    }
+
+    public void SkillBattleMenuPopup(){
+        skillBattleMenu.Popup_();
+    }
+    public void AllyManagerMenuPopup(){
+        allyManagerMenu.Popup_();
+    }
+    public void InventoryBattleMenuPopup(){
+        inventoryBattleMenu.Popup_();
     }
 
     //GETTER AND SETTER
