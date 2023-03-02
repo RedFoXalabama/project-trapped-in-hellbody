@@ -21,6 +21,9 @@ public class PlayerInfoManager : Node2D , BaseMoves
     private PopupMenu allyManagerMenu;
     private PopupMenu inventoryBattleMenu;
     private TTBCScript tTBCScript;
+    //VARIABILI PER LA SCELTA MOSSA
+    private EnemyInfoManager selectedEnemy;
+    private String selectedAction;
 
     public override void _Ready(){
         //Timer
@@ -61,6 +64,8 @@ public class PlayerInfoManager : Node2D , BaseMoves
         tTBCScript.WaitingQueue.Enqueue(GetParent<Position2D>()); //viene messo in coda alla SelectMove
         tTBCScript.UpdateSelectMoveQueue(); //aggiorna la selectmove, nel caso essa sia vuota cosi da poter scegliere la mossa
     }
+
+    //SELEZIONE MOSSA
     public void SelectMove(){
         battleMenu.Popup_();
 
@@ -89,19 +94,46 @@ public class PlayerInfoManager : Node2D , BaseMoves
                 break;
         }
         battleMenu.Hide();
-        EndSelectMove();
     }
 
     public void SkillBattleMenuPopup(){
         skillBattleMenu.Popup_();
     }
+    public void _on_SkillBattleMenu_id_pressed(int id){
+        switch(id){ //Qui ci sarà tutto l'elenco delle mosse base equipaggiate e possibili da fare
+            case 0: //ATTACCO 1
+                BasicAttack1();
+                break;
+            case 1: //ATTACCO 2
+                break;
+        }
+    }
+    public EnemyInfoManager SelectEnemy(){ //seleziona un nemico
+        //funzioni per decidere il nemico
+        return selectedEnemy;
+    }
+    public void BasicAttack1(){//attacco base 1 di prova
+        selectedEnemy = SelectEnemy();
+        selectedAction = "BasicAction1";
+        EndSelectMove();
+    }
+    public void DoAction(){ //Data il nome della mossa memorizzata, prende la funzione dal dictionary ed esegue l'azione
+
+    }
+    //GESTIONE ALLEATI
     public void AllyManagerMenuPopup(){
         allyManagerMenu.Popup_();
     }
+
+    //GESTIONE INVENTARIO
     public void InventoryBattleMenuPopup(){
         inventoryBattleMenu.Popup_();
     }
 
+    //FUNZIONI PER ACCEDERE ALLE VARIABILI
+    public void ChangeStatusFree(Boolean free){
+        this.free = free;
+    }
     //GETTER AND SETTER
     public String Cname {
         get => cname; 

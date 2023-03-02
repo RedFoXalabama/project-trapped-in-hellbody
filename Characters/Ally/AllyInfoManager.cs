@@ -53,7 +53,9 @@ public class AllyInfoManager : Node2D , BaseMoves
         animationState.Travel(animation);
     }
     public void SelectMove(){}
-
+    public void ChangeStatusFree(Boolean free){
+        this.free = free;
+    }
 
 
 

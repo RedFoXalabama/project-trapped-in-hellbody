@@ -50,7 +50,9 @@ public class EnemyInfoManager : Node2D
     }
     public void SelectMove(){}
 
-
+    public void ChangeStatusFree(Boolean free){
+        this.free = free;
+    }
 
 
     //GETTER AND SETTER

@@ -20,9 +20,11 @@ public class TTBCScript : Node
 	private Position2D enemy1Position;
 	private Position2D enemy2Position;
 	private Position2D enemy3Position;
+	private Position2D[] enemiesPosition;
 	private EnemyInfoManager enemy1;
 	private EnemyInfoManager enemy2;
 	private EnemyInfoManager enemy3;
+	private EnemyInfoManager[] enemyList;
 	EnemyManager enemyManager = ResourceLoader.Load("res://Characters/Enemy/EnemyManager.tres") as EnemyManager;
 	private PackedScene[] enemyPS = new PackedScene[3];
 
@@ -81,7 +83,7 @@ public class TTBCScript : Node
 		enemy1Position = GetNode<Position2D>("Enemy1Position");
 		enemy2Position = GetNode<Position2D>("Enemy2Position");
 		enemy3Position = GetNode<Position2D>("Enemy3Position");
-		Position2D[] enemiesPosition = {enemy1Position, enemy2Position, enemy3Position};
+		EnemiesPosition = new Position2D[] {enemy1Position, enemy2Position, enemy3Position};
 		for (int i = 0; i < enemy.Length; i++){
 			enemiesPosition[i].AddChild(enemy[i].Instance());
 		}
@@ -104,7 +106,7 @@ public class TTBCScript : Node
 			enemy3.StartTimer();
 		} else {
 			playerInfoManager.StartTimer();
-			EnemyInfoManager[] enemyList = {enemy1, enemy2, enemy3};
+			EnemyList  = new EnemyInfoManager[3] {enemy1, enemy2, enemy3};
 			var enemyVelocityMax = enemy1; 
 			for (int i = 0; i < enemyList.Length; i++){ //cerchiamo il nemico più veloce
 				if(enemyList[i].Velocity > enemyVelocityMax.Velocity){
@@ -176,5 +178,13 @@ public class TTBCScript : Node
 	public Queue<Position2D> MoveQueue{
 		get => moveQueue;
 		set => moveQueue = value;
+	}
+	public EnemyInfoManager[] EnemyList{
+		get => enemyList;
+		set => enemyList = value;
+	}
+	public Position2D[] EnemiesPosition{
+		get => enemiesPosition;
+		set => enemiesPosition = value;
 	}
 }	
