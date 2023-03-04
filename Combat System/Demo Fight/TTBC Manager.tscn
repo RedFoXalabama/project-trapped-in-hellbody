@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Characters/Player/PlayerInfoManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Combat System/Demo Fight/DemoFight_Background.png" type="Texture" id=2]
 [ext_resource path="res://Combat System/Demo Fight/TTBCScript.cs" type="Script" id=3]
+[ext_resource path="res://Combat System/BattleMenu/EnemyListMenu.tscn" type="PackedScene" id=4]
 
 [node name="TTBC Manager" type="Node"]
 script = ExtResource( 3 )
@@ -30,3 +31,8 @@ position = Vector2( 640, 170 )
 
 [node name="Enemy3Position" type="Position2D" parent="."]
 position = Vector2( 1080, 100 )
+
+[node name="EnemyListMenu" parent="." instance=ExtResource( 4 )]
+
+[connection signal="id_focused" from="EnemyListMenu" to="PlayerPosition/PlayerInfoManager" method="_on_EnemyListMenu_id_focused"]
+[connection signal="id_pressed" from="EnemyListMenu" to="PlayerPosition/PlayerInfoManager" method="_on_EnemyListMenu_id_pressed"]

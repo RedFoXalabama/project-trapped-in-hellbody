@@ -9,8 +9,8 @@ public class AllyInfoManager : Node2D , BaseMoves
     [Export] private int attack;
     [Export] private int defense;
     [Export] private int velocity;
+    [Export] private Boolean free = true; //VARIA TRAMITE ANIMAZIONE CHE MODIFICA IL VALORE
     private Timer timer;
-    private Boolean free = true;
     private AnimationNodeStateMachinePlayback animationState;
     private GameBar lifeBar;
     private GameBar manaBar;
@@ -38,6 +38,7 @@ public class AllyInfoManager : Node2D , BaseMoves
 
     //FUNZIONI INTERFACCIA BASEMOVES
     public void GetDamage(int damage){
+        //cambia stato FREE nell'animazione
         Life -= damage;
         lifeBar.ChangeValue(Life);
         AnimateCharacter("Damage");
@@ -52,11 +53,11 @@ public class AllyInfoManager : Node2D , BaseMoves
     public void AnimateCharacter(String animation){
         animationState.Travel(animation);
     }
-    public void SelectMove(){}
-    public void ChangeStatusFree(Boolean free){
-        this.free = free;
+    public void BackToIdle(){
+        AnimateCharacter("Idle");
     }
-
+    public void SelectMove(){}
+    public void DoAction(){}
 
 
     //GETTER AND SETTER

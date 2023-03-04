@@ -67,8 +67,6 @@ start_node = "Idle_FullLife"
 
 [sub_resource type="Animation" id=27]
 resource_name = "Attack"
-length = 0.1
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1

@@ -25,6 +25,7 @@ public class TTBCScript : Node
 	private EnemyInfoManager enemy2;
 	private EnemyInfoManager enemy3;
 	private EnemyInfoManager[] enemyList;
+	private PopupMenu enemyListMenu;
 	EnemyManager enemyManager = ResourceLoader.Load("res://Characters/Enemy/EnemyManager.tres") as EnemyManager;
 	private PackedScene[] enemyPS = new PackedScene[3];
 
@@ -95,6 +96,7 @@ public class TTBCScript : Node
 		enemy1 = enemy1Position.GetChild<EnemyInfoManager>(0);
 		enemy2 = enemy2Position.GetChild<EnemyInfoManager>(0);
 		enemy3 = enemy3Position.GetChild<EnemyInfoManager>(0);
+		EnemyList  = new EnemyInfoManager[3] {enemy1, enemy2, enemy3};
 		var enemy1Velocity = enemy1.Velocity;
 		var enemy2Velocity = enemy2.Velocity;
 		var enemy3Velocity = enemy3.Velocity;
@@ -106,17 +108,23 @@ public class TTBCScript : Node
 			enemy3.StartTimer();
 		} else {
 			playerInfoManager.StartTimer();
-			EnemyList  = new EnemyInfoManager[3] {enemy1, enemy2, enemy3};
 			var enemyVelocityMax = enemy1; 
-			for (int i = 0; i < enemyList.Length; i++){ //cerchiamo il nemico più veloce
-				if(enemyList[i].Velocity > enemyVelocityMax.Velocity){
-					enemyVelocityMax = enemyList[i];
+			for (int i = 0; i < EnemyList.Length; i++){ //cerchiamo il nemico più veloce
+				if(EnemyList[i].Velocity > enemyVelocityMax.Velocity){
+					enemyVelocityMax = EnemyList[i];
 				} else {
-					enemyList[i].StartTimer();
+					EnemyList[i].StartTimer();
 				}
 			}
 			enemyWaitingQueue.Enqueue(enemyVelocityMax.GetParent<Position2D>());
 		}
+		//CREA IL MENU DA CUI SELEZIONARE I NEMICI
+		enemyListMenu = GetNode<PopupMenu>("EnemyListMenu");
+		for (int i = 0; i < EnemyList.Length; i ++){
+			enemyListMenu.AddItem(EnemyList[i].Name, i);
+			//aggiunge alla lista il nome del nemico e da come id la posizione nell'array(sempre da 0-n)
+		}
+		
 	}
 
 	public void BattleUpdate(){
@@ -186,5 +194,9 @@ public class TTBCScript : Node
 	public Position2D[] EnemiesPosition{
 		get => enemiesPosition;
 		set => enemiesPosition = value;
+	}
+	public PopupMenu EnemyListMenu{
+		get => enemyListMenu;
+		set => enemyListMenu = value;
 	}
 }	
