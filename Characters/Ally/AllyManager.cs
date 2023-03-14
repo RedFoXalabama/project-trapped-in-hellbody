@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class AllyManager : Resource
+public partial class AllyManager : Resource
 {
     //DATABASE ALLEATI
     Dictionary<String, String> dataBase = new Dictionary<String, String>();

@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Combat System/BattleMenu/Pointer.png" type="Texture" id=1]
+[ext_resource path="res://Combat System/BattleMenu/Pointer.png" type="Texture2D" id=1]
 
 [node name="EnemyListMenu" type="PopupMenu"]
-margin_right = 20.0
-margin_bottom = 20.0
+offset_right = 20.0
+offset_bottom = 20.0
 
-[node name="Pointer" type="Sprite" parent="."]
+[node name="Pointer" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource( 1 )

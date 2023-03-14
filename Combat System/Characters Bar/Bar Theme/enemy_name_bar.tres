@@ -1,9 +1,9 @@
 [gd_resource type="Theme" load_steps=6 format=2]
 
-[sub_resource type="DynamicFontData" id=8]
+[sub_resource type="FontFile" id=8]
 font_path = "res://Risorse/FreeMono.ttf"
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="FontFile" id=9]
 size = 26
 font_data = SubResource( 8 )
 

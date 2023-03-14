@@ -2,25 +2,25 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class TTBCScript : Node
+public partial class TTBCScript : Node
 {
 	//PLAYER VARIABLES
-	private Position2D playerPosition;
+	private Marker2D playerPosition;
 	private PlayerInfoManager playerInfoManager;
 
 	//ALLY VARIABLES
-	private Position2D ally1Position;
-	private Position2D ally2Position;
+	private Marker2D ally1Position;
+	private Marker2D ally2Position;
 	private AllyInfoManager ally1;
 	private AllyInfoManager ally2;
 	AllyManager allyManager = ResourceLoader.Load("res://Characters/Ally/AllyManager.tres") as AllyManager;
 	private PackedScene[] allyPS = new PackedScene[4];
 
 	//ENEMY VARIABLES
-	private Position2D enemy1Position;
-	private Position2D enemy2Position;
-	private Position2D enemy3Position;
-	private Position2D[] enemiesPosition;
+	private Marker2D enemy1Position;
+	private Marker2D enemy2Position;
+	private Marker2D enemy3Position;
+	private Marker2D[] enemiesPosition;
 	private EnemyInfoManager enemy1;
 	private EnemyInfoManager enemy2;
 	private EnemyInfoManager enemy3;
@@ -30,16 +30,16 @@ public class TTBCScript : Node
 	private PackedScene[] enemyPS = new PackedScene[3];
 
 	//TTBC VARIABLES
-	private Queue<Position2D> waitingQueue = new Queue<Position2D>(); //per il giocatore CODA TIMER
-	private Queue<Position2D> enemyWaitingQueue = new Queue<Position2D>(); //per gli enemy CODA TIMER
-	private Queue<Position2D> selectMoveQueue = new Queue<Position2D>(); //Per il giocatore CODA SCEGLI MOSSA
-	private Queue<Position2D> enemySelectMoveQueue = new Queue<Position2D>(); //Per gli enemy CODA SCEGLI MOSSA
-	private Queue<Position2D> moveQueue = new Queue<Position2D>(); //Per tutti CODA ESEGUI MOSSA
+	private Queue<Marker2D> waitingQueue = new Queue<Marker2D>(); //per il giocatore CODA TIMER
+	private Queue<Marker2D> enemyWaitingQueue = new Queue<Marker2D>(); //per gli enemy CODA TIMER
+	private Queue<Marker2D> selectMoveQueue = new Queue<Marker2D>(); //Per il giocatore CODA SCEGLI MOSSA
+	private Queue<Marker2D> enemySelectMoveQueue = new Queue<Marker2D>(); //Per gli enemy CODA SCEGLI MOSSA
+	private Queue<Marker2D> moveQueue = new Queue<Marker2D>(); //Per tutti CODA ESEGUI MOSSA
 	private Boolean winned = false;
 
 	public override void _Ready(){
 		//PLAYER STARTING
-		playerPosition = GetNode<Position2D>("PlayerPosition");
+		playerPosition = GetNode<Marker2D>("PlayerPosition");
 		playerInfoManager = playerPosition.GetNode<PlayerInfoManager>("PlayerInfoManager");
 		//ALLY STARTING
 		/*HD*/allyManager.CreateDataBase(); //funzione da inserire fuori dal combattimento cosi da non essere creato ogni volta	
@@ -68,8 +68,8 @@ public class TTBCScript : Node
 		}
 	}
 	public void spawnAlly(PackedScene ally){
-		ally1Position = GetNode<Position2D>("Ally1Position");
-		ally2Position = GetNode<Position2D>("Ally2Position");
+		ally1Position = GetNode<Marker2D>("Ally1Position");
+		ally2Position = GetNode<Marker2D>("Ally2Position");
 		if (ally1Position.HasNode("Ally1Position/Ally1") == false){
 			ally1Position.AddChild(ally.Instance());
 			ally1 = ally1Position.GetChild<AllyInfoManager>(0);
@@ -81,10 +81,10 @@ public class TTBCScript : Node
 	}
 	//ENEMY FUNCTIONS
 	public void spawnEnemy(PackedScene[] enemy){
-		enemy1Position = GetNode<Position2D>("Enemy1Position");
-		enemy2Position = GetNode<Position2D>("Enemy2Position");
-		enemy3Position = GetNode<Position2D>("Enemy3Position");
-		EnemiesPosition = new Position2D[] {enemy1Position, enemy2Position, enemy3Position};
+		enemy1Position = GetNode<Marker2D>("Enemy1Position");
+		enemy2Position = GetNode<Marker2D>("Enemy2Position");
+		enemy3Position = GetNode<Marker2D>("Enemy3Position");
+		EnemiesPosition = new Marker2D[] {enemy1Position, enemy2Position, enemy3Position};
 		for (int i = 0; i < enemy.Length; i++){
 			enemiesPosition[i].AddChild(enemy[i].Instance());
 		}
@@ -116,7 +116,7 @@ public class TTBCScript : Node
 					EnemyList[i].StartTimer();
 				}
 			}
-			enemyWaitingQueue.Enqueue(enemyVelocityMax.GetParent<Position2D>());
+			enemyWaitingQueue.Enqueue(enemyVelocityMax.GetParent<Marker2D>());
 		}
 		//CREA IL MENU DA CUI SELEZIONARE I NEMICI
 		enemyListMenu = GetNode<PopupMenu>("EnemyListMenu");
@@ -158,7 +158,7 @@ public class TTBCScript : Node
 			EnemySelectMoveQueue.Peek().GetChild<EnemyInfoManager>(0).SelectMove();
 		}
 	}
-	public void UpdateMoveQueue(Queue<Position2D> smq){ //data una selectedqueue sposta il primo nella movequeue
+	public void UpdateMoveQueue(Queue<Marker2D> smq){ //data una selectedqueue sposta il primo nella movequeue
 		//PASSAGGIO DA SELECT -> MOVEQUEUE 		UNIVERSALE
 		MoveQueue.Enqueue(smq.Dequeue());//si libera la selectMove e la si fa aggiuornare
 		if (smq.Equals(SelectMoveQueue)){
@@ -167,23 +167,23 @@ public class TTBCScript : Node
 			UpdateEnemySelectMoveQueue();
 		}
 	}
-	public Queue<Position2D> WaitingQueue{
+	public Queue<Marker2D> WaitingQueue{
 		get => waitingQueue;
 		set => waitingQueue = value;
 	}
-	public Queue<Position2D> EnemyWaitingQueue{
+	public Queue<Marker2D> EnemyWaitingQueue{
 		get => enemyWaitingQueue;
 		set => enemyWaitingQueue = value;
 	}
-	public Queue<Position2D> SelectMoveQueue{
+	public Queue<Marker2D> SelectMoveQueue{
 		get => selectMoveQueue;
 		set => selectMoveQueue = value;
 	}
-	public Queue<Position2D> EnemySelectMoveQueue{
+	public Queue<Marker2D> EnemySelectMoveQueue{
 		get => enemySelectMoveQueue;
 		set => enemySelectMoveQueue = value;
 	}
-	public Queue<Position2D> MoveQueue{
+	public Queue<Marker2D> MoveQueue{
 		get => moveQueue;
 		set => moveQueue = value;
 	}
@@ -191,7 +191,7 @@ public class TTBCScript : Node
 		get => enemyList;
 		set => enemyList = value;
 	}
-	public Position2D[] EnemiesPosition{
+	public Marker2D[] EnemiesPosition{
 		get => enemiesPosition;
 		set => enemiesPosition = value;
 	}

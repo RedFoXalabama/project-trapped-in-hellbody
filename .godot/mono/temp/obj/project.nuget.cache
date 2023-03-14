@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "dgSpecHash": "CBAcFZNCuPuxmBfGKJWZs/YA1OL+Zz3/xeJE/2PSz8eExuIxCVgkCiKJ+H6wb/4YW1YlHYp/euEfdD/g/2D62g==",
+  "success": false,
+  "projectFilePath": "/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj",
+  "expectedPackageFiles": [
+    "/home/gianfranco/.local/share/godot/mono/GodotNuGetFallbackFolder/godot.sourcegenerators/4.0.0/godot.sourcegenerators.4.0.0.nupkg.sha512",
+    "/home/gianfranco/.local/share/godot/mono/GodotNuGetFallbackFolder/godotsharp/4.0.0/godotsharp.4.0.0.nupkg.sha512",
+    "/home/gianfranco/.local/share/godot/mono/GodotNuGetFallbackFolder/godotsharpeditor/4.0.0/godotsharpeditor.4.0.0.nupkg.sha512",
+    "/home/gianfranco/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.2/microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
+    "/home/gianfranco/.nuget/packages/microsoft.netframework.referenceassemblies.net472/1.0.2/microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1202",
+      "level": "Error",
+      "message": "Package GodotSharp 4.0.0 is not compatible with net472 (.NETFramework,Version=v4.7.2). Package GodotSharp 4.0.0 supports: net6.0 (.NETCoreApp,Version=v6.0)",
+      "libraryId": "GodotSharp",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.7.2"
+      ]
+    },
+    {
+      "code": "NU1202",
+      "level": "Error",
+      "message": "Package GodotSharpEditor 4.0.0 is not compatible with net472 (.NETFramework,Version=v4.7.2). Package GodotSharpEditor 4.0.0 supports: net6.0 (.NETCoreApp,Version=v6.0)",
+      "libraryId": "GodotSharpEditor",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.7.2"
+      ]
+    }
+  ]
+}

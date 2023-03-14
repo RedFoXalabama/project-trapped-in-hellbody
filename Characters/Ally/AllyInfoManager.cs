@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class AllyInfoManager : Node2D , BaseMoves
+public partial class AllyInfoManager : Node2D , BaseMoves
 {
     [Export] private String cname;
     [Export] private int life;
@@ -22,8 +22,8 @@ public class AllyInfoManager : Node2D , BaseMoves
         //Timer
         timer = GetNode<Timer>("BattleTimer");
         //Animazioni
-        animationState = (AnimationNodeStateMachinePlayback)GetNode<Sprite>("BattleAnimation").GetNode<AnimationTree>("AnimationTree").Get("parameters/playback");
-        GetNode<Sprite>("BattleAnimation").GetNode<AnimationTree>("AnimationTree").Active = true;
+        animationState = (AnimationNodeStateMachinePlayback)GetNode<Sprite2D>("BattleAnimation").GetNode<AnimationTree>("AnimationTree").Get("parameters/playback");
+        GetNode<Sprite2D>("BattleAnimation").GetNode<AnimationTree>("AnimationTree").Active = true;
         //All Bars
         lifeBar = GetNode<GameBar>("LifeBar");
         manaBar = GetNode<GameBar>("ManaBar");
@@ -47,7 +47,7 @@ public class AllyInfoManager : Node2D , BaseMoves
         timer.Start();
     }
     public void _on_BattleTimer_timeout(){ //METTE IN CODA DI ATTESA DEL TIMER
-        tTBCScript.WaitingQueue.Enqueue(GetParent<Position2D>()); //viene messo in coda alla SelectMove
+        tTBCScript.WaitingQueue.Enqueue(GetParent<Marker2D>()); //viene messo in coda alla SelectMove
         tTBCScript.UpdateSelectMoveQueue(); //aggiorna la selectmove, nel caso essa sia vuota cosi da poter scegliere la mossa
     }
     public void AnimateCharacter(String animation){

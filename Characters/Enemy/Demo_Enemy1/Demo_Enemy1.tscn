@@ -4,10 +4,10 @@
 [ext_resource path="res://Combat System/Characters Bar/Bar Theme/enemy_life_bar_theme.tres" type="Theme" id=2]
 [ext_resource path="res://Combat System/Characters Bar/NameBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Combat System/Characters Bar/GameBar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Combat System/Characters Bar/Bar Theme/Enemy LifeBar.png" type="Texture" id=5]
+[ext_resource path="res://Combat System/Characters Bar/Bar Theme/Enemy LifeBar.png" type="Texture2D" id=5]
 [ext_resource path="res://Characters/BattleAnimation.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Characters/Enemy/EnemyInfoManager.cs" type="Script" id=7]
-[ext_resource path="res://Characters/Enemy/Demo_Enemy1/Battle Enemy.png" type="Texture" id=8]
+[ext_resource path="res://Characters/Enemy/Demo_Enemy1/Battle Enemy.png" type="Texture2D" id=8]
 
 [sub_resource type="AnimationNodeAnimation" id=1]
 animation = "Attack"
@@ -47,8 +47,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ 2 ]
 }
@@ -59,8 +59,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -71,8 +71,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 1 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "BackToIdle"
@@ -88,8 +88,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ 1 ]
 }
@@ -100,8 +100,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -112,8 +112,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 1 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "BackToIdle"
@@ -131,8 +131,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ 0 ]
 }
@@ -143,8 +143,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -158,8 +158,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 2 ]
 }
@@ -187,8 +187,8 @@ anims/Idle = SubResource( 13 )
 anims/RESET = SubResource( 11 )
 
 [node name="LifeBar" parent="." instance=ExtResource( 4 )]
-margin_right = 4.0
-margin_bottom = 2.0
+offset_right = 4.0
+offset_bottom = 2.0
 theme = ExtResource( 2 )
 
 [node name="Bar_Background" parent="LifeBar" index="0"]

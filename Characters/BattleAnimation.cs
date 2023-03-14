@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class BattleAnimation : Sprite
+public partial class BattleAnimation : Sprite2D
 {
 
 }

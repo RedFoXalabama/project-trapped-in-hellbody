@@ -1,12 +1,12 @@
 using Godot;
 using System;
 
-public class GameBar : ProgressBar{
+public partial class GameBar : ProgressBar{
     public override void _Ready(){
-        var bar_background = GetNode<Sprite>("Bar_Background");
-        var rect_size = bar_background.Texture.GetSize();
+        var bar_background = GetNode<Sprite2D>("Bar_Background");
+        var rect_size = bar_background.Texture2D.GetSize();
         rect_size.y -= rect_size.y/5;
-        this.RectSize = rect_size;
+        this.Size = rect_size;
         
     }
 

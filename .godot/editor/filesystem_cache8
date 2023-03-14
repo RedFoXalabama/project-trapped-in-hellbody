@@ -1,0 +1,76 @@
+2a60927148abd1d33b818b535e306557
+::res://::1678801898
+default_env.tres::Environment::4216191505853608392::1678801890::0::1::::<><>::
+icon.png::CompressedTexture2D::8469594021551961142::1670080489::1678801881::1::::<><>::
+mono_crash.0.0.json::JSON::-1::1678783992::0::1::::<><>::
+::res://Characters/::1678783992
+BaseMoves.cs::CSharpScript::-1::1678801869::0::1::::<><>::
+BattleAnimation.cs::CSharpScript::-1::1678801869::0::1::::<><>::
+BattleAnimation.tscn::PackedScene::-1::1678801869::0::1::::<><>::res://Characters/BattleAnimation.cs
+::res://Characters/Ally/::1678784210
+AllyInfoManager.cs::CSharpScript::-1::1678801869::0::1::::<><>::
+AllyManager.cs::CSharpScript::-1::1678801869::0::1::::<><>::
+AllyManager.tres::Resource::-1::1678801869::0::1::::<><>::res://Characters/Ally/AllyManager.cs
+::res://Characters/Ally/Demo_Ally/::1678801881
+Battle Ally.png::CompressedTexture2D::6452529339678157246::1678783992::1678801881::1::::<><>::
+Demo_Ally.tscn::PackedScene::-1::1678801869::0::1::::<><>::res://Combat System/Characters Bar/NameBar.tscn<>res://Combat System/Characters Bar/Bar Theme/Ally ManaBar.png<>res://Combat System/Characters Bar/Bar Theme/player_mana_bar_theme.tres<>res://Combat System/Characters Bar/Bar Theme/player_name_bar.tres<>res://Combat System/Characters Bar/GameBar.tscn<>res://Combat System/Characters Bar/Bar Theme/Ally LifeBar.png<>res://Characters/Ally/AllyInfoManager.cs<>res://Combat System/Characters Bar/Bar Theme/ally_life_bar_theme.tres<>res://Characters/BattleAnimation.tscn<>res://Characters/Ally/Demo_Ally/Battle Ally.png
+::res://Characters/Enemy/::1678784210
+EnemyInfoManager.cs::CSharpScript::-1::1678801869::0::1::::<><>::
+EnemyManager.cs::CSharpScript::-1::1678801869::0::1::::<><>::
+EnemyManager.tres::Resource::-1::1678801869::0::1::::<><>::res://Characters/Enemy/EnemyManager.cs
+::res://Characters/Enemy/Demo_Enemy1/::1678801881
+Battle Enemy.png::CompressedTexture2D::3273937057109759455::1678783992::1678801881::1::::<><>::
+Demo_Enemy1.tscn::PackedScene::-1::1678801869::0::1::::<><>::res://Combat System/Characters Bar/Bar Theme/enemy_name_bar.tres<>res://Combat System/Characters Bar/Bar Theme/enemy_life_bar_theme.tres<>res://Combat System/Characters Bar/NameBar.tscn<>res://Combat System/Characters Bar/GameBar.tscn<>res://Combat System/Characters Bar/Bar Theme/Enemy LifeBar.png<>res://Characters/BattleAnimation.tscn<>res://Characters/Enemy/EnemyInfoManager.cs<>res://Characters/Enemy/Demo_Enemy1/Battle Enemy.png
+::res://Characters/Enemy/Demo_Enemy2/::1678801881
+Battle Enemy.png::CompressedTexture2D::9084432578509452577::1678783992::1678801881::1::::<><>::
+Demo_Enemy2.tscn::PackedScene::-1::1678801869::0::1::::<><>::res://Combat System/Characters Bar/Bar Theme/enemy_name_bar.tres<>res://Combat System/Characters Bar/Bar Theme/enemy_life_bar_theme.tres<>res://Combat System/Characters Bar/NameBar.tscn<>res://Combat System/Characters Bar/GameBar.tscn<>res://Combat System/Characters Bar/Bar Theme/Enemy LifeBar.png<>res://Characters/BattleAnimation.tscn<>res://Characters/Enemy/EnemyInfoManager.cs<>res://Characters/Enemy/Demo_Enemy1/Battle Enemy.png
+::res://Characters/Enemy/Demo_Enemy3/::1678801881
+Battle Enemy.png::CompressedTexture2D::6163639648702890537::1678783992::1678801881::1::::<><>::
+Demo_Enemy3.tscn::PackedScene::-1::1678801869::0::1::::<><>::res://Combat System/Characters Bar/Bar Theme/enemy_name_bar.tres<>res://Combat System/Characters Bar/Bar Theme/enemy_life_bar_theme.tres<>res://Characters/Enemy/EnemyInfoManager.cs<>res://Combat System/Characters Bar/NameBar.tscn<>res://Combat System/Characters Bar/GameBar.tscn<>res://Combat System/Characters Bar/Bar Theme/Enemy LifeBar.png<>res://Characters/BattleAnimation.tscn<>res://Characters/Enemy/Demo_Enemy1/Battle Enemy.png
+::res://Characters/Player/::1678801881
+Battle Player.png::CompressedTexture2D::4710822836656990953::1678783992::1678801881::1::::<><>::
+Player Name.png::CompressedTexture2D::2823135663140264903::1678783992::1678801881::1::::<><>::
+PlayerInfoManager.tscn::PackedScene::-1::1678801869::0::1::::<><>::res://Combat System/Characters Bar/NameBar.tscn<>res://Combat System/Characters Bar/Bar Theme/player_mana_bar_theme.tres<>res://Combat System/Characters Bar/GameBar.tscn<>res://Combat System/Characters Bar/Bar Theme/player_life_bar_theme.tres<>res://Combat System/Characters Bar/Bar Theme/player_name_bar.tres<>res://Characters/Player/Script/PlayerInfoManager.cs<>res://Combat System/Characters Bar/Bar Theme/Player LifeBar.png<>res://Combat System/Characters Bar/Bar Theme/Player ManaBar.png<>res://Characters/BattleAnimation.tscn<>res://Characters/Player/Battle Player.png
+Player_BattleAnimation.tscn::PackedScene::-1::1678801869::0::1::::<><>::res://Characters/Player/Battle Player.png
+::res://Characters/Player/Script/::1678783992
+Player.cs::CSharpScript::-1::1678801869::0::1::::<><>::
+PlayerInfoManager.cs::CSharpScript::-1::1678801869::0::1::::<><>::
+::res://Characters/Player/Tscn/::1678783992
+Player.tscn::PackedScene::-1::1678801869::0::1::::<><>::res://Characters/Script/Player.cs
+::res://Combat System/::1678783992
+::res://Combat System/BattleMenu/::1678801881
+EnemyListMenu.tscn::PackedScene::-1::1678801869::0::1::::<><>::res://Combat System/BattleMenu/Pointer.png
+Pointer.png::CompressedTexture2D::4976644133833838901::1678783992::1678801881::1::::<><>::
+::res://Combat System/Characters Bar/::1678783992
+GameBar.cs::CSharpScript::-1::1678801869::0::1::::<><>::
+GameBar.tscn::PackedScene::-1::1678801869::0::1::::<><>::res://Combat System/Characters Bar/GameBar.cs
+NameBar.cs::CSharpScript::-1::1678801869::0::1::::<><>::
+NameBar.tscn::PackedScene::-1::1678801869::0::1::::<><>::res://Combat System/Characters Bar/NameBar.cs
+::res://Combat System/Characters Bar/Bar Theme/::1678801890
+Ally LifeBar.png::CompressedTexture2D::1590817411837238609::1678783992::1678801881::1::::<><>::
+Ally ManaBar.png::CompressedTexture2D::972253001407282912::1678783992::1678801881::1::::<><>::
+ally_life_bar_theme.tres::Theme::-1::1678801869::0::1::::<><>::
+Enemy LifeBar.png::CompressedTexture2D::6455458087124823872::1678783992::1678801881::1::::<><>::
+Enemy Name.png::CompressedTexture2D::3247901259018281225::1678783992::1678801881::1::::<><>::
+enemy_life_bar_theme.tres::Theme::-1::1678801869::0::1::::<><>::
+enemy_name_bar.tres::Theme::-1::1678801869::0::1::::<><>::
+Player LifeBar.png::CompressedTexture2D::2097347846658412996::1678783992::1678801881::1::::<><>::
+Player ManaBar.png::CompressedTexture2D::3841076109132984983::1678783992::1678801881::1::::<><>::
+player_life_bar_theme.tres::Theme::8062743961682668049::1678801890::0::1::::<><>::
+player_mana_bar_theme.tres::Theme::7930892747797077214::1678801890::0::1::::<><>::
+player_name_bar.tres::Theme::1186077913610956207::1678801890::0::1::::<><>::
+::res://Combat System/Demo Fight/::1678801890
+DemoFight_Background.png::CompressedTexture2D::8656659550252561315::1678783992::1678801881::1::::<><>::
+TTBC Manager.tscn::PackedScene::4973144503344206885::1678801890::0::1::::<><>::res://Characters/Player/PlayerInfoManager.tscn<>uid://dvll6hiunl780<>res://Combat System/Demo Fight/TTBCScript.cs<>res://Combat System/BattleMenu/EnemyListMenu.tscn
+TTBCScript.cs::CSharpScript::-1::1678801890::0::1::::<><>::
+::res://Overworld/::1670080489
+::res://Overworld/Level 0/::1670080489
+::res://Overworld/Level 0/Tileset/::1678801881
+Level 0.tscn::PackedScene::-1::1678801870::0::1::::<><>::res://Overworld/Level 0/Tileset/Level_0_TileSet.png
+Level_0_TileSet.png::CompressedTexture2D::7869571968675646015::1670080489::1678801881::1::::<><>::
+::res://Overworld/Level 0/Tscn/::1670080489
+Level 0.tscn::PackedScene::-1::1678801869::0::1::::<><>::
+::res://Risorse/::1678801881
+FreeMono.ttf::FontFile::8818179383052116664::1678783992::1678801881::1::::<><>::
+Ubuntu-L.ttf::FontFile::4471952075490335203::1678783992::1678801881::1::::<><>::
+UbuntuMono-BI.ttf::FontFile::2260380958277735254::1678783992::1678801881::1::::<><>::

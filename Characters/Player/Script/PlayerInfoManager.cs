@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class PlayerInfoManager : Node2D , BaseMoves
+public partial class PlayerInfoManager : Node2D , BaseMoves
 {
     //PROPRIETIES
     [Export] private String cname;
@@ -29,8 +29,8 @@ public class PlayerInfoManager : Node2D , BaseMoves
         //Timer
         timer = GetNode<Timer>("BattleTimer");
         //Animazioni
-        animationState = (AnimationNodeStateMachinePlayback)GetNode<Sprite>("BattleAnimation").GetNode<AnimationTree>("AnimationTree").Get("parameters/playback");
-        GetNode<Sprite>("BattleAnimation").GetNode<AnimationTree>("AnimationTree").Active = true;
+        animationState = (AnimationNodeStateMachinePlayback)GetNode<Sprite2D>("BattleAnimation").GetNode<AnimationTree>("AnimationTree").Get("parameters/playback");
+        GetNode<Sprite2D>("BattleAnimation").GetNode<AnimationTree>("AnimationTree").Active = true;
         //All Bars
         lifeBar = GetNode<GameBar>("LifeBar");
         manaBar = GetNode<GameBar>("ManaBar");
@@ -71,7 +71,7 @@ public class PlayerInfoManager : Node2D , BaseMoves
     }
 
     public void _on_BattleTimer_timeout(){ //METTE IN CODA DI ATTESA DEL TIMER
-        tTBCScript.WaitingQueue.Enqueue(GetParent<Position2D>()); //viene messo in coda alla SelectMove
+        tTBCScript.WaitingQueue.Enqueue(GetParent<Marker2D>()); //viene messo in coda alla SelectMove
         tTBCScript.UpdateSelectMoveQueue(); //aggiorna la selectmove, nel caso essa sia vuota cosi da poter scegliere la mossa
     }
 
@@ -116,7 +116,7 @@ public class PlayerInfoManager : Node2D , BaseMoves
     //SELEZIONARE UN NEMICO + relativi segnali
     public void SelectEnemy(){ //popupa il menu di scelta nemici e quando il segnale è inviato dal popmn il nemico viene selezionato
         //funzioni per decidere il nemico
-        tTBCScript.EnemyListMenu.SetPosition(skillBattleMenu.RectPosition);
+        tTBCScript.EnemyListMenu.SetPosition(skillBattleMenu.Position);
         tTBCScript.EnemyListMenu.Popup_();
     }
     //SEGNALE DEL POPUPMENU SELEZIONE NEMICI
@@ -137,8 +137,8 @@ public class PlayerInfoManager : Node2D , BaseMoves
         }        
     }
     public void _on_EnemyListMenu_id_focused(int id){
-        tTBCScript.EnemyListMenu.GetNode<Sprite>("Pointer").GlobalPosition = tTBCScript.EnemiesPosition[id].Position; 
-        tTBCScript.EnemyListMenu.GetNode<Sprite>("Pointer").Visible = true;
+        tTBCScript.EnemyListMenu.GetNode<Sprite2D>("Pointer").GlobalPosition = tTBCScript.EnemiesPosition[id].Position; 
+        tTBCScript.EnemyListMenu.GetNode<Sprite2D>("Pointer").Visible = true;
     }
     public void BasicAttack1(){//attacco base 1 di prova
         selectedAction = "BasicAttack1";

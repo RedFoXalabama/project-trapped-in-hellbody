@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class EnemyManager : Resource
+public partial class EnemyManager : Resource
 {
     //DATABASE NEMICI
     Dictionary<string,string> dataBase = new Dictionary<string,string>();
