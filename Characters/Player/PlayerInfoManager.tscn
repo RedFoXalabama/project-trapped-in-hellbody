@@ -246,7 +246,6 @@ tracks/1/keys = {
 [node name="PlayerInfoManager" type="Node2D"]
 script = ExtResource( 7 )
 cname = "Player"
-free = false
 
 [node name="BattleMenu" type="PopupMenu" parent="."]
 margin_right = 102.0
@@ -276,7 +275,6 @@ margin_bottom = 104.0
 [node name="BattleAnimation" parent="." instance=ExtResource( 10 )]
 texture = ExtResource( 11 )
 hframes = 5
-frame = 4
 
 [node name="AnimationTree" parent="BattleAnimation" index="0"]
 tree_root = SubResource( 25 )
