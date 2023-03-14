@@ -4,8 +4,8 @@ using System;
 public partial class GameBar : ProgressBar{
     public override void _Ready(){
         var bar_background = GetNode<Sprite2D>("Bar_Background");
-        var rect_size = bar_background.Texture2D.GetSize();
-        rect_size.y -= rect_size.y/5;
+        var rect_size = bar_background.Texture.GetSize();
+        rect_size.Y -= rect_size.Y/5;
         this.Size = rect_size;
         
     }

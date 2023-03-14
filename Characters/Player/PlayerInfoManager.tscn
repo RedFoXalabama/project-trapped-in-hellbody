@@ -1,311 +1,318 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=3 uid="uid://c63yr72kah8lr"]
 
-[ext_resource path="res://Combat System/Characters Bar/NameBar.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Combat System/Characters Bar/Bar Theme/player_mana_bar_theme.tres" type="Theme" id=3]
-[ext_resource path="res://Combat System/Characters Bar/GameBar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Combat System/Characters Bar/Bar Theme/player_life_bar_theme.tres" type="Theme" id=5]
-[ext_resource path="res://Combat System/Characters Bar/Bar Theme/player_name_bar.tres" type="Theme" id=6]
-[ext_resource path="res://Characters/Player/Script/PlayerInfoManager.cs" type="Script" id=7]
-[ext_resource path="res://Combat System/Characters Bar/Bar Theme/Player LifeBar.png" type="Texture2D" id=8]
-[ext_resource path="res://Combat System/Characters Bar/Bar Theme/Player ManaBar.png" type="Texture2D" id=9]
-[ext_resource path="res://Characters/BattleAnimation.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Characters/Player/Battle Player.png" type="Texture2D" id=11]
+[ext_resource type="PackedScene" path="res://Combat System/Characters Bar/NameBar.tscn" id="2"]
+[ext_resource type="Theme" uid="uid://dk81v6oyu65mw" path="res://Combat System/Characters Bar/Bar Theme/player_mana_bar_theme.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://bsfkx0yubqwj6" path="res://Combat System/Characters Bar/GameBar.tscn" id="4"]
+[ext_resource type="Theme" uid="uid://dm4whkvae8ion" path="res://Combat System/Characters Bar/Bar Theme/player_life_bar_theme.tres" id="5"]
+[ext_resource type="Theme" uid="uid://q5ssavd7ph1h" path="res://Combat System/Characters Bar/Bar Theme/player_name_bar.tres" id="6"]
+[ext_resource type="Script" path="res://Characters/Player/Script/PlayerInfoManager.cs" id="7"]
+[ext_resource type="Texture2D" uid="uid://448aotsw1b5u" path="res://Combat System/Characters Bar/Bar Theme/Player LifeBar.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://buyv7ypneg7yx" path="res://Combat System/Characters Bar/Bar Theme/Player ManaBar.png" id="9"]
+[ext_resource type="PackedScene" path="res://Characters/BattleAnimation.tscn" id="10"]
+[ext_resource type="Texture2D" uid="uid://b8d7tf27kd7hd" path="res://Characters/Player/Battle Player.png" id="11"]
 
-[sub_resource type="AnimationNodeAnimation" id=4]
-animation = "Attack"
+[sub_resource type="AnimationNodeAnimation" id="4"]
+animation = &"Attack"
 
-[sub_resource type="AnimationNodeAnimation" id=5]
-animation = "Damage"
+[sub_resource type="AnimationNodeAnimation" id="5"]
+animation = &"Damage"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
-animation = "Idle_CriticLife"
+[sub_resource type="AnimationNodeAnimation" id="6"]
+animation = &"Idle_CriticLife"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
-animation = "Idle_FullLife"
+[sub_resource type="AnimationNodeAnimation" id="7"]
+animation = &"Idle_FullLife"
 
-[sub_resource type="AnimationNodeAnimation" id=8]
-animation = "Idle_HalfLife"
+[sub_resource type="AnimationNodeAnimation" id="8"]
+animation = &"Idle_HalfLife"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+[sub_resource type="AnimationNodeStateMachineTransition" id="9"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+[sub_resource type="AnimationNodeStateMachineTransition" id="10"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+[sub_resource type="AnimationNodeStateMachineTransition" id="11"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+[sub_resource type="AnimationNodeStateMachineTransition" id="12"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+[sub_resource type="AnimationNodeStateMachineTransition" id="13"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+[sub_resource type="AnimationNodeStateMachineTransition" id="14"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+[sub_resource type="AnimationNodeStateMachineTransition" id="15"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+[sub_resource type="AnimationNodeStateMachineTransition" id="16"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+[sub_resource type="AnimationNodeStateMachineTransition" id="17"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+[sub_resource type="AnimationNodeStateMachineTransition" id="18"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+[sub_resource type="AnimationNodeStateMachineTransition" id="19"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+[sub_resource type="AnimationNodeStateMachineTransition" id="20"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+[sub_resource type="AnimationNodeStateMachineTransition" id="21"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+[sub_resource type="AnimationNodeStateMachineTransition" id="22"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+[sub_resource type="AnimationNodeStateMachineTransition" id="23"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+[sub_resource type="AnimationNodeStateMachineTransition" id="24"]
 
-[sub_resource type="AnimationNodeStateMachine" id=25]
-states/Attack/node = SubResource( 4 )
-states/Attack/position = Vector2( 375, 141.667 )
-states/Damage/node = SubResource( 5 )
-states/Damage/position = Vector2( 591, 143 )
-states/Idle_CriticLife/node = SubResource( 6 )
-states/Idle_CriticLife/position = Vector2( 684.333, 67.5926 )
-states/Idle_FullLife/node = SubResource( 7 )
-states/Idle_FullLife/position = Vector2( 268.333, 65.6667 )
-states/Idle_HalfLife/node = SubResource( 8 )
-states/Idle_HalfLife/position = Vector2( 473.667, 64.3333 )
-transitions = [ "Idle_FullLife", "Idle_HalfLife", SubResource( 9 ), "Idle_HalfLife", "Idle_FullLife", SubResource( 10 ), "Idle_HalfLife", "Idle_CriticLife", SubResource( 11 ), "Idle_CriticLife", "Idle_HalfLife", SubResource( 12 ), "Idle_FullLife", "Attack", SubResource( 13 ), "Attack", "Idle_FullLife", SubResource( 14 ), "Idle_HalfLife", "Attack", SubResource( 15 ), "Attack", "Idle_HalfLife", SubResource( 16 ), "Attack", "Idle_CriticLife", SubResource( 17 ), "Idle_CriticLife", "Attack", SubResource( 18 ), "Idle_FullLife", "Damage", SubResource( 19 ), "Damage", "Idle_FullLife", SubResource( 20 ), "Idle_HalfLife", "Damage", SubResource( 21 ), "Damage", "Idle_HalfLife", SubResource( 22 ), "Idle_CriticLife", "Damage", SubResource( 23 ), "Damage", "Idle_CriticLife", SubResource( 24 ) ]
-start_node = "Idle_FullLife"
+[sub_resource type="AnimationNodeStateMachine" id="25"]
+states/Attack/node = SubResource("4")
+states/Attack/position = Vector2(375, 141.667)
+states/Damage/node = SubResource("5")
+states/Damage/position = Vector2(591, 143)
+states/Idle_CriticLife/node = SubResource("6")
+states/Idle_CriticLife/position = Vector2(684.333, 67.5926)
+states/Idle_FullLife/node = SubResource("7")
+states/Idle_FullLife/position = Vector2(268.333, 65.6667)
+states/Idle_HalfLife/node = SubResource("8")
+states/Idle_HalfLife/position = Vector2(473.667, 64.3333)
+transitions = ["Idle_FullLife", "Idle_HalfLife", SubResource("9"), "Idle_HalfLife", "Idle_FullLife", SubResource("10"), "Idle_HalfLife", "Idle_CriticLife", SubResource("11"), "Idle_CriticLife", "Idle_HalfLife", SubResource("12"), "Idle_FullLife", "Attack", SubResource("13"), "Attack", "Idle_FullLife", SubResource("14"), "Idle_HalfLife", "Attack", SubResource("15"), "Attack", "Idle_HalfLife", SubResource("16"), "Attack", "Idle_CriticLife", SubResource("17"), "Idle_CriticLife", "Attack", SubResource("18"), "Idle_FullLife", "Damage", SubResource("19"), "Damage", "Idle_FullLife", SubResource("20"), "Idle_HalfLife", "Damage", SubResource("21"), "Damage", "Idle_HalfLife", SubResource("22"), "Idle_CriticLife", "Damage", SubResource("23"), "Damage", "Idle_CriticLife", SubResource("24")]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=26]
+[sub_resource type="AnimationNodeStateMachinePlayback" id="26"]
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id="27"]
 resource_name = "Attack"
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 4 ]
+"values": [4]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("..:free")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ false ]
+"values": [false]
 }
 tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("..")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 1 ),
-"transitions": PackedFloat32Array( 1 ),
-"values": [ {
-"args": [  ],
-"method": "BackToIdle"
-} ]
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"BackToIdle"
+}]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id="28"]
 resource_name = "Damage"
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 3 ]
+"values": [3]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("..:free")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ false ]
+"values": [false]
 }
 tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("..")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 1 ),
-"transitions": PackedFloat32Array( 1 ),
-"values": [ {
-"args": [  ],
-"method": "BackToIdle"
-} ]
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"BackToIdle"
+}]
 }
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id="29"]
 resource_name = "Idle_CriticLife"
 length = 0.1
-loop = true
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 2 ]
+"values": [2]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("..:free")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ true ]
+"values": [true]
 }
 
-[sub_resource type="Animation" id=30]
+[sub_resource type="Animation" id="30"]
 resource_name = "Idle_FullLife"
 length = 0.1
-loop = true
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 0 ]
+"values": [0]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("..:free")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ true ]
+"values": [true]
 }
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id="31"]
 resource_name = "Idle_HalfLife"
 length = 0.1
-loop = true
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 1 ]
+"values": [1]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("..:free")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ true ]
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lkrgr"]
+_data = {
+"Attack": SubResource("27"),
+"Damage": SubResource("28"),
+"Idle_CriticLife": SubResource("29"),
+"Idle_FullLife": SubResource("30"),
+"Idle_HalfLife": SubResource("31")
 }
 
 [node name="PlayerInfoManager" type="Node2D"]
-script = ExtResource( 7 )
+script = ExtResource("7")
 cname = "Player"
 
 [node name="BattleMenu" type="PopupMenu" parent="."]
-offset_right = 102.0
-offset_bottom = 110.0
-items = [ "Attack", null, 0, false, false, 0, 0, null, "", false, "Magic", null, 0, false, false, 1, 0, null, "", false, "Ally Manager", null, 0, false, false, 2, 0, null, "", false, "Inventory", null, 0, false, false, 3, 0, null, "", false, "Escape", null, 0, false, false, 4, 0, null, "", false ]
+size = Vector2i(129, 143)
+item_count = 5
+item_0/text = "Attack"
+item_0/id = 0
+item_1/text = "Magic"
+item_1/id = 1
+item_2/text = "Ally Manager"
+item_2/id = 2
+item_3/text = "Inventory"
+item_3/id = 3
+item_4/text = "Escape"
+item_4/id = 4
 
 [node name="SkillBattleMenu" type="PopupMenu" parent="BattleMenu"]
-offset_left = 40.0
-offset_right = 104.0
-offset_bottom = 64.0
-items = [ "Basic 1", null, 0, false, false, 0, 0, null, "", false, "Basic 2", null, 0, false, false, 1, 0, null, "", false ]
+item_count = 2
+item_0/text = "Basic 1"
+item_0/id = 0
+item_1/text = "Basic 2"
+item_1/id = 1
 
 [node name="SkillManager" type="Node" parent="BattleMenu/SkillBattleMenu"]
 
 [node name="AllyManagerMenu" type="PopupMenu" parent="BattleMenu"]
-offset_left = 40.0
-offset_top = 24.0
-offset_right = 104.0
-offset_bottom = 80.0
 
 [node name="InventoryBattleMenu" type="PopupMenu" parent="BattleMenu"]
-offset_left = 40.0
-offset_top = 48.0
-offset_right = 104.0
-offset_bottom = 104.0
 
-[node name="BattleAnimation" parent="." instance=ExtResource( 10 )]
-texture = ExtResource( 11 )
+[node name="BattleAnimation" parent="." instance=ExtResource("10")]
+texture = ExtResource("11")
 hframes = 5
 
 [node name="AnimationTree" parent="BattleAnimation" index="0"]
-tree_root = SubResource( 25 )
-parameters/playback = SubResource( 26 )
+tree_root = SubResource("25")
+parameters/playback = SubResource("26")
 
 [node name="AnimationPlayer" parent="BattleAnimation" index="1"]
-anims/Attack = SubResource( 27 )
-anims/Damage = SubResource( 28 )
-anims/Idle_CriticLife = SubResource( 29 )
-anims/Idle_FullLife = SubResource( 30 )
-anims/Idle_HalfLife = SubResource( 31 )
+libraries = {
+"": SubResource("AnimationLibrary_lkrgr")
+}
 
-[node name="ManaBar" parent="." instance=ExtResource( 4 )]
+[node name="ManaBar" parent="." instance=ExtResource("4")]
 offset_top = 24.0
 offset_right = 1.0
 offset_bottom = 25.0
-theme = ExtResource( 3 )
+theme = ExtResource("3")
+show_percentage = false
 
 [node name="Bar_Background" parent="ManaBar" index="0"]
-texture = ExtResource( 9 )
+texture = ExtResource("9")
 
-[node name="LifeBar" parent="." instance=ExtResource( 4 )]
+[node name="LifeBar" parent="." instance=ExtResource("4")]
 offset_right = 1.0
 offset_bottom = 1.0
-theme = ExtResource( 5 )
+theme = ExtResource("5")
+show_percentage = false
 
 [node name="Bar_Background" parent="LifeBar" index="0"]
-texture = ExtResource( 8 )
+texture = ExtResource("8")
 
-[node name="NameBar" parent="." instance=ExtResource( 2 )]
-theme = ExtResource( 6 )
+[node name="NameBar" parent="." instance=ExtResource("2")]
+theme = ExtResource("6")
 caret_blink = true
 caret_blink_interval = 0.5
 

@@ -55,9 +55,6 @@ public partial class TTBCScript : Node
 		//INIZIO BATTAGLIA
 		BattleStart();
 	}
-	public override void _Process(float delta){
-		//BattleUpdate();
-	}
 	//ALLY FUNCTIONS
 	public void createAllyPS(){
 		/*HD*/allyManager.EquipAlly("Demo_Ally", 0); //funzione da spostare nel menu della gestione alleati
@@ -71,10 +68,10 @@ public partial class TTBCScript : Node
 		ally1Position = GetNode<Marker2D>("Ally1Position");
 		ally2Position = GetNode<Marker2D>("Ally2Position");
 		if (ally1Position.HasNode("Ally1Position/Ally1") == false){
-			ally1Position.AddChild(ally.Instance());
+			ally1Position.AddChild(ally.Instantiate());
 			ally1 = ally1Position.GetChild<AllyInfoManager>(0);
 		} else {
-			ally2Position.AddChild(ally.Instance());
+			ally2Position.AddChild(ally.Instantiate());
 			ally2 = ally2Position.GetChild<AllyInfoManager>(0);
 		}
 
@@ -86,7 +83,7 @@ public partial class TTBCScript : Node
 		enemy3Position = GetNode<Marker2D>("Enemy3Position");
 		EnemiesPosition = new Marker2D[] {enemy1Position, enemy2Position, enemy3Position};
 		for (int i = 0; i < enemy.Length; i++){
-			enemiesPosition[i].AddChild(enemy[i].Instance());
+			enemiesPosition[i].AddChild(enemy[i].Instantiate());
 		}
 	}
 	//FUNZIONI TTBC

@@ -77,7 +77,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 
     //SELEZIONE MOSSA
     public void SelectMove(){
-        battleMenu.Popup_();
+        battleMenu.Show();
     }
     public void EndSelectMove(){ //da inserire quando si scelie una mossa
         //si libera la SelectMoveQueue
@@ -102,7 +102,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
         battleMenu.Hide();
     }
     public void SkillBattleMenuPopup(){
-        skillBattleMenu.Popup_();
+        skillBattleMenu.Popup();
     }
     public void _on_SkillBattleMenu_id_pressed(int id){
         switch(id){ //Qui ci sarà tutto l'elenco delle mosse base equipaggiate e possibili da fare
@@ -116,8 +116,8 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
     //SELEZIONARE UN NEMICO + relativi segnali
     public void SelectEnemy(){ //popupa il menu di scelta nemici e quando il segnale è inviato dal popmn il nemico viene selezionato
         //funzioni per decidere il nemico
-        tTBCScript.EnemyListMenu.SetPosition(skillBattleMenu.Position);
-        tTBCScript.EnemyListMenu.Popup_();
+        tTBCScript.EnemyListMenu.Position = (skillBattleMenu.Position);
+        tTBCScript.EnemyListMenu.Popup();
     }
     //SEGNALE DEL POPUPMENU SELEZIONE NEMICI
     public void _on_EnemyListMenu_id_pressed(int id){
@@ -166,12 +166,12 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 
     //GESTIONE ALLEATI
     public void AllyManagerMenuPopup(){
-        allyManagerMenu.Popup_();
+        allyManagerMenu.Popup();
     }
 
     //GESTIONE INVENTARIO
     public void InventoryBattleMenuPopup(){
-        inventoryBattleMenu.Popup_();
+        inventoryBattleMenu.Popup();
     }
 
     //GETTER AND SETTER

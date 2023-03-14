@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Project-trapped-in-hellbody"
 run/main_scene="res://Combat System/Demo Fight/TTBC Manager.tscn"
-config/features=PackedStringArray("4.0", "C#")
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
 [display]

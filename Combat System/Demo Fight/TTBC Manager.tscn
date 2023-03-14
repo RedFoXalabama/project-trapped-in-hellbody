@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cc4a70w4qud0h"]
 
-[ext_resource type="PackedScene" path="res://Characters/Player/PlayerInfoManager.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://c63yr72kah8lr" path="res://Characters/Player/PlayerInfoManager.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dvll6hiunl780" path="res://Combat System/Demo Fight/DemoFight_Background.png" id="2"]
 [ext_resource type="Script" path="res://Combat System/Demo Fight/TTBCScript.cs" id="3"]
 [ext_resource type="PackedScene" path="res://Combat System/BattleMenu/EnemyListMenu.tscn" id="4"]

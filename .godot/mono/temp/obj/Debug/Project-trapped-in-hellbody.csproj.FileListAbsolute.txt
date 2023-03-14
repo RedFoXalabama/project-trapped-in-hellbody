@@ -1,0 +1,17 @@
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.csproj.AssemblyReference.cache
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.GeneratedMSBuildEditorConfig.editorconfig
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.AssemblyInfoInputs.cache
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.AssemblyInfo.cs
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.csproj.CoreCompileInputs.cache
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/bin/Debug/Project-trapped-in-hellbody.deps.json
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/bin/Debug/Project-trapped-in-hellbody.runtimeconfig.json
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/bin/Debug/Project-trapped-in-hellbody.dll
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/bin/Debug/ref/Project-trapped-in-hellbody.dll
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/bin/Debug/Project-trapped-in-hellbody.pdb
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/bin/Debug/GodotSharp.dll
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/bin/Debug/GodotSharpEditor.dll
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.csproj.CopyComplete
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.dll
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/ref/Project-trapped-in-hellbody.dll
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.pdb
+/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.genruntimeconfig.cache
