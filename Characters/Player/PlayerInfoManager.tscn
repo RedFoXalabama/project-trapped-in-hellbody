@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c63yr72kah8lr"]
+[gd_scene load_steps=41 format=3 uid="uid://c63yr72kah8lr"]
 
 [ext_resource type="PackedScene" path="res://Combat System/Characters Bar/NameBar.tscn" id="2"]
 [ext_resource type="Theme" uid="uid://dk81v6oyu65mw" path="res://Combat System/Characters Bar/Bar Theme/player_mana_bar_theme.tres" id="3"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Characters/Player/Script/PlayerInfoManager.cs" id="7"]
 [ext_resource type="Texture2D" uid="uid://448aotsw1b5u" path="res://Combat System/Characters Bar/Bar Theme/Player LifeBar.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://buyv7ypneg7yx" path="res://Combat System/Characters Bar/Bar Theme/Player ManaBar.png" id="9"]
-[ext_resource type="PackedScene" path="res://Characters/BattleAnimation.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://covgueuo1i1e7" path="res://Characters/BattleAnimation.tscn" id="10"]
 [ext_resource type="Texture2D" uid="uid://b8d7tf27kd7hd" path="res://Characters/Player/Battle Player.png" id="11"]
 
 [sub_resource type="AnimationNodeAnimation" id="4"]
@@ -58,6 +58,9 @@ animation = &"Idle_HalfLife"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="24"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0m40u"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="25"]
 states/Attack/node = SubResource("4")
 states/Attack/position = Vector2(375, 141.667)
@@ -69,7 +72,8 @@ states/Idle_FullLife/node = SubResource("7")
 states/Idle_FullLife/position = Vector2(268.333, 65.6667)
 states/Idle_HalfLife/node = SubResource("8")
 states/Idle_HalfLife/position = Vector2(473.667, 64.3333)
-transitions = ["Idle_FullLife", "Idle_HalfLife", SubResource("9"), "Idle_HalfLife", "Idle_FullLife", SubResource("10"), "Idle_HalfLife", "Idle_CriticLife", SubResource("11"), "Idle_CriticLife", "Idle_HalfLife", SubResource("12"), "Idle_FullLife", "Attack", SubResource("13"), "Attack", "Idle_FullLife", SubResource("14"), "Idle_HalfLife", "Attack", SubResource("15"), "Attack", "Idle_HalfLife", SubResource("16"), "Attack", "Idle_CriticLife", SubResource("17"), "Idle_CriticLife", "Attack", SubResource("18"), "Idle_FullLife", "Damage", SubResource("19"), "Damage", "Idle_FullLife", SubResource("20"), "Idle_HalfLife", "Damage", SubResource("21"), "Damage", "Idle_HalfLife", SubResource("22"), "Idle_CriticLife", "Damage", SubResource("23"), "Damage", "Idle_CriticLife", SubResource("24")]
+states/Start/position = Vector2(122.667, 67.4568)
+transitions = ["Idle_FullLife", "Idle_HalfLife", SubResource("9"), "Idle_HalfLife", "Idle_FullLife", SubResource("10"), "Idle_HalfLife", "Idle_CriticLife", SubResource("11"), "Idle_CriticLife", "Idle_HalfLife", SubResource("12"), "Idle_FullLife", "Attack", SubResource("13"), "Attack", "Idle_FullLife", SubResource("14"), "Idle_HalfLife", "Attack", SubResource("15"), "Attack", "Idle_HalfLife", SubResource("16"), "Attack", "Idle_CriticLife", SubResource("17"), "Idle_CriticLife", "Attack", SubResource("18"), "Idle_FullLife", "Damage", SubResource("19"), "Damage", "Idle_FullLife", SubResource("20"), "Idle_HalfLife", "Damage", SubResource("21"), "Damage", "Idle_HalfLife", SubResource("22"), "Idle_CriticLife", "Damage", SubResource("23"), "Damage", "Idle_CriticLife", SubResource("24"), "Start", "Idle_FullLife", SubResource("AnimationNodeStateMachineTransition_0m40u")]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="26"]
 
@@ -251,22 +255,26 @@ _data = {
 [node name="PlayerInfoManager" type="Node2D"]
 script = ExtResource("7")
 cname = "Player"
+free = false
 
 [node name="BattleMenu" type="PopupMenu" parent="."]
+gui_embed_subwindows = true
 size = Vector2i(129, 143)
-item_count = 5
+visible = true
+hide_on_checkable_item_selection = false
+item_count = 4
 item_0/text = "Attack"
 item_0/id = 0
-item_1/text = "Magic"
+item_1/text = "Ally Manager"
 item_1/id = 1
-item_2/text = "Ally Manager"
+item_2/text = "Inventory"
 item_2/id = 2
-item_3/text = "Inventory"
+item_3/text = "Escape"
 item_3/id = 3
-item_4/text = "Escape"
-item_4/id = 4
 
 [node name="SkillBattleMenu" type="PopupMenu" parent="BattleMenu"]
+gui_embed_subwindows = true
+visible = true
 item_count = 2
 item_0/text = "Basic 1"
 item_0/id = 0
@@ -276,8 +284,10 @@ item_1/id = 1
 [node name="SkillManager" type="Node" parent="BattleMenu/SkillBattleMenu"]
 
 [node name="AllyManagerMenu" type="PopupMenu" parent="BattleMenu"]
+visible = true
 
 [node name="InventoryBattleMenu" type="PopupMenu" parent="BattleMenu"]
+visible = true
 
 [node name="BattleAnimation" parent="." instance=ExtResource("10")]
 texture = ExtResource("11")
@@ -296,6 +306,8 @@ libraries = {
 offset_top = 24.0
 offset_right = 1.0
 offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("3")
 show_percentage = false
 
@@ -319,8 +331,8 @@ caret_blink_interval = 0.5
 [node name="BattleTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="id_pressed" from="BattleMenu" to="." method="_on_BattleMenu_id_pressed"]
-[connection signal="id_pressed" from="BattleMenu/SkillBattleMenu" to="." method="_on_SkillBattleMenu_id_pressed"]
+[connection signal="id_focused" from="BattleMenu" to="." method="_on_battle_menu_id_focused"]
+[connection signal="id_pressed" from="BattleMenu/SkillBattleMenu" to="." method="_on_skill_battle_menu_id_pressed"]
 [connection signal="timeout" from="BattleTimer" to="." method="_on_BattleTimer_timeout"]
 
 [editable path="BattleAnimation"]

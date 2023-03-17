@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://waf2cs00oi31"]
+[gd_scene load_steps=26 format=3 uid="uid://waf2cs00oi31"]
 
 [ext_resource type="PackedScene" path="res://Combat System/Characters Bar/NameBar.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://n374n2pjpajg" path="res://Combat System/Characters Bar/Bar Theme/Ally ManaBar.png" id="2"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://wwusbc68a7of" path="res://Combat System/Characters Bar/Bar Theme/Ally LifeBar.png" id="6"]
 [ext_resource type="Script" path="res://Characters/Ally/AllyInfoManager.cs" id="7"]
 [ext_resource type="Theme" uid="uid://bhv5y0p0r2e37" path="res://Combat System/Characters Bar/Bar Theme/ally_life_bar_theme.tres" id="8"]
-[ext_resource type="PackedScene" path="res://Characters/BattleAnimation.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://covgueuo1i1e7" path="res://Characters/BattleAnimation.tscn" id="9"]
 [ext_resource type="Texture2D" uid="uid://cx6whld67qflu" path="res://Characters/Ally/Demo_Ally/Battle Ally.png" id="10"]
 
 [sub_resource type="AnimationNodeAnimation" id="7"]
@@ -28,14 +28,19 @@ animation = &"Idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="13"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ex4yd"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="1"]
 states/Attack/node = SubResource("7")
 states/Attack/position = Vector2(520.333, 79)
 states/Damage/node = SubResource("8")
 states/Damage/position = Vector2(179, 79)
+states/End/position = Vector2(636, 80)
 states/Idle/node = SubResource("9")
 states/Idle/position = Vector2(344.333, 80.3333)
-transitions = ["Idle", "Attack", SubResource("10"), "Attack", "Idle", SubResource("11"), "Idle", "Damage", SubResource("12"), "Damage", "Idle", SubResource("13")]
+states/Start/position = Vector2(344.888, 20)
+transitions = ["Idle", "Attack", SubResource("10"), "Attack", "Idle", SubResource("11"), "Idle", "Damage", SubResource("12"), "Damage", "Idle", SubResource("13"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ex4yd")]
 graph_offset = Vector2(-92.5401, 0)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="14"]

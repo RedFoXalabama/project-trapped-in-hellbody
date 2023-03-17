@@ -25,7 +25,7 @@ public partial class TTBCScript : Node
 	private EnemyInfoManager enemy2;
 	private EnemyInfoManager enemy3;
 	private EnemyInfoManager[] enemyList;
-	private PopupMenu enemyListMenu;
+	private PopupMenu enemyListPopup;
 	EnemyManager enemyManager = ResourceLoader.Load("res://Characters/Enemy/EnemyManager.tres") as EnemyManager;
 	private PackedScene[] enemyPS = new PackedScene[3];
 
@@ -52,7 +52,11 @@ public partial class TTBCScript : Node
 		/*HD*/enemyPS[1] = GD.Load<PackedScene>(enemyManager.EnemyPath("Demo_Enemy2"));
 		/*HD*/enemyPS[2] = GD.Load<PackedScene>(enemyManager.EnemyPath("Demo_Enemy3"));
 		spawnEnemy(enemyPS);
-		//INIZIO BATTAGLIA
+	}
+	
+	//INIZIO BATTAGLIA
+	public void _on_play_button_pressed(){
+		GetNode<BaseButton>("PlayButton").Hide();
 		BattleStart();
 	}
 	//ALLY FUNCTIONS
@@ -116,9 +120,9 @@ public partial class TTBCScript : Node
 			enemyWaitingQueue.Enqueue(enemyVelocityMax.GetParent<Marker2D>());
 		}
 		//CREA IL MENU DA CUI SELEZIONARE I NEMICI
-		enemyListMenu = GetNode<PopupMenu>("EnemyListMenu");
+		enemyListPopup = GetNode<PopupMenu>("EnemyListMenu/EnemyListPopup");
 		for (int i = 0; i < EnemyList.Length; i ++){
-			enemyListMenu.AddItem(EnemyList[i].Name, i);
+			enemyListPopup.AddItem(EnemyList[i].Name, i);
 			//aggiunge alla lista il nome del nemico e da come id la posizione nell'array(sempre da 0-n)
 		}
 		
@@ -192,8 +196,8 @@ public partial class TTBCScript : Node
 		get => enemiesPosition;
 		set => enemiesPosition = value;
 	}
-	public PopupMenu EnemyListMenu{
-		get => enemyListMenu;
-		set => enemyListMenu = value;
+	public PopupMenu EnemyListPopup{
+		get => enemyListPopup;
+		set => enemyListPopup = value;
 	}
 }	

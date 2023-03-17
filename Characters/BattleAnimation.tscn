@@ -1,13 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://covgueuo1i1e7"]
 
-[ext_resource path="res://Characters/BattleAnimation.cs" type="Script" id=1]
+[ext_resource type="Script" path="res://Characters/BattleAnimation.cs" id="1"]
 
 [node name="BattleAnimation" type="Sprite2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
