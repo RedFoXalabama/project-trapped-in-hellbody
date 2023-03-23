@@ -52,6 +52,8 @@ public partial class TTBCScript : Node
 		/*HD*/enemyPS[1] = GD.Load<PackedScene>(enemyManager.EnemyPath("Demo_Enemy2"));
 		/*HD*/enemyPS[2] = GD.Load<PackedScene>(enemyManager.EnemyPath("Demo_Enemy3"));
 		spawnEnemy(enemyPS);
+		//BATTLE START BUTTON
+		GetNode<BaseButton>("PlayButton").GrabFocus();
 	}
 	
 	//INIZIO BATTAGLIA

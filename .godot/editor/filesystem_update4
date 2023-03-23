@@ -1,5 +1,5 @@
 res://default_env.tres
-res://Combat System/BattleMenu/EnemyListMenu.tscn
+res://Characters/Player/PlayerInfoManager.tscn
 res://Combat System/Characters Bar/Bar Theme/player_mana_bar_theme.tres
 res://Combat System/Characters Bar/Bar Theme/player_life_bar_theme.tres
 res://Combat System/Characters Bar/Bar Theme/player_name_bar.tres
@@ -11,4 +11,5 @@ res://Characters/Enemy/Demo_Enemy1/Demo_Enemy1.tscn
 res://Characters/Enemy/Demo_Enemy2/Demo_Enemy2.tscn
 res://Characters/Enemy/Demo_Enemy3/Demo_Enemy3.tscn
 res://Characters/Ally/Demo_Ally/Demo_Ally.tscn
-res://Characters/Player/PlayerInfoManager.tscn
+res://Combat System/BattleMenu/OptionMenu.tscn
+res://Inventory/control.tscn

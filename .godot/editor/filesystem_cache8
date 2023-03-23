@@ -1,6 +1,6 @@
 2a60927148abd1d33b818b535e306557
-::res://::1678986434
-default_env.tres::Environment::4216191505853608392::1678959829::0::1::::<><>::
+::res://::1679564815
+default_env.tres::Environment::4216191505853608392::1679564752::0::1::::<><>::
 icon.png::CompressedTexture2D::8469594021551961142::1678815585::1678815585::1::::<><>::
 mono_crash.0.0.json::JSON::-1::1678815585::0::1::::<><>::
 pr.cs::CSharpScript::-1::1678816634::0::1::::<><>::
@@ -12,58 +12,66 @@ BattleAnimation.tscn::PackedScene::5799237370649281712::1678896763::0::1::::<><>
 AllyInfoManager.cs::CSharpScript::-1::1678896344::0::1::::<><>::
 AllyManager.cs::CSharpScript::-1::1678815585::0::1::::<><>::
 AllyManager.tres::Resource::-1::1678815585::0::1::::<><>::res://Characters/Ally/AllyManager.cs
-::res://Characters/Ally/Demo_Ally/::1678959729
+::res://Characters/Ally/Demo_Ally/::1679564752
 Battle Ally.png::CompressedTexture2D::6452529339678157246::1678815585::1678815585::1::::<><>::
-Demo_Ally.tscn::PackedScene::1544506495459011218::1678959729::0::1::::<><>::res://Combat System/Characters Bar/NameBar.tscn<>uid://n374n2pjpajg<>uid://dk81v6oyu65mw<>uid://q5ssavd7ph1h<>uid://bsfkx0yubqwj6<>uid://wwusbc68a7of<>res://Characters/Ally/AllyInfoManager.cs<>uid://bhv5y0p0r2e37<>uid://covgueuo1i1e7<>uid://cx6whld67qflu
+Demo_Ally.tscn::PackedScene::1544506495459011218::1679564752::0::1::::<><>::res://Combat System/Characters Bar/NameBar.tscn<>uid://n374n2pjpajg<>uid://dk81v6oyu65mw<>uid://q5ssavd7ph1h<>uid://bsfkx0yubqwj6<>uid://wwusbc68a7of<>res://Characters/Ally/AllyInfoManager.cs<>uid://bhv5y0p0r2e37<>uid://covgueuo1i1e7<>uid://cx6whld67qflu
 ::res://Characters/Enemy/::1678885517
 EnemyInfoManager.cs::CSharpScript::-1::1678896332::0::1::::<><>::
 EnemyManager.cs::CSharpScript::-1::1678815585::0::1::::<><>::
 EnemyManager.tres::Resource::-1::1678815585::0::1::::<><>::res://Characters/Enemy/EnemyManager.cs
-::res://Characters/Enemy/Demo_Enemy1/::1678959729
+::res://Characters/Enemy/Demo_Enemy1/::1679564752
 Battle Enemy.png::CompressedTexture2D::3273937057109759455::1678815585::1678815585::1::::<><>::
-Demo_Enemy1.tscn::PackedScene::1550941820654412702::1678959729::0::1::::<><>::uid://ca4361g560a7m<>uid://bh13qn1sh1r2n<>res://Combat System/Characters Bar/NameBar.tscn<>uid://bsfkx0yubqwj6<>uid://cx8cpl8md4xee<>uid://covgueuo1i1e7<>res://Characters/Enemy/EnemyInfoManager.cs<>uid://bmv6jalwi0hwp
-::res://Characters/Enemy/Demo_Enemy2/::1678959729
+Demo_Enemy1.tscn::PackedScene::1550941820654412702::1679564752::0::1::::<><>::uid://ca4361g560a7m<>uid://bh13qn1sh1r2n<>res://Combat System/Characters Bar/NameBar.tscn<>uid://bsfkx0yubqwj6<>uid://cx8cpl8md4xee<>uid://covgueuo1i1e7<>res://Characters/Enemy/EnemyInfoManager.cs<>uid://bmv6jalwi0hwp
+::res://Characters/Enemy/Demo_Enemy2/::1679564752
 Battle Enemy.png::CompressedTexture2D::9084432578509452577::1678815585::1678815585::1::::<><>::
-Demo_Enemy2.tscn::PackedScene::3222421829288744044::1678959729::0::1::::<><>::uid://ca4361g560a7m<>uid://bh13qn1sh1r2n<>res://Combat System/Characters Bar/NameBar.tscn<>uid://bsfkx0yubqwj6<>uid://cx8cpl8md4xee<>uid://covgueuo1i1e7<>res://Characters/Enemy/EnemyInfoManager.cs<>uid://bmv6jalwi0hwp
-::res://Characters/Enemy/Demo_Enemy3/::1678959729
+Demo_Enemy2.tscn::PackedScene::3222421829288744044::1679564752::0::1::::<><>::uid://ca4361g560a7m<>uid://bh13qn1sh1r2n<>res://Combat System/Characters Bar/NameBar.tscn<>uid://bsfkx0yubqwj6<>uid://cx8cpl8md4xee<>uid://covgueuo1i1e7<>res://Characters/Enemy/EnemyInfoManager.cs<>uid://bmv6jalwi0hwp
+::res://Characters/Enemy/Demo_Enemy3/::1679564752
 Battle Enemy.png::CompressedTexture2D::6163639648702890537::1678815585::1678815585::1::::<><>::
-Demo_Enemy3.tscn::PackedScene::657476226447939764::1678959729::0::1::::<><>::uid://ca4361g560a7m<>uid://bh13qn1sh1r2n<>res://Characters/Enemy/EnemyInfoManager.cs<>res://Combat System/Characters Bar/NameBar.tscn<>uid://bsfkx0yubqwj6<>uid://cx8cpl8md4xee<>uid://covgueuo1i1e7<>uid://bmv6jalwi0hwp
-::res://Characters/Player/::1678959730
+Demo_Enemy3.tscn::PackedScene::657476226447939764::1679564752::0::1::::<><>::uid://ca4361g560a7m<>uid://bh13qn1sh1r2n<>res://Characters/Enemy/EnemyInfoManager.cs<>res://Combat System/Characters Bar/NameBar.tscn<>uid://bsfkx0yubqwj6<>uid://cx8cpl8md4xee<>uid://covgueuo1i1e7<>uid://bmv6jalwi0hwp
+::res://Characters/Player/::1679564752
 Battle Player.png::CompressedTexture2D::4710822836656990953::1678815585::1678815585::1::::<><>::
 Player Name.png::CompressedTexture2D::2823135663140264903::1678815585::1678815585::1::::<><>::
-PlayerInfoManager.tscn::PackedScene::7007987386513249859::1678959730::0::1::::<><>::res://Combat System/Characters Bar/NameBar.tscn<>uid://dk81v6oyu65mw<>uid://bsfkx0yubqwj6<>uid://dm4whkvae8ion<>uid://q5ssavd7ph1h<>res://Characters/Player/Script/PlayerInfoManager.cs<>uid://448aotsw1b5u<>uid://buyv7ypneg7yx<>uid://covgueuo1i1e7<>uid://b8d7tf27kd7hd
+PlayerInfoManager.tscn::PackedScene::4302118084578030494::1679564752::0::1::::<><>::res://Combat System/Characters Bar/NameBar.tscn<>uid://dk81v6oyu65mw<>uid://bsfkx0yubqwj6<>uid://d1bhmdssaclel<>uid://dm4whkvae8ion<>uid://cj7ehsqob10eh<>uid://b424xad2eli0i<>uid://q5ssavd7ph1h<>res://Characters/Player/Script/PlayerInfoManager.cs<>uid://448aotsw1b5u<>uid://buyv7ypneg7yx<>uid://covgueuo1i1e7<>uid://b8d7tf27kd7hd<>uid://b612182tsxtrw<>uid://cqeqnul2egaar
 Player_BattleAnimation.tscn::PackedScene::-1::1678815585::0::1::::<><>::res://Characters/Player/Battle Player.png
 ::res://Characters/Player/Script/::1678896197
 Player.cs::CSharpScript::-1::1678815585::0::1::::<><>::
-PlayerInfoManager.cs::CSharpScript::-1::1678899993::0::1::::<><>::
+PlayerInfoManager.cs::CSharpScript::-1::1679564320::0::1::::<><>::
 ::res://Characters/Player/Tscn/::1678815585
 Player.tscn::PackedScene::-1::1678815585::0::1::::<><>::res://Characters/Script/Player.cs
 ::res://Combat System/::1678815585
-::res://Combat System/BattleMenu/::1678959829
-EnemyListMenu.tscn::PackedScene::6180010187297001284::1678959829::0::1::::<><>::uid://cc5yupwwhkil6
+::res://Combat System/BattleMenu/::1679564752
+AllyBattleMenu_bg.png::CompressedTexture2D::5470857387562462995::1679557659::1679557685::1::::<><>::
+BattleMenu_bg.png::CompressedTexture2D::5905116132508175521::1679342534::1679342535::1::::<><>::
+InventoryBattleMenu_bg.png::CompressedTexture2D::4479437220472651698::1679557527::1679557692::1::::<><>::
+OptionMenu.cs::CSharpScript::-1::1679562707::0::1::::<><>::
+OptionMenu.tscn::PackedScene::4617636223392408604::1679564752::0::1::::<><>::res://Combat System/BattleMenu/OptionMenu.cs
 Pointer.png::CompressedTexture2D::4976644133833838901::1678815585::1678815585::1::::<><>::
+SkillBattleMenu_bg.png::CompressedTexture2D::8986682998092887951::1679490710::1679490712::1::::<><>::
 ::res://Combat System/Characters Bar/::1678896053
 GameBar.cs::CSharpScript::-1::1678896053::0::1::::<><>::
 GameBar.tscn::PackedScene::3660791352205219129::1678886029::0::1::::<><>::res://Combat System/Characters Bar/GameBar.cs
 NameBar.cs::CSharpScript::-1::1678815585::0::1::::<><>::
 NameBar.tscn::PackedScene::-1::1678815585::0::1::::<><>::res://Combat System/Characters Bar/NameBar.cs
-::res://Combat System/Characters Bar/Bar Theme/::1678959403
+::res://Combat System/Characters Bar/Bar Theme/::1679557572
 Ally LifeBar.png::CompressedTexture2D::1590817411837238609::1678815585::1678815585::1::::<><>::
 Ally ManaBar.png::CompressedTexture2D::972253001407282912::1678815585::1678815585::1::::<><>::
-ally_life_bar_theme.tres::Theme::2922960228246784432::1678959403::0::1::::<><>::
+ally_life_bar_theme.tres::Theme::2922960228246784432::1679557572::0::1::::<><>::
 Enemy LifeBar.png::CompressedTexture2D::6455458087124823872::1678815585::1678815585::1::::<><>::
 Enemy Name.png::CompressedTexture2D::3247901259018281225::1678815585::1678815585::1::::<><>::
-enemy_life_bar_theme.tres::Theme::2933145783061522407::1678959403::0::1::::<><>::
-enemy_name_bar.tres::Theme::4834465133943851460::1678959403::0::1::::<><>::
+enemy_life_bar_theme.tres::Theme::2933145783061522407::1679557572::0::1::::<><>::
+enemy_name_bar.tres::Theme::4834465133943851460::1679557572::0::1::::<><>::
 Player LifeBar.png::CompressedTexture2D::2097347846658412996::1678815585::1678815585::1::::<><>::
 Player ManaBar.png::CompressedTexture2D::3841076109132984983::1678815585::1678815585::1::::<><>::
-player_life_bar_theme.tres::Theme::8062743961682668049::1678959403::0::1::::<><>::
-player_mana_bar_theme.tres::Theme::7930892747797077214::1678959403::0::1::::<><>::
-player_name_bar.tres::Theme::1186077913610956207::1678959403::0::1::::<><>::
-::res://Combat System/Demo Fight/::1678959729
+player_life_bar_theme.tres::Theme::8062743961682668049::1679557572::0::1::::<><>::
+player_mana_bar_theme.tres::Theme::7930892747797077214::1679557572::0::1::::<><>::
+player_name_bar.tres::Theme::1186077913610956207::1679557572::0::1::::<><>::
+::res://Combat System/Demo Fight/::1679564752
 DemoFight_Background.png::CompressedTexture2D::8656659550252561315::1678815585::1678815585::1::::<><>::
-TTBC Manager.tscn::PackedScene::4973144503344206885::1678959729::0::1::::<><>::uid://c63yr72kah8lr<>uid://dvll6hiunl780<>res://Combat System/Demo Fight/TTBCScript.cs<>res://Combat System/BattleMenu/EnemyListMenu.tscn
-TTBCScript.cs::CSharpScript::-1::1678959430::0::1::::<><>::
+TTBC Manager.tscn::PackedScene::4973144503344206885::1679564752::0::1::::<><>::uid://b2j8iyj3rk8sw<>uid://dvll6hiunl780<>res://Combat System/Demo Fight/TTBCScript.cs<>uid://cc5yupwwhkil6
+TTBCScript.cs::CSharpScript::-1::1679494285::0::1::::<><>::
+::res://Inventory/::1679564752
+control.cs::CSharpScript::-1::1679564744::0::1::::<><>::
+control.tscn::PackedScene::2466710517951390736::1679564752::0::1::::<><>::res://Inventory/control.cs
 ::res://Overworld/::1678815585
 ::res://Overworld/Level 0/::1678815585
 ::res://Overworld/Level 0/Tileset/::1678815585

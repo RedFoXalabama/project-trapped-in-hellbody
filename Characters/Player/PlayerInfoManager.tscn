@@ -1,15 +1,20 @@
-[gd_scene load_steps=41 format=3 uid="uid://c63yr72kah8lr"]
+[gd_scene load_steps=46 format=3 uid="uid://b2j8iyj3rk8sw"]
 
 [ext_resource type="PackedScene" path="res://Combat System/Characters Bar/NameBar.tscn" id="2"]
 [ext_resource type="Theme" uid="uid://dk81v6oyu65mw" path="res://Combat System/Characters Bar/Bar Theme/player_mana_bar_theme.tres" id="3"]
 [ext_resource type="PackedScene" uid="uid://bsfkx0yubqwj6" path="res://Combat System/Characters Bar/GameBar.tscn" id="4"]
+[ext_resource type="Texture2D" uid="uid://d1bhmdssaclel" path="res://Combat System/BattleMenu/SkillBattleMenu_bg.png" id="4_svyav"]
 [ext_resource type="Theme" uid="uid://dm4whkvae8ion" path="res://Combat System/Characters Bar/Bar Theme/player_life_bar_theme.tres" id="5"]
+[ext_resource type="Texture2D" uid="uid://cj7ehsqob10eh" path="res://Combat System/BattleMenu/AllyBattleMenu_bg.png" id="5_hv1jf"]
+[ext_resource type="Texture2D" uid="uid://b424xad2eli0i" path="res://Combat System/BattleMenu/InventoryBattleMenu_bg.png" id="5_x743n"]
 [ext_resource type="Theme" uid="uid://q5ssavd7ph1h" path="res://Combat System/Characters Bar/Bar Theme/player_name_bar.tres" id="6"]
 [ext_resource type="Script" path="res://Characters/Player/Script/PlayerInfoManager.cs" id="7"]
 [ext_resource type="Texture2D" uid="uid://448aotsw1b5u" path="res://Combat System/Characters Bar/Bar Theme/Player LifeBar.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://buyv7ypneg7yx" path="res://Combat System/Characters Bar/Bar Theme/Player ManaBar.png" id="9"]
 [ext_resource type="PackedScene" uid="uid://covgueuo1i1e7" path="res://Characters/BattleAnimation.tscn" id="10"]
 [ext_resource type="Texture2D" uid="uid://b8d7tf27kd7hd" path="res://Characters/Player/Battle Player.png" id="11"]
+[ext_resource type="PackedScene" uid="uid://b612182tsxtrw" path="res://Combat System/BattleMenu/OptionMenu.tscn" id="11_evtcp"]
+[ext_resource type="Texture2D" uid="uid://cqeqnul2egaar" path="res://Combat System/BattleMenu/BattleMenu_bg.png" id="12_2k5br"]
 
 [sub_resource type="AnimationNodeAnimation" id="4"]
 animation = &"Attack"
@@ -257,37 +262,59 @@ script = ExtResource("7")
 cname = "Player"
 free = false
 
-[node name="BattleMenu" type="PopupMenu" parent="."]
-gui_embed_subwindows = true
-size = Vector2i(129, 143)
-visible = true
-hide_on_checkable_item_selection = false
-item_count = 4
-item_0/text = "Attack"
-item_0/id = 0
-item_1/text = "Ally Manager"
-item_1/id = 1
-item_2/text = "Inventory"
-item_2/id = 2
-item_3/text = "Escape"
-item_3/id = 3
+[node name="BattleMenu" parent="." instance=ExtResource("11_evtcp")]
+offset_left = 192.0
+offset_top = -192.0
+offset_right = 320.0
+offset_bottom = 0.0
+Option = PackedStringArray("Attack", "Ally Manager", "Inventory", "Escape")
 
-[node name="SkillBattleMenu" type="PopupMenu" parent="BattleMenu"]
-gui_embed_subwindows = true
-visible = true
-item_count = 2
-item_0/text = "Basic 1"
-item_0/id = 0
-item_1/text = "Basic 2"
-item_1/id = 1
+[node name="Sprite2D" parent="BattleMenu" index="0"]
+texture = ExtResource("12_2k5br")
 
-[node name="SkillManager" type="Node" parent="BattleMenu/SkillBattleMenu"]
+[node name="VBoxContainer" parent="BattleMenu" index="1"]
+offset_right = 0.0
+offset_bottom = 0.0
 
-[node name="AllyManagerMenu" type="PopupMenu" parent="BattleMenu"]
-visible = true
+[node name="SkillBattleMenu" parent="BattleMenu" instance=ExtResource("11_evtcp")]
+offset_left = 128.0
+offset_right = 224.0
+offset_bottom = 96.0
+Option = PackedStringArray("Base 1", "Base 2")
+subMenu = true
 
-[node name="InventoryBattleMenu" type="PopupMenu" parent="BattleMenu"]
-visible = true
+[node name="Sprite2D" parent="BattleMenu/SkillBattleMenu" index="0"]
+texture = ExtResource("4_svyav")
+
+[node name="VBoxContainer" parent="BattleMenu/SkillBattleMenu" index="1"]
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="AllyManagerMenu" parent="BattleMenu" instance=ExtResource("11_evtcp")]
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 224.0
+offset_bottom = 160.0
+Option = PackedStringArray("Ally 1", "Ally 2")
+subMenu = true
+
+[node name="Sprite2D" parent="BattleMenu/AllyManagerMenu" index="0"]
+texture = ExtResource("5_hv1jf")
+
+[node name="InventoryBattleMenu" parent="BattleMenu" instance=ExtResource("11_evtcp")]
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 224.0
+offset_bottom = 224.0
+Option = PackedStringArray("Pozioni", "BHo?")
+subMenu = true
+
+[node name="Sprite2D" parent="BattleMenu/InventoryBattleMenu" index="0"]
+texture = ExtResource("5_x743n")
+
+[node name="VBoxContainer" parent="BattleMenu/InventoryBattleMenu" index="1"]
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="BattleAnimation" parent="." instance=ExtResource("10")]
 texture = ExtResource("11")
@@ -331,10 +358,12 @@ caret_blink_interval = 0.5
 [node name="BattleTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="id_focused" from="BattleMenu" to="." method="_on_battle_menu_id_focused"]
-[connection signal="id_pressed" from="BattleMenu/SkillBattleMenu" to="." method="_on_skill_battle_menu_id_pressed"]
 [connection signal="timeout" from="BattleTimer" to="." method="_on_BattleTimer_timeout"]
 
+[editable path="BattleMenu"]
+[editable path="BattleMenu/SkillBattleMenu"]
+[editable path="BattleMenu/AllyManagerMenu"]
+[editable path="BattleMenu/InventoryBattleMenu"]
 [editable path="BattleAnimation"]
 [editable path="ManaBar"]
 [editable path="LifeBar"]

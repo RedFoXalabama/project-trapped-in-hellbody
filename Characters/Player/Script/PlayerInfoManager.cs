@@ -16,10 +16,10 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	private GameBar lifeBar;
 	private GameBar manaBar;
 	private NameBar nameBar;
-	private PopupMenu battleMenu;
-	private PopupMenu skillBattleMenu;
-	private PopupMenu allyManagerMenu;
-	private PopupMenu inventoryBattleMenu;
+	private OptionMenu battleMenu;
+	private OptionMenu skillBattleMenu;
+	private OptionMenu allyManagerMenu;
+	private OptionMenu inventoryBattleMenu;
 	private TTBCScript tTBCScript;
 	//VARIABILI PER LA SCELTA MOSSA
 	private EnemyInfoManager selectedEnemy;
@@ -40,14 +40,14 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		lifeBar.ChangeMaxValue(Life); //al momento la vita non avendo un valore esplicito è zero
 		manaBar.ChangeMaxValue(Mana); //al momento il mana non avendo un valore esplicito è zero
 		//ALL Menu
-		battleMenu = GetNode<PopupMenu>("BattleMenu");
-		skillBattleMenu = battleMenu.GetNode<PopupMenu>("SkillBattleMenu");
-		allyManagerMenu = battleMenu.GetNode<PopupMenu>("AllyManagerMenu");
-		inventoryBattleMenu = battleMenu.GetNode<PopupMenu>("InventoryBattleMenu");
+		battleMenu = GetNode<OptionMenu>("BattleMenu");
+		skillBattleMenu = battleMenu.GetNode<OptionMenu>("SkillBattleMenu");
+		allyManagerMenu = battleMenu.GetNode<OptionMenu>("AllyManagerMenu");
+		inventoryBattleMenu = battleMenu.GetNode<OptionMenu>("InventoryBattleMenu");
+		AllBattleMenu_CreateSignals();//crea i segnali dei vari pulsanti 
 		//TTBCSRIPT
 		tTBCScript = GetParent().GetParent<TTBCScript>();
-
- 
+		
 	}
 
 	//FUNZIONI INTERFACCIA BASEMOVES
@@ -76,52 +76,63 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 
 	//SELEZIONE MOSSA
 	public void SelectMove(){
-		battleMenu.Popup();
+		battleMenu.ShowUp();
 	}
 	public void EndSelectMove(){ //da inserire quando si scelie una mossa
 		//si libera la SelectMoveQueue
 		tTBCScript.UpdateMoveQueue(tTBCScript.SelectMoveQueue);
 	}
-	public void _on_battle_menu_id_focused(int id){ //INPUT ACCETTATI: ah bho
-		BattleMenu_IdSelected(id);
+	//FUNZIONI CREZIONE BOTTONI
+	public void AllBattleMenu_CreateSignals(){
+		battleMenu.GetButton(0).Pressed += AttackPressed;
+		battleMenu.GetButton(1).Pressed += AllyManagerPressed;
+		battleMenu.GetButton(2).Pressed += InventoryPressed;
+		battleMenu.GetButton(3).Pressed += EscapePressed;
+		//aggiungere gli altri menu
+		//SISTEMA FOCUS PRECEDENTI  ---------------------------------------------->DA MODIFICARE I NUMERO BUTTON
+		for (int i = 0; i <= 3/*HD numero button*/; i++){ //BATTLE MENU
+			battleMenu.GetButton(i).FocusPrevious = battleMenu.GetButton(i).GetPath();
+		}//aggiungere azioni
+		for (int i = 0; i <= 1/*HD numero button*/; i++){ //SKILLBATTLEMENU
+			skillBattleMenu.GetButton(i).FocusPrevious = battleMenu.GetButton(0).GetPath();
+		}//aggiungere mosse
+		for (int i = 0; i <= 1/*HD numero button*/; i++){ //SKILLBATTLEMENU
+			allyManagerMenu.GetButton(i).FocusPrevious = battleMenu.GetButton(1).GetPath();
+		}//aggiungere alleati
+		for (int i = 0; i <= 1/*HD numero button*/; i++){ //SKILLBATTLEMENU
+			inventoryBattleMenu.GetButton(1).FocusPrevious = battleMenu.GetButton(2).GetPath();
+		}//aggiungere oggetti
 	}
-	public void BattleMenu_IdSelected(int id){
-		if(Input.IsActionJustReleased("ui_accept")){
-		//selezione mossa con lo switch
-			switch(id){
-				case 0:
-					SkillBattleMenuPopup();
-					break;
-				case 1:
-					AllyManagerMenuPopup();
-					break;
-				case 2:
-					InventoryBattleMenuPopup();
-					break;
-				case 3:
-					//FUNZIONI ESCAPE
-					break;
-			}
-			//battleMenu.Hide();
+	public void AttackPressed(){
+		skillBattleMenu.ShowUp();
+		if (allyManagerMenu.Visible || inventoryBattleMenu.Visible){
+			allyManagerMenu.Visible = false;
+			inventoryBattleMenu.Visible = false;
+		}
+		//bisogna fermare il tempo e dare focus
+	}
+	public void AllyManagerPressed(){
+		allyManagerMenu.ShowUp();
+		if (skillBattleMenu.Visible || inventoryBattleMenu.Visible){
+			skillBattleMenu.Visible = false;
+			inventoryBattleMenu.Visible = false;
 		}
 	}
-	public void SkillBattleMenuPopup(){
-		skillBattleMenu.Popup();
-	}
-	public void _on_skill_battle_menu_id_pressed(int id){
-		switch(id){ //Qui ci sarà tutto l'elenco delle mosse base equipaggiate e possibili da fare
-			case 0: //ATTACCO 1
-				BasicAttack1();
-				break;
-			case 1: //ATTACCO 2
-				break;
+	public void InventoryPressed(){
+		inventoryBattleMenu.ShowUp();
+		if (skillBattleMenu.Visible || allyManagerMenu.Visible){
+			skillBattleMenu.Visible = false;
+			allyManagerMenu.Visible = false;
 		}
+	}
+	public void EscapePressed(){
+
 	}
 	//SELEZIONARE UN NEMICO + relativi segnali
 	public void SelectEnemy(){ //popupa il menu di scelta nemici e quando il segnale è inviato dal popmn il nemico viene selezionato
 		//funzioni per decidere il nemico
-		tTBCScript.EnemyListPopup.Position = (skillBattleMenu.Position);
-		tTBCScript.EnemyListPopup.Popup();
+		//tTBCScript.EnemyListPopup.Position = (skillBattleMenu.Position);
+		//tTBCScript.EnemyListPopup.Popup();
 	}
 	//SEGNALE DEL POPUPMENU SELEZIONE NEMICI
 	public void _on_EnemyListMenu_id_pressed(int id){
@@ -169,14 +180,10 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	}
 
 	//GESTIONE ALLEATI
-	public void AllyManagerMenuPopup(){
-		allyManagerMenu.Popup();
-	}
+
 
 	//GESTIONE INVENTARIO
-	public void InventoryBattleMenuPopup(){
-		inventoryBattleMenu.Popup();
-	}
+
 
 	//GETTER AND SETTER
 	public String Cname {
