@@ -88,20 +88,13 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		battleMenu.GetButton(1).Pressed += AllyManagerPressed;
 		battleMenu.GetButton(2).Pressed += InventoryPressed;
 		battleMenu.GetButton(3).Pressed += EscapePressed;
+		skillBattleMenu.GetButton(0).Pressed += BasicAttack1;
 		//aggiungere gli altri menu
-		//SISTEMA FOCUS PRECEDENTI  ---------------------------------------------->DA MODIFICARE I NUMERO BUTTON
-		for (int i = 0; i <= 3/*HD numero button*/; i++){ //BATTLE MENU
-			battleMenu.GetButton(i).FocusPrevious = battleMenu.GetButton(i).GetPath();
-		}//aggiungere azioni
-		for (int i = 0; i <= 1/*HD numero button*/; i++){ //SKILLBATTLEMENU
-			skillBattleMenu.GetButton(i).FocusPrevious = battleMenu.GetButton(0).GetPath();
-		}//aggiungere mosse
-		for (int i = 0; i <= 1/*HD numero button*/; i++){ //SKILLBATTLEMENU
-			allyManagerMenu.GetButton(i).FocusPrevious = battleMenu.GetButton(1).GetPath();
-		}//aggiungere alleati
-		for (int i = 0; i <= 1/*HD numero button*/; i++){ //SKILLBATTLEMENU
-			inventoryBattleMenu.GetButton(1).FocusPrevious = battleMenu.GetButton(2).GetPath();
-		}//aggiungere oggetti
+		//SISTEMA FOCUS PRECEDENTI
+		battleMenu.SetFocusPrevioustTo(battleMenu); 
+		skillBattleMenu.SetFocusPrevioustTo(battleMenu);
+		allyManagerMenu.SetFocusPrevioustTo(battleMenu);
+		inventoryBattleMenu.SetFocusPrevioustTo(battleMenu);
 	}
 	public void AttackPressed(){
 		skillBattleMenu.ShowUp();
@@ -133,6 +126,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		//funzioni per decidere il nemico
 		//tTBCScript.EnemyListPopup.Position = (skillBattleMenu.Position);
 		//tTBCScript.EnemyListPopup.Popup();
+		tTBCScript.CreateEnemyListOptionMenu();
 	}
 	//SEGNALE DEL POPUPMENU SELEZIONE NEMICI
 	public void _on_EnemyListMenu_id_pressed(int id){
@@ -151,12 +145,9 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 				break;    
 		}        
 	}
-	public void _on_enemy_list_popup_id_focused(int id){
-		tTBCScript.EnemyListPopup.GetNode<Sprite2D>("../Pointer").GlobalPosition = tTBCScript.EnemiesPosition[id].Position; 
-		tTBCScript.EnemyListPopup.GetNode<Sprite2D>("../Pointer").Show();
-	}
+
 	public void BasicAttack1(){//attacco base 1 di prova
-		selectedAction = "BasicAttack1";
+		/*HD*/selectedAction = "BasicAttack1";
 		SelectEnemy();
 		//si esce dalla select move quando si sceglie il nemico
 	}
@@ -209,6 +200,10 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	public int Velocity {
 		get => velocity;
 		set => velocity = value;
+	}
+	public OptionMenu SkillBattleMenu{
+		get => skillBattleMenu;
+		set => skillBattleMenu = value;
 	}
 }
 

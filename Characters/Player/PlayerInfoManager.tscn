@@ -122,6 +122,20 @@ tracks/2/keys = {
 "method": &"BackToIdle"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"StartTimer"
+}]
+}
 
 [sub_resource type="Animation" id="28"]
 resource_name = "Damage"
@@ -267,7 +281,7 @@ offset_left = 192.0
 offset_top = -192.0
 offset_right = 320.0
 offset_bottom = 0.0
-Option = PackedStringArray("Attack", "Ally Manager", "Inventory", "Escape")
+option = PackedStringArray("Attack", "Ally Manager", "Inventory", "Escape")
 
 [node name="Sprite2D" parent="BattleMenu" index="0"]
 texture = ExtResource("12_2k5br")
@@ -280,7 +294,7 @@ offset_bottom = 0.0
 offset_left = 128.0
 offset_right = 224.0
 offset_bottom = 96.0
-Option = PackedStringArray("Base 1", "Base 2")
+option = PackedStringArray("Basic 1", "Basic 2")
 subMenu = true
 
 [node name="Sprite2D" parent="BattleMenu/SkillBattleMenu" index="0"]
@@ -295,7 +309,7 @@ offset_left = 128.0
 offset_top = 64.0
 offset_right = 224.0
 offset_bottom = 160.0
-Option = PackedStringArray("Ally 1", "Ally 2")
+option = PackedStringArray("Ally 1", "Ally 2")
 subMenu = true
 
 [node name="Sprite2D" parent="BattleMenu/AllyManagerMenu" index="0"]
@@ -306,7 +320,7 @@ offset_left = 128.0
 offset_top = 128.0
 offset_right = 224.0
 offset_bottom = 224.0
-Option = PackedStringArray("Pozioni", "BHo?")
+option = PackedStringArray("Pozione", "Boh")
 subMenu = true
 
 [node name="Sprite2D" parent="BattleMenu/InventoryBattleMenu" index="0"]
@@ -319,6 +333,7 @@ offset_bottom = 0.0
 [node name="BattleAnimation" parent="." instance=ExtResource("10")]
 texture = ExtResource("11")
 hframes = 5
+frame = 4
 
 [node name="AnimationTree" parent="BattleAnimation" index="0"]
 tree_root = SubResource("25")

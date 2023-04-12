@@ -25,7 +25,7 @@ public partial class TTBCScript : Node
 	private EnemyInfoManager enemy2;
 	private EnemyInfoManager enemy3;
 	private EnemyInfoManager[] enemyList;
-	private PopupMenu enemyListPopup;
+	private OptionMenu enemyListOption;
 	EnemyManager enemyManager = ResourceLoader.Load("res://Characters/Enemy/EnemyManager.tres") as EnemyManager;
 	private PackedScene[] enemyPS = new PackedScene[3];
 
@@ -52,10 +52,11 @@ public partial class TTBCScript : Node
 		/*HD*/enemyPS[1] = GD.Load<PackedScene>(enemyManager.EnemyPath("Demo_Enemy2"));
 		/*HD*/enemyPS[2] = GD.Load<PackedScene>(enemyManager.EnemyPath("Demo_Enemy3"));
 		spawnEnemy(enemyPS);
+		enemyListOption = GetNode<OptionMenu>("EnemyListMenu/EnemyListOption");
 		//BATTLE START BUTTON
 		GetNode<BaseButton>("PlayButton").GrabFocus();
+		
 	}
-	
 	//INIZIO BATTAGLIA
 	public void _on_play_button_pressed(){
 		GetNode<BaseButton>("PlayButton").Hide();
@@ -121,14 +122,8 @@ public partial class TTBCScript : Node
 			}
 			enemyWaitingQueue.Enqueue(enemyVelocityMax.GetParent<Marker2D>());
 		}
-		//CREA IL MENU DA CUI SELEZIONARE I NEMICI
-		enemyListPopup = GetNode<PopupMenu>("EnemyListMenu/EnemyListPopup");
-		for (int i = 0; i < EnemyList.Length; i ++){
-			enemyListPopup.AddItem(EnemyList[i].Name, i);
-			//aggiunge alla lista il nome del nemico e da come id la posizione nell'array(sempre da 0-n)
-		}
-		
 	}
+	
 
 	public void BattleUpdate(){
 		
@@ -170,6 +165,28 @@ public partial class TTBCScript : Node
 			UpdateEnemySelectMoveQueue();
 		}
 	}
+
+	//CREAZIONE MENU NEMICI + AGGIORNAMENTO POINTER
+	public void CreateEnemyListOptionMenu(){
+		//CREA IL MENU DA CUI SELEZIONARE I NEMICI
+		String[] enemyListName = new String[EnemyList.Length];
+		for (int i = 0; i < EnemyList.Length; i ++){
+			enemyListName[i] = EnemyList[i].Cname;
+		}	
+		enemyListOption.OverrideButton(enemyListName);
+		enemyListOption.SetFocusPrevioustTo(playerInfoManager.SkillBattleMenu);
+		for (int i = 0; i < enemyListName.Length; i++){
+			enemyListOption.GetButton(i).OfPointer = true;
+			enemyListOption.GetButton(i).OfPointerSignal += EnemyListOption_ButtonFocused;
+		}
+		enemyListOption.ShowUp();
+	}
+
+    public void EnemyListOption_ButtonFocused(int id){
+		EnemyListOption.GetNode<Sprite2D>("../Pointer").GlobalPosition = EnemiesPosition[id].Position; 
+		EnemyListOption.GetNode<Sprite2D>("../Pointer").Show();
+	}
+
 	public Queue<Marker2D> WaitingQueue{
 		get => waitingQueue;
 		set => waitingQueue = value;
@@ -198,8 +215,8 @@ public partial class TTBCScript : Node
 		get => enemiesPosition;
 		set => enemiesPosition = value;
 	}
-	public PopupMenu EnemyListPopup{
-		get => enemyListPopup;
-		set => enemyListPopup = value;
+	public OptionMenu EnemyListOption{
+		get => enemyListOption;
+		set => enemyListOption = value;
 	}
 }	

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc4a70w4qud0h"]
+[gd_scene load_steps=7 format=3 uid="uid://cc4a70w4qud0h"]
 
 [ext_resource type="PackedScene" uid="uid://b2j8iyj3rk8sw" path="res://Characters/Player/PlayerInfoManager.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dvll6hiunl780" path="res://Combat System/Demo Fight/DemoFight_Background.png" id="2"]
 [ext_resource type="Script" path="res://Combat System/Demo Fight/TTBCScript.cs" id="3"]
 [ext_resource type="Texture2D" uid="uid://cc5yupwwhkil6" path="res://Combat System/BattleMenu/Pointer.png" id="4_y7yps"]
+[ext_resource type="PackedScene" uid="uid://b612182tsxtrw" path="res://Combat System/BattleMenu/OptionMenu.tscn" id="5_dktw3"]
+[ext_resource type="Texture2D" uid="uid://d1bhmdssaclel" path="res://Combat System/BattleMenu/SkillBattleMenu_bg.png" id="6_msb5l"]
 
 [node name="TTBC Manager" type="Node"]
 script = ExtResource("3")
@@ -45,7 +47,21 @@ text = "Start the Battle"
 visible = false
 texture = ExtResource("4_y7yps")
 
-[node name="EnemyListPopup" type="PopupMenu" parent="EnemyListMenu"]
+[node name="EnemyListOption" parent="EnemyListMenu" instance=ExtResource("5_dktw3")]
+offset_left = 1064.0
+offset_top = 360.0
+offset_right = 1160.0
+offset_bottom = 488.0
+option = PackedStringArray("temp")
+subMenu = true
+
+[node name="Sprite2D" parent="EnemyListMenu/EnemyListOption" index="0"]
+texture = ExtResource("6_msb5l")
+
+[node name="VBoxContainer" parent="EnemyListMenu/EnemyListOption" index="1"]
+offset_right = 0.0
+offset_bottom = 0.0
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="id_focused" from="EnemyListMenu/EnemyListPopup" to="PlayerPosition/PlayerInfoManager" method="_on_enemy_list_popup_id_focused"]
+
+[editable path="EnemyListMenu/EnemyListOption"]
