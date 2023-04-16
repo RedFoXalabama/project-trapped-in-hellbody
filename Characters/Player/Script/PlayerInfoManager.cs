@@ -23,6 +23,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	private TTBCScript tTBCScript;
 	//VARIABILI PER LA SCELTA MOSSA
 	private EnemyInfoManager selectedEnemy;
+	private AllyInfoManager selectedAlly;
 	private String selectedAction;
 
 	public override void _Ready(){
@@ -80,6 +81,10 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	}
 	public void EndSelectMove(){ //da inserire quando si scelie una mossa
 		//si libera la SelectMoveQueue
+		skillBattleMenu.Hide();
+		allyManagerMenu.Hide();
+		inventoryBattleMenu.Hide();
+		battleMenu.Hide();
 		tTBCScript.UpdateMoveQueue(tTBCScript.SelectMoveQueue);
 	}
 	//FUNZIONI CREZIONE BOTTONI
@@ -124,26 +129,8 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	//SELEZIONARE UN NEMICO + relativi segnali
 	public void SelectEnemy(){ //popupa il menu di scelta nemici e quando il segnale è inviato dal popmn il nemico viene selezionato
 		//funzioni per decidere il nemico
-		//tTBCScript.EnemyListPopup.Position = (skillBattleMenu.Position);
-		//tTBCScript.EnemyListPopup.Popup();
 		tTBCScript.CreateEnemyListOptionMenu();
-	}
-	//SEGNALE DEL POPUPMENU SELEZIONE NEMICI
-	public void _on_EnemyListMenu_id_pressed(int id){
-		switch(id){ //si esce dalla select move quando si sceglie il nemico
-			case 0:
-				selectedEnemy = tTBCScript.EnemyList[0];
-				EndSelectMove(); //esci dalla select move
-				break;
-			case 1:
-				selectedEnemy = tTBCScript.EnemyList[1];
-				EndSelectMove(); //esci dalla select move
-				break;
-			case 2:
-				selectedEnemy = tTBCScript.EnemyList[2];
-				EndSelectMove(); //esci dalla select move
-				break;    
-		}        
+		//il nemico si seleziona nel TTBCScript
 	}
 
 	public void BasicAttack1(){//attacco base 1 di prova
@@ -158,6 +145,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 			case "BasicAttack1":
 				AnimateCharacter("Attack");
 				//funzione da creare per l'attacco base
+				StartTimer();
 				break;
 			case "BasicAttack2":
 				break;
@@ -168,7 +156,21 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	public void CleanSelectedMove(){//da far eseguire ogni volta che si termina la mossa per evitare che si conservi la scelta
 		selectedAction = null;
 		selectedEnemy = null;
+		selectedAlly = null;
 	}
+	public Boolean IsTargetFree(){ //controlla se il target è libero
+		//se è libero ritorna true se non è libero ritorna false
+		Boolean status = false;
+		if (selectedEnemy != null){
+			status = selectedEnemy.FreeForFight;
+		} else if (selectedAlly != null){
+			status = selectedAlly.FreeForFight;
+		} else {
+			status = true;
+		}
+		return status;
+	}
+
 
 	//GESTIONE ALLEATI
 
@@ -204,6 +206,14 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	public OptionMenu SkillBattleMenu{
 		get => skillBattleMenu;
 		set => skillBattleMenu = value;
+	}
+	public EnemyInfoManager SelectedEnemy{
+		get => selectedEnemy;
+		set => selectedEnemy = value;
+	}
+	public Boolean FreeForFight{
+		get => free;
+		set => free = value;
 	}
 }
 

@@ -371,6 +371,7 @@ caret_blink = true
 caret_blink_interval = 0.5
 
 [node name="BattleTimer" type="Timer" parent="."]
+wait_time = 5.0
 one_shot = true
 
 [connection signal="timeout" from="BattleTimer" to="." method="_on_BattleTimer_timeout"]

@@ -53,9 +53,13 @@ public partial class TTBCScript : Node
 		/*HD*/enemyPS[2] = GD.Load<PackedScene>(enemyManager.EnemyPath("Demo_Enemy3"));
 		spawnEnemy(enemyPS);
 		enemyListOption = GetNode<OptionMenu>("EnemyListMenu/EnemyListOption");
+
 		//BATTLE START BUTTON
 		GetNode<BaseButton>("PlayButton").GrabFocus();
 		
+	}
+	public override void _Process(double delta){
+		FightUpdate();
 	}
 	//INIZIO BATTAGLIA
 	public void _on_play_button_pressed(){
@@ -104,6 +108,18 @@ public partial class TTBCScript : Node
 		var enemy1Velocity = enemy1.Velocity;
 		var enemy2Velocity = enemy2.Velocity;
 		var enemy3Velocity = enemy3.Velocity;
+		//Creo per la prima volta la lista dei nemici
+		String[] enemyListName = new String[EnemyList.Length];
+		for (int i = 0; i < EnemyList.Length; i ++){
+			enemyListName[i] = EnemyList[i].Cname;
+		}	
+		var nButtonNew = enemyListOption.OverrideButton(enemyListName);
+		enemyListOption.SetFocusPrevioustTo(playerInfoManager.SkillBattleMenu);
+		for (int i = 0; i < enemyListName.Length; i++){//aggiorna solo i nuovi button
+			enemyListOption.GetButton(i).OfPointer = true;
+			enemyListOption.GetButton(i).OfPointerSignal += EnemyListOption_ButtonFocused;
+			enemyListOption.GetButton(i).Pressed += EnemyListOption_ButtonPressed;
+		}
 		if (playerVelocity > ((enemy1Velocity + enemy2Velocity + enemy3Velocity)/3)-10){ //formula calcolo velocità complessiva da aggiustare
 			SelectMoveQueue.Enqueue(playerPosition); //messo in coda il player
 			playerInfoManager.SelectMove();//subito il player scelgie la mossa
@@ -166,6 +182,33 @@ public partial class TTBCScript : Node
 		}
 	}
 
+	public void FightUpdate(){
+		//PASSAGGIO MOVEQUEUE -> ESECUZIONE MOSSA
+		if(MoveQueue.Count != 0){
+			var peek = MoveQueue.Peek();
+			switch (peek.GetChild(0).Name){
+				case "PlayerInfoManager":
+					if(peek.GetChild<PlayerInfoManager>(0).FreeForFight && peek.GetChild<PlayerInfoManager>(0).IsTargetFree()){
+						peek.GetChild<PlayerInfoManager>(0).DoAction();
+						MoveQueue.Dequeue();
+					}
+					break;
+				case "AllyInfoManager":
+					if(peek.GetChild<AllyInfoManager>(0).FreeForFight && peek.GetChild<AllyInfoManager>(0).IsTargetFree()){
+						peek.GetChild<AllyInfoManager>(0).DoAction();
+						MoveQueue.Dequeue();
+					}
+					break;
+				case "EnemyInfoManager":
+					if(peek.GetChild<EnemyInfoManager>(0).FreeForFight && peek.GetChild<EnemyInfoManager>(0).IsTargetFree()){
+						peek.GetChild<EnemyInfoManager>(0).DoAction();
+						MoveQueue.Dequeue();
+					}
+					break;
+			}
+		}
+	}
+
 	//CREAZIONE MENU NEMICI + AGGIORNAMENTO POINTER
 	public void CreateEnemyListOptionMenu(){
 		//CREA IL MENU DA CUI SELEZIONARE I NEMICI
@@ -173,18 +216,25 @@ public partial class TTBCScript : Node
 		for (int i = 0; i < EnemyList.Length; i ++){
 			enemyListName[i] = EnemyList[i].Cname;
 		}	
-		enemyListOption.OverrideButton(enemyListName);
+		var nButtonNew = enemyListOption.OverrideButton(enemyListName);
 		enemyListOption.SetFocusPrevioustTo(playerInfoManager.SkillBattleMenu);
-		for (int i = 0; i < enemyListName.Length; i++){
+		for (int i = (enemyListName.Length - nButtonNew); i < enemyListName.Length; i++){//aggiorna solo i nuovi button
 			enemyListOption.GetButton(i).OfPointer = true;
 			enemyListOption.GetButton(i).OfPointerSignal += EnemyListOption_ButtonFocused;
+			enemyListOption.GetButton(i).Pressed += EnemyListOption_ButtonPressed;
 		}
+		enemyListOption.GetParent<Node2D>().Show();
 		enemyListOption.ShowUp();
 	}
 
     public void EnemyListOption_ButtonFocused(int id){
 		EnemyListOption.GetNode<Sprite2D>("../Pointer").GlobalPosition = EnemiesPosition[id].Position; 
 		EnemyListOption.GetNode<Sprite2D>("../Pointer").Show();
+	}
+	public void EnemyListOption_ButtonPressed(){
+		playerInfoManager.SelectedEnemy = EnemyList[enemyListOption.Id_ButtonFocused];
+		enemyListOption.GetParent<Node2D>().Hide();
+		playerInfoManager.EndSelectMove();
 	}
 
 	public Queue<Marker2D> WaitingQueue{

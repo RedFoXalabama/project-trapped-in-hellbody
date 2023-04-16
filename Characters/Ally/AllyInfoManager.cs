@@ -16,7 +16,9 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 	private GameBar manaBar;
 	private NameBar nameBar;
 	private TTBCScript tTBCScript;
-
+	private EnemyInfoManager selectedEnemy;
+	private AllyInfoManager selectedAlly;
+	private String selectedAction;
 
 	public override void _Ready(){
 		//Timer
@@ -57,9 +59,28 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 		AnimateCharacter("Idle");
 	}
 	public void SelectMove(){}
-	public void DoAction(){}
+	public void DoAction(){
 
+		CleanSelectedMove();
+	}
 
+	public void CleanSelectedMove(){//da far eseguire ogni volta che si termina la mossa per evitare che si conservi la scelta
+		selectedAction = null;
+		selectedEnemy = null;
+		selectedAlly = null;
+	}
+	public Boolean IsTargetFree(){ //controlla se il target è libero
+		//se è libero ritorna true se non è libero ritorna false
+		Boolean status = false;
+		if (selectedEnemy != null){
+			status = selectedEnemy.FreeForFight;
+		} else if (selectedAlly != null){
+			status = selectedAlly.FreeForFight;
+		} else {
+			status = true;
+		}
+		return status;
+	}
 	//GETTER AND SETTER
 	public String Cname {
 		get => cname; 
@@ -84,6 +105,10 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 	public int Velocity {
 		get => velocity;
 		set => velocity = value;
+	}
+		public Boolean FreeForFight{
+		get => free;
+		set => free = value;
 	}
 }
 
