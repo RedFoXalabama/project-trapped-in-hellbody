@@ -13,6 +13,7 @@ public partial class OptionMenuButton : Button
 		if(ofPointer){
 			EmitSignal(SignalName.OfPointerSignal, id);
 		}
+		//modificare l'id_Button_focused del OptionMenu nella funzione che chiama la OfPointerSignal
 	}
 	public int Id{
 		get => id;

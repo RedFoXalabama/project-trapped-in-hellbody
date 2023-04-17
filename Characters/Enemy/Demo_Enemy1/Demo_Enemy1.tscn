@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://wdj1xxewkftu"]
+[gd_scene load_steps=25 format=3 uid="uid://wdj1xxewkftu"]
 
 [ext_resource type="Theme" uid="uid://ca4361g560a7m" path="res://Combat System/Characters Bar/Bar Theme/enemy_name_bar.tres" id="1"]
 [ext_resource type="Theme" uid="uid://bh13qn1sh1r2n" path="res://Combat System/Characters Bar/Bar Theme/enemy_life_bar_theme.tres" id="2"]
@@ -29,15 +29,19 @@ animation = &"Idle"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fvc82"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m6ml4"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="8"]
 states/Attack/node = SubResource("1")
 states/Attack/position = Vector2(403, 92.1852)
 states/Damage/node = SubResource("2")
 states/Damage/position = Vector2(763, 91.6914)
+states/End/position = Vector2(589.925, 162.667)
 states/Idle/node = SubResource("3")
 states/Idle/position = Vector2(584.333, 91.3951)
 states/Start/position = Vector2(583.111, 21.3333)
-transitions = ["Attack", "Idle", SubResource("4"), "Idle", "Attack", SubResource("5"), "Idle", "Damage", SubResource("6"), "Damage", "Idle", SubResource("7"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fvc82")]
+transitions = ["Attack", "Idle", SubResource("4"), "Idle", "Attack", SubResource("5"), "Idle", "Damage", SubResource("6"), "Damage", "Idle", SubResource("7"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fvc82"), "Idle", "End", SubResource("AnimationNodeStateMachineTransition_m6ml4")]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="9"]
 
