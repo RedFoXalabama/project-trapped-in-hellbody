@@ -230,6 +230,7 @@ public partial class TTBCScript : Node
     public void EnemyListOption_ButtonFocused(int id){
 		EnemyListOption.GetNode<Sprite2D>("../Pointer").GlobalPosition = EnemiesPosition[id].Position; 
 		EnemyListOption.GetNode<Sprite2D>("../Pointer").Show();
+		EnemyListOption.Id_ButtonFocused = id;
 	}
 	public void EnemyListOption_ButtonPressed(){
 		playerInfoManager.SelectedEnemy = EnemyList[enemyListOption.Id_ButtonFocused];

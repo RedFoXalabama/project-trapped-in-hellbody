@@ -94,6 +94,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		battleMenu.GetButton(2).Pressed += InventoryPressed;
 		battleMenu.GetButton(3).Pressed += EscapePressed;
 		skillBattleMenu.GetButton(0).Pressed += BasicAttack1;
+		inventoryBattleMenu.GetButton(0).Pressed += BasicPotion1;
 		//aggiungere gli altri menu
 		//SISTEMA FOCUS PRECEDENTI
 		battleMenu.SetFocusPrevioustTo(battleMenu); 
@@ -138,17 +139,26 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		SelectEnemy();
 		//si esce dalla select move quando si sceglie il nemico
 	}
+	public void BasicPotion1(){
+		selectedAction = "BasicPotion1";
+		EndSelectMove();
+	}
 	public void DoAction(){ //Data il nome della mossa memorizzata, prende la funzione dal dictionary ed esegue l'azione
 		//vai in stato notFree dall'animazione
 		//esecuzione mossa
 		switch (selectedAction){
 			case "BasicAttack1":
-				AnimateCharacter("Attack");
 				//funzione da creare per l'attacco base
+				AnimateCharacter("Attack");
+				SelectedEnemy.AnimateCharacter("Damage");
 				StartTimer();
 				break;
 			case "BasicAttack2":
 				break;
+			case "BasicPotion1":
+				AnimateCharacter("Attack");
+				break;
+
 		}
 		//pulizia variabili
 		CleanSelectedMove();
