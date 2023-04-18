@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dl41uqspi0fcw"]
+
+[ext_resource type="Script" path="res://Characters/Player/SkillManager.cs" id="1_4hr1d"]
+
+[resource]
+script = ExtResource("1_4hr1d")
