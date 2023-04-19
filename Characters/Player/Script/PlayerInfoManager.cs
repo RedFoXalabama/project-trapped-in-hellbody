@@ -22,7 +22,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	private OptionMenu inventoryBattleMenu;
 	private TTBCScript tTBCScript;
 	//VARIABILI PER LA SCELTA MOSSA
-	private SkillManager skillManager;
+	SkillManager skillManager = ResourceLoader.Load<SkillManager>("res://Characters/Player/SkillManager.tres") as SkillManager;
 	private EnemyInfoManager selectedEnemy;
 	private AllyInfoManager selectedAlly;
 	private String selectedAction;
@@ -49,7 +49,8 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		AllBattleMenu_CreateSignals();//crea i segnali dei vari pulsanti 
 		//TTBCSRIPT
 		tTBCScript = GetParent().GetParent<TTBCScript>();
-		
+		//SKILL MANAGER
+		skillManager.CreateSkillManager();
 	}
 
 	//FUNZIONI INTERFACCIA BASEMOVES
