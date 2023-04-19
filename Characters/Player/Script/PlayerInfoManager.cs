@@ -22,6 +22,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	private OptionMenu inventoryBattleMenu;
 	private TTBCScript tTBCScript;
 	//VARIABILI PER LA SCELTA MOSSA
+	private SkillManager skillManager;
 	private EnemyInfoManager selectedEnemy;
 	private AllyInfoManager selectedAlly;
 	private String selectedAction;

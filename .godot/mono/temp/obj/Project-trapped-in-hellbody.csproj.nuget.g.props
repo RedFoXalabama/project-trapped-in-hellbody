@@ -4,16 +4,16 @@
     <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
-    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">/home/gianfranco/.nuget/packages/</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">/home/gianfranco/.nuget/packages/;/home/gianfranco/.local/share/godot/mono/GodotNuGetFallbackFolder</NuGetPackageFolders>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Gianfranco Baccarell\.nuget\packages\;C:\Users\Gianfranco Baccarell\AppData\Roaming\Godot\mono\GodotNuGetFallbackFolder</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.0.4</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.4.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="/home/gianfranco/.nuget/packages/" />
-    <SourceRoot Include="/home/gianfranco/.local/share/godot/mono/GodotNuGetFallbackFolder/" />
+    <SourceRoot Include="C:\Users\Gianfranco Baccarell\.nuget\packages\" />
+    <SourceRoot Include="C:\Users\Gianfranco Baccarell\AppData\Roaming\Godot\mono\GodotNuGetFallbackFolder\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="/home/gianfranco/.local/share/godot/mono/GodotNuGetFallbackFolder/godot.sourcegenerators/4.0.0/build/Godot.SourceGenerators.props" Condition="Exists('/home/gianfranco/.local/share/godot/mono/GodotNuGetFallbackFolder/godot.sourcegenerators/4.0.0/build/Godot.SourceGenerators.props')" />
+    <Import Project="$(UserProfile)\AppData\Roaming\Godot\mono\GodotNuGetFallbackFolder\godot.sourcegenerators\4.0.2\build\Godot.SourceGenerators.props" Condition="Exists('$(UserProfile)\AppData\Roaming\Godot\mono\GodotNuGetFallbackFolder\godot.sourcegenerators\4.0.2\build\Godot.SourceGenerators.props')" />
   </ImportGroup>
 </Project>

@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project-trapped-in-hellbody", "Project-trapped-in-hellbody.csproj", "{33525CE1-AF9C-4EAC-BB12-F25D505F2034}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project-trapped-in-hellbody", "Project-trapped-in-hellbody.csproj", "{BBE5BE2B-21B5-4029-9C9E-F672853F3559}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{33525CE1-AF9C-4EAC-BB12-F25D505F2034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33525CE1-AF9C-4EAC-BB12-F25D505F2034}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33525CE1-AF9C-4EAC-BB12-F25D505F2034}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{33525CE1-AF9C-4EAC-BB12-F25D505F2034}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{33525CE1-AF9C-4EAC-BB12-F25D505F2034}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{33525CE1-AF9C-4EAC-BB12-F25D505F2034}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{BBE5BE2B-21B5-4029-9C9E-F672853F3559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBE5BE2B-21B5-4029-9C9E-F672853F3559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBE5BE2B-21B5-4029-9C9E-F672853F3559}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{BBE5BE2B-21B5-4029-9C9E-F672853F3559}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{BBE5BE2B-21B5-4029-9C9E-F672853F3559}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{BBE5BE2B-21B5-4029-9C9E-F672853F3559}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal
