@@ -23,6 +23,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	private TTBCScript tTBCScript;
 	//VARIABILI PER LA SCELTA MOSSA
 	SkillManager skillManager = ResourceLoader.Load<SkillManager>("res://Characters/Player/SkillManager.tres") as SkillManager;
+	InventoryManager inventoryManager = ResourceLoader.Load<InventoryManager>("res://Inventory/Inventory.tres") as InventoryManager;
 	private EnemyInfoManager selectedEnemy;
 	private AllyInfoManager selectedAlly;
 	private String selectedAction;
@@ -51,6 +52,8 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		//SKILL MANAGER
 		skillManager.CreateSkillManager();
 		/*HD*/skillManager.CreateEquippedSkill(new String[2] {"BasicAttack1","BasicAttack2"});
+		inventoryManager.CreateInventoryManager();
+		/*HD*/inventoryManager.CreateEquippedItem(new String[1] {"BasicObject1"});
 		
 		AllBattleMenu_CreateSignals();//crea i segnali dei vari pulsanti 
 	}
@@ -97,14 +100,18 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		battleMenu.GetButton(1).Pressed += AllyManagerPressed;
 		battleMenu.GetButton(2).Pressed += InventoryPressed;
 		battleMenu.GetButton(3).Pressed += EscapePressed;
-		skillBattleMenu.GetButton(0).Pressed += SelectSkill;
 		skillBattleMenu.OverrideButton(skillManager.EquippedSkill);
 		for (int i = 0; i < skillManager.EquippedSkill.Length; i++){//aggiorna solo i nuovi button
 			skillBattleMenu.GetButton(i).OfPointer = true;
 			skillBattleMenu.GetButton(i).OfPointerSignal += SkillBattleMenu_ButtonFocused;
 			skillBattleMenu.GetButton(i).Pressed += SkillBattleMenu_ButtonPressed;
 		}
-		inventoryBattleMenu.GetButton(0).Pressed += SelectObject; 
+		inventoryBattleMenu.OverrideButton(inventoryManager.EquippedItem);
+		for (int i = 0; i < inventoryManager.EquippedItem.Length; i++){//aggiorna solo i nuovi button
+			inventoryBattleMenu.GetButton(i).OfPointer = true;
+			inventoryBattleMenu.GetButton(i).OfPointerSignal += InventoryBattleMenu_ButtonFocused;
+			inventoryBattleMenu.GetButton(i).Pressed += InventoryBattleMenu_ButtonPressed;
+		}
 		//aggiungere gli altri menu
 		//SISTEMA FOCUS PRECEDENTI
 		battleMenu.SetFocusPrevioustTo(battleMenu); 
@@ -144,37 +151,24 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		selectedAction = skillManager.EquippedSkill[skillBattleMenu.Id_ButtonFocused];
 		skillManager.PrepareAction(selectedAction, this);
 	}
+	public void InventoryBattleMenu_ButtonFocused(int id){
+		inventoryBattleMenu.Id_ButtonFocused = id;
+	}
+	public 	void InventoryBattleMenu_ButtonPressed(){
+		selectedAction = inventoryManager.EquippedItem[inventoryBattleMenu.Id_ButtonFocused];
+		inventoryManager.PrepareAction(selectedAction, this);
+	}
 	//SELEZIONARE UN NEMICO + relativi segnali
 	public void SelectEnemy(){ //popupa il menu di scelta nemici e quando il segnale è inviato dal popmn il nemico viene selezionato
 		//funzioni per decidere il nemico
 		tTBCScript.CreateEnemyListOptionMenu();
 		//il nemico si seleziona nel TTBCScript
 	}
-
-	public void SelectSkill(){
-
-	}
-	public void SelectObject(){
-
-	}
-
 	public void DoAction(){ //Data il nome della mossa memorizzata, prende la funzione dal dictionary ed esegue l'azione
 		//vai in stato notFree dall'animazione
 		//esecuzione mossa
-		switch (selectedAction){
-			case "BasicAttack1":
-				//funzione da creare per l'attacco base
-				AnimateCharacter("Attack");
-				SelectedEnemy.AnimateCharacter("Damage");
-				StartTimer();
-				break;
-			case "BasicAttack2":
-				break;
-			case "BasicPotion1":
-				AnimateCharacter("Attack");
-				break;
-
-		}
+		skillManager.DoAction(selectedAction, this);
+		inventoryManager.DoAction(selectedAction, this);
 		//pulizia variabili
 		CleanSelectedMove();
 	}

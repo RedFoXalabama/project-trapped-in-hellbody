@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://u4ep0siot0m8"]
+
+[ext_resource type="Script" path="res://Inventory/InventoryManager.cs" id="1_kxf3m"]
+
+[resource]
+script = ExtResource("1_kxf3m")

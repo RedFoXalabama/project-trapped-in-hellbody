@@ -10,14 +10,14 @@ public partial class SkillManager : Resource
     public void CreateSkillManager(){
         skillManager.Add("BasicAttack1", "TempAttack");
         skillManager.Add("BasicAttack2", "TempAttack2");
-        skillManager.Add("BasicInvetory", "TempInventory");
+
     }
     public void CreateEquippedSkill(String[] equippedSkill){
         this.equippedSkill = equippedSkill;
     }
     public void PrepareAction(String action, PlayerInfoManager playerInfoManager){
         switch(action){
-            case "BasicAction1":
+            case "BasicAttack1":
                 BasicAttack1(playerInfoManager);
                 break;
             case "BasicPosition1":
@@ -25,12 +25,23 @@ public partial class SkillManager : Resource
                 break;
         }
     }
+    public void DoAction(String action, PlayerInfoManager pim){
+		switch (action){
+			case "BasicAttack1":
+				//funzione da creare per l'attacco base
+				pim.AnimateCharacter("Attack");
+				pim.SelectedEnemy.AnimateCharacter("Damage");
+				pim.StartTimer();
+				break;
+			case "BasicAttack2":
+				break;
+		}
+    }
     public void BasicAttack1(PlayerInfoManager playerInfoManager){//attacco base 1 di prova
 		playerInfoManager.SelectEnemy();
 		//si esce dalla select move quando si sceglie il nemico
 	}
 	public void BasicPotion1(PlayerInfoManager playerInfoManager){
-		playerInfoManager.SelectedAction = "BasicPotion1";
 		playerInfoManager.EndSelectMove();
 	}
 
