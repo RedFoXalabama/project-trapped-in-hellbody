@@ -46,11 +46,13 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		skillBattleMenu = battleMenu.GetNode<OptionMenu>("SkillBattleMenu");
 		allyManagerMenu = battleMenu.GetNode<OptionMenu>("AllyManagerMenu");
 		inventoryBattleMenu = battleMenu.GetNode<OptionMenu>("InventoryBattleMenu");
-		AllBattleMenu_CreateSignals();//crea i segnali dei vari pulsanti 
 		//TTBCSRIPT
 		tTBCScript = GetParent().GetParent<TTBCScript>();
 		//SKILL MANAGER
 		skillManager.CreateSkillManager();
+		/*HD*/skillManager.CreateEquippedSkill(new String[2] {"BasicAttack1","BasicAttack2"});
+		
+		AllBattleMenu_CreateSignals();//crea i segnali dei vari pulsanti 
 	}
 
 	//FUNZIONI INTERFACCIA BASEMOVES
@@ -95,8 +97,14 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		battleMenu.GetButton(1).Pressed += AllyManagerPressed;
 		battleMenu.GetButton(2).Pressed += InventoryPressed;
 		battleMenu.GetButton(3).Pressed += EscapePressed;
-		skillBattleMenu.GetButton(0).Pressed += BasicAttack1;
-		inventoryBattleMenu.GetButton(0).Pressed += BasicPotion1;
+		skillBattleMenu.GetButton(0).Pressed += SelectSkill;
+		skillBattleMenu.OverrideButton(skillManager.EquippedSkill);
+		for (int i = 0; i < skillManager.EquippedSkill.Length; i++){//aggiorna solo i nuovi button
+			skillBattleMenu.GetButton(i).OfPointer = true;
+			skillBattleMenu.GetButton(i).OfPointerSignal += SkillBattleMenu_ButtonFocused;
+			skillBattleMenu.GetButton(i).Pressed += SkillBattleMenu_ButtonPressed;
+		}
+		inventoryBattleMenu.GetButton(0).Pressed += SelectObject; 
 		//aggiungere gli altri menu
 		//SISTEMA FOCUS PRECEDENTI
 		battleMenu.SetFocusPrevioustTo(battleMenu); 
@@ -129,6 +137,13 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	public void EscapePressed(){
 
 	}
+	public void SkillBattleMenu_ButtonFocused(int id){
+		skillBattleMenu.Id_ButtonFocused = id;
+	}
+	public void SkillBattleMenu_ButtonPressed(){
+		selectedAction = skillManager.EquippedSkill[skillBattleMenu.Id_ButtonFocused];
+		skillManager.PrepareAction(selectedAction, this);
+	}
 	//SELEZIONARE UN NEMICO + relativi segnali
 	public void SelectEnemy(){ //popupa il menu di scelta nemici e quando il segnale è inviato dal popmn il nemico viene selezionato
 		//funzioni per decidere il nemico
@@ -136,15 +151,13 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		//il nemico si seleziona nel TTBCScript
 	}
 
-	public void BasicAttack1(){//attacco base 1 di prova
-		/*HD*/selectedAction = "BasicAttack1";
-		SelectEnemy();
-		//si esce dalla select move quando si sceglie il nemico
+	public void SelectSkill(){
+
 	}
-	public void BasicPotion1(){
-		selectedAction = "BasicPotion1";
-		EndSelectMove();
+	public void SelectObject(){
+
 	}
+
 	public void DoAction(){ //Data il nome della mossa memorizzata, prende la funzione dal dictionary ed esegue l'azione
 		//vai in stato notFree dall'animazione
 		//esecuzione mossa
@@ -226,6 +239,10 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	public Boolean FreeForFight{
 		get => free;
 		set => free = value;
+	}
+	public String SelectedAction{
+		get => selectedAction;
+		set => selectedAction = value;
 	}
 }
 
