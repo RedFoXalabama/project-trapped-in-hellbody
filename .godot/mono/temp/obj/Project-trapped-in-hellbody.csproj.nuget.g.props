@@ -4,16 +4,16 @@
     <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
-    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">/home/gianfranco/.nuget/packages/</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">/home/gianfranco/.nuget/packages/;/home/gianfranco/.local/share/godot/mono/GodotNuGetFallbackFolder</NuGetPackageFolders>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">/home/redfox/.nuget/packages/</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">/home/redfox/.nuget/packages/;/home/redfox/.local/share/godot/mono/GodotNuGetFallbackFolder</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.0.4</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.4.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="/home/gianfranco/.nuget/packages/" />
-    <SourceRoot Include="/home/gianfranco/.local/share/godot/mono/GodotNuGetFallbackFolder/" />
+    <SourceRoot Include="/home/redfox/.nuget/packages/" />
+    <SourceRoot Include="/home/redfox/.local/share/godot/mono/GodotNuGetFallbackFolder/" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="/home/gianfranco/.local/share/godot/mono/GodotNuGetFallbackFolder/godot.sourcegenerators/4.0.0/build/Godot.SourceGenerators.props" Condition="Exists('/home/gianfranco/.local/share/godot/mono/GodotNuGetFallbackFolder/godot.sourcegenerators/4.0.0/build/Godot.SourceGenerators.props')" />
+    <Import Project="/home/redfox/.local/share/godot/mono/GodotNuGetFallbackFolder/godot.sourcegenerators/4.0.0/build/Godot.SourceGenerators.props" Condition="Exists('/home/redfox/.local/share/godot/mono/GodotNuGetFallbackFolder/godot.sourcegenerators/4.0.0/build/Godot.SourceGenerators.props')" />
   </ImportGroup>
 </Project>

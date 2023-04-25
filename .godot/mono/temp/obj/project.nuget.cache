@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "v3fqm+dwH87po5yTzW4DtOCYG9v2URpqGk52i4nScl+iFerGgdywoJj6C7rA95YfzeTIb6FriT3gLfJRNam6Ow==",
+  "dgSpecHash": "MO5LyDpux6+bnsc+7YsH9MrGae+p6fOEuRE8MqHeNncb9oobleBKLvOVtt9LHx9caA3o8PkGSYaGRafWuwpQ4A==",
   "success": true,
-  "projectFilePath": "/home/gianfranco/Scrivania/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj",
+  "projectFilePath": "/home/redfox/Desktop/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj",
   "expectedPackageFiles": [
-    "/home/gianfranco/.local/share/godot/mono/GodotNuGetFallbackFolder/godot.sourcegenerators/4.0.0/godot.sourcegenerators.4.0.0.nupkg.sha512",
-    "/home/gianfranco/.local/share/godot/mono/GodotNuGetFallbackFolder/godotsharp/4.0.0/godotsharp.4.0.0.nupkg.sha512",
-    "/home/gianfranco/.local/share/godot/mono/GodotNuGetFallbackFolder/godotsharpeditor/4.0.0/godotsharpeditor.4.0.0.nupkg.sha512"
+    "/home/redfox/.local/share/godot/mono/GodotNuGetFallbackFolder/godot.sourcegenerators/4.0.0/godot.sourcegenerators.4.0.0.nupkg.sha512",
+    "/home/redfox/.local/share/godot/mono/GodotNuGetFallbackFolder/godotsharp/4.0.0/godotsharp.4.0.0.nupkg.sha512",
+    "/home/redfox/.local/share/godot/mono/GodotNuGetFallbackFolder/godotsharpeditor/4.0.0/godotsharpeditor.4.0.0.nupkg.sha512",
+    "/home/redfox/.nuget/packages/microsoft.netcore.app.ref/6.0.16/microsoft.netcore.app.ref.6.0.16.nupkg.sha512",
+    "/home/redfox/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.16/microsoft.aspnetcore.app.ref.6.0.16.nupkg.sha512"
   ],
   "logs": []
 }

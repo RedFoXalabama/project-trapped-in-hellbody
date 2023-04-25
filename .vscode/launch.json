@@ -40,7 +40,7 @@
         {
            "name":"Launch", "type": "coreclr",
            "request": "launch", "preLaunchTask": "build",
-           "program": "/home/gianfranco/Scrivania/RedFoX's Studio/Creativity App/Godot v4.0/Godot_v4.0-stable_mono_linux.x86_64",
+           "program": "/home/redfox/Desktop/RedFoX's Studio/Creativity App/Godot v4.0/Godot_v4.0-stable_mono_linux.x86_64",
            "console": "internalConsole", "stopAtEntry": false
         }
     ]

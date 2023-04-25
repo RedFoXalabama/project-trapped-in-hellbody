@@ -27,7 +27,7 @@ public partial class TTBCScript : Node
 	private EnemyInfoManager[] enemyList;
 	private OptionMenu enemyListOption;
 	EnemyManager enemyManager = ResourceLoader.Load("res://Characters/Enemy/EnemyManager.tres") as EnemyManager;
-	private PackedScene[] enemyPS = new PackedScene[3];
+	private PackedScene[] enemyPS /*HD*/= new PackedScene[3];// in modo tale da non dare errore
 
 	//TTBC VARIABLES
 	private Queue<Marker2D> waitingQueue = new Queue<Marker2D>(); //per il giocatore CODA TIMER
@@ -48,6 +48,7 @@ public partial class TTBCScript : Node
 		//ENEMY STARTING
 		/*HD*/enemyManager.CreateDatabase(); //funzione da inserire fuori dal combattimento cosi da non essere creato ogni volta	
 		//enemyPS = PackedScene[] caricato dal nemico, io lo hardcodo per farlo funzionare
+		//una volta che si avrà il packedScene[] già creato, non ci sarà bisogno di crearlo qui
 		/*HD*/enemyPS[0] = GD.Load<PackedScene>(enemyManager.EnemyPath("Demo_Enemy1"));
 		/*HD*/enemyPS[1] = GD.Load<PackedScene>(enemyManager.EnemyPath("Demo_Enemy2"));
 		/*HD*/enemyPS[2] = GD.Load<PackedScene>(enemyManager.EnemyPath("Demo_Enemy3"));
@@ -101,13 +102,26 @@ public partial class TTBCScript : Node
 	public void BattleStart(){
 		//CONTROLLO VELOCITÀ E SELEZIONE DI CHI INIZIA
 		var playerVelocity = playerInfoManager.Velocity;
-		enemy1 = enemy1Position.GetChild<EnemyInfoManager>(0);
-		enemy2 = enemy2Position.GetChild<EnemyInfoManager>(0);
-		enemy3 = enemy3Position.GetChild<EnemyInfoManager>(0);
-		EnemyList  = new EnemyInfoManager[3] {enemy1, enemy2, enemy3};
-		var enemy1Velocity = enemy1.Velocity;
-		var enemy2Velocity = enemy2.Velocity;
-		var enemy3Velocity = enemy3.Velocity;
+		EnemyList = new EnemyInfoManager[enemyPS.Length];
+		var enemy1Velocity = 0;
+		var enemy2Velocity = 0;
+		var enemy3Velocity = 0;
+		if (enemy1Position.GetChildCount() == 1){
+			enemy1 = enemy1Position.GetChild<EnemyInfoManager>(0);
+			EnemyList[0] = enemy1;
+			enemy1Velocity = enemy1.Velocity;
+		}
+		if (enemy2Position.GetChildCount() == 1){
+			enemy2 = enemy2Position.GetChild<EnemyInfoManager>(0);
+			EnemyList[1] = enemy2;
+			enemy2Velocity = enemy2.Velocity;
+		}
+		if (enemy3Position.GetChildCount() == 1){
+			enemy3 = enemy3Position.GetChild<EnemyInfoManager>(0);
+			EnemyList[2] = enemy3;
+			enemy3Velocity = enemy3.Velocity;
+		}
+		
 		//Creo per la prima volta la lista dei nemici
 		String[] enemyListName = new String[EnemyList.Length];
 		for (int i = 0; i < EnemyList.Length; i ++){
@@ -139,19 +153,8 @@ public partial class TTBCScript : Node
 			enemyWaitingQueue.Enqueue(enemyVelocityMax.GetParent<Marker2D>());
 		}
 	}
-	
 
-	public void BattleUpdate(){
-		
-		while(winned == false){
-			
-			
-			//PASSAGGIO DA SELECT -> MOVEQUEUE
-
-			//PASAGGIO MOVEQUEUE -> ESECUZIONE MOSSA
-		}
-	}
-
+	//FUNZIONI PER LA GESTIONE DELLE CODE
 	public void UpdateSelectMoveQueue(){ //utilizzata dall'infoManager quando finisce di selezionare la mossa e si sposta nella MoveQueue e la SelectMove si libera
 		//PASSAGGIO DA WAITINGQUEUE -> SELECTMOVEQUEUE player
 		if(SelectMoveQueue.Count == 0 && WaitingQueue.Count != 0){ //il personaggio viene spostato e gli si chiede la mossa
@@ -207,6 +210,15 @@ public partial class TTBCScript : Node
 					break;
 			}
 		}
+
+	}
+	//CONTROLLO AVANZAMENTO BATTAGLIA
+	public void CheckBattleEnd(){
+		if (EnemyList.Length == 0){
+			//VITTORIA
+		} else if (playerInfoManager.Life <= 0){
+			//SCONFITTA
+		}
 	}
 
 	//CREAZIONE MENU NEMICI + AGGIORNAMENTO POINTER
@@ -227,7 +239,7 @@ public partial class TTBCScript : Node
 		enemyListOption.ShowUp();
 	}
 
-    public void EnemyListOption_ButtonFocused(int id){
+	public void EnemyListOption_ButtonFocused(int id){
 		EnemyListOption.GetNode<Sprite2D>("../Pointer").GlobalPosition = EnemiesPosition[id].Position; 
 		EnemyListOption.GetNode<Sprite2D>("../Pointer").Show();
 		EnemyListOption.Id_ButtonFocused = id;
@@ -238,6 +250,7 @@ public partial class TTBCScript : Node
 		playerInfoManager.EndSelectMove();
 	}
 
+	//GETTER E SETTER
 	public Queue<Marker2D> WaitingQueue{
 		get => waitingQueue;
 		set => waitingQueue = value;
