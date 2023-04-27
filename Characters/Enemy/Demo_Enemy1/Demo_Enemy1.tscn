@@ -196,6 +196,7 @@ _data = {
 [node name="EnemyInfoManager" type="Node2D"]
 script = ExtResource("7")
 cname = "Enemy1"
+life = 100
 free = false
 
 [node name="EnemyMoveSet" type="Node" parent="."]

@@ -193,6 +193,7 @@ _data = {
 position = Vector2(1, 0)
 script = ExtResource("7")
 cname = "Enemy2"
+life = 100
 free = false
 
 [node name="EnemyMoveSet" type="Node" parent="."]

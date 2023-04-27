@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "/home/redfox/Desktop/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj": {}
+    "C:\\Users\\Gianfranco Baccarell\\Desktop\\RedFoX Studio\\Creator\\project-trapped-in-hellbody\\Project-trapped-in-hellbody.csproj": {}
   },
   "projects": {
-    "/home/redfox/Desktop/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj": {
+    "C:\\Users\\Gianfranco Baccarell\\Desktop\\RedFoX Studio\\Creator\\project-trapped-in-hellbody\\Project-trapped-in-hellbody.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/redfox/Desktop/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj",
+        "projectUniqueName": "C:\\Users\\Gianfranco Baccarell\\Desktop\\RedFoX Studio\\Creator\\project-trapped-in-hellbody\\Project-trapped-in-hellbody.csproj",
         "projectName": "Project-trapped-in-hellbody",
-        "projectPath": "/home/redfox/Desktop/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj",
-        "packagesPath": "/home/redfox/.nuget/packages/",
-        "outputPath": "/home/redfox/Desktop/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/",
+        "projectPath": "C:\\Users\\Gianfranco Baccarell\\Desktop\\RedFoX Studio\\Creator\\project-trapped-in-hellbody\\Project-trapped-in-hellbody.csproj",
+        "packagesPath": "C:\\Users\\Gianfranco Baccarell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gianfranco Baccarell\\Desktop\\RedFoX Studio\\Creator\\project-trapped-in-hellbody\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/home/redfox/.local/share/godot/mono/GodotNuGetFallbackFolder"
+          "C:\\Users\\Gianfranco Baccarell\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/home/redfox/.nuget/NuGet/NuGet.Config",
-          "/home/redfox/.nuget/NuGet/config/Godot.Offline.Config"
+          "C:\\Users\\Gianfranco Baccarell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Gianfranco Baccarell\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -44,15 +44,15 @@
           "dependencies": {
             "Godot.SourceGenerators": {
               "target": "Package",
-              "version": "[4.0.0, )"
+              "version": "[4.0.2, )"
             },
             "GodotSharp": {
               "target": "Package",
-              "version": "[4.0.0, )"
+              "version": "[4.0.2, )"
             },
             "GodotSharpEditor": {
               "target": "Package",
-              "version": "[4.0.0, )"
+              "version": "[4.0.2, )"
             }
           },
           "imports": [
@@ -69,11 +69,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
+              "version": "[6.0.11, 6.0.11]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
+              "version": "[6.0.11, 6.0.11]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
             }
           ],
           "frameworkReferences": {
@@ -81,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.105/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

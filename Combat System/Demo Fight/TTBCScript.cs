@@ -126,7 +126,7 @@ public partial class TTBCScript : Node
 		String[] enemyListName = new String[EnemyList.Length];
 		for (int i = 0; i < EnemyList.Length; i ++){
 			enemyListName[i] = EnemyList[i].Cname;
-		}	
+		}
 		var nButtonNew = enemyListOption.OverrideButton(enemyListName);
 		enemyListOption.SetFocusPrevioustTo(playerInfoManager.SkillBattleMenu);
 		for (int i = 0; i < enemyListName.Length; i++){//aggiorna solo i nuovi button
@@ -209,8 +209,9 @@ public partial class TTBCScript : Node
 					}
 					break;
 			}
+			CheckEnemyList();//controllerà i nemici ad fine di ogni esecuzione mossa, se si muore per altre cause ex veleno non si viene considerati
 		}
-
+		//CheckEnemyList() ogni frame controlli se un nemico è morto
 	}
 	//CONTROLLO AVANZAMENTO BATTAGLIA
 	public void CheckBattleEnd(){
@@ -250,6 +251,24 @@ public partial class TTBCScript : Node
 		playerInfoManager.EndSelectMove();
 	}
 
+	//funzione che serve ad aggiornare la EnemyList cosi da ridurla eliminando gli spazi vuoti (nemici morti)
+	//bisogna aggiornare anche l'array dell'enemyPosition cosi da non far sfasare il puntatore
+	public void CheckEnemyList(){
+		/*HD*/EnemyInfoManager[] temp = new EnemyInfoManager[3]; //3 Vlore massimo dei nemici
+		/*HD*/Marker2D[] tempPosition = new Marker2D[3];
+		int j = 0;
+		for(int i = 0; i < enemyList.Length; i++){
+			if(enemyList[i].Life > 0){
+				temp[j] = enemyList[i];
+				tempPosition[j] = enemiesPosition[i];
+				j++;
+			}
+		}
+		Array.Resize(ref temp, j);
+		Array.Resize(ref tempPosition, j);
+		enemyList = temp;
+		enemiesPosition = tempPosition;
+	}
 	//GETTER E SETTER
 	public Queue<Marker2D> WaitingQueue{
 		get => waitingQueue;
