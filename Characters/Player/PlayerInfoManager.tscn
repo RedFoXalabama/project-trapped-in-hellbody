@@ -274,6 +274,7 @@ _data = {
 [node name="PlayerInfoManager" type="Node2D"]
 script = ExtResource("7")
 cname = "Player"
+life = 100
 free = false
 
 [node name="BattleMenu" parent="." instance=ExtResource("11_evtcp")]

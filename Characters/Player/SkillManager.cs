@@ -31,6 +31,7 @@ public partial class SkillManager : Resource
 				//funzione da creare per l'attacco base
 				pim.AnimateCharacter("Attack");
 				pim.SelectedEnemy.AnimateCharacter("Damage");
+                /*HD*/pim.SelectedEnemy.TakeDamage(100); //SOSTITUIRE CON LA FORMULA DEL DANNO
 				pim.StartTimer();
 				break;
 			case "BasicAttack2":

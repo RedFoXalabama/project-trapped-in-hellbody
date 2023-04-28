@@ -35,7 +35,7 @@ public partial class TTBCScript : Node
 	private Queue<Marker2D> selectMoveQueue = new Queue<Marker2D>(); //Per il giocatore CODA SCEGLI MOSSA
 	private Queue<Marker2D> enemySelectMoveQueue = new Queue<Marker2D>(); //Per gli enemy CODA SCEGLI MOSSA
 	private Queue<Marker2D> moveQueue = new Queue<Marker2D>(); //Per tutti CODA ESEGUI MOSSA
-	private Boolean winned = false;
+	private Boolean battleStated = false;
 
 	public override void _Ready(){
 		//PLAYER STARTING
@@ -60,6 +60,7 @@ public partial class TTBCScript : Node
 		
 	}
 	public override void _Process(double delta){
+		CheckBattleEnd();
 		FightUpdate();
 	}
 	//INIZIO BATTAGLIA
@@ -152,6 +153,7 @@ public partial class TTBCScript : Node
 			}
 			enemyWaitingQueue.Enqueue(enemyVelocityMax.GetParent<Marker2D>());
 		}
+		battleStated = true;
 	}
 
 	//FUNZIONI PER LA GESTIONE DELLE CODE
@@ -215,10 +217,14 @@ public partial class TTBCScript : Node
 	}
 	//CONTROLLO AVANZAMENTO BATTAGLIA
 	public void CheckBattleEnd(){
-		if (EnemyList.Length == 0){
+		if (battleStated){
+			if (EnemyList.Length == 0){
 			//VITTORIA
-		} else if (playerInfoManager.Life <= 0){
+			GD.Print("VITTORIA");
+			} else if (playerInfoManager.Life <= 0){
 			//SCONFITTA
+			GD.Print("SCONFITTA");
+			}
 		}
 	}
 

@@ -39,7 +39,7 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 	}
 
 	//FUNZIONI INTERFACCIA BASEMOVES
-	public void GetDamage(int damage){
+	public void TakeDamage(int damage){
 		//cambia stato FREE nell'animazione
 		Life -= damage;
 		lifeBar.ChangeValue(Life);

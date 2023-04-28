@@ -1,6 +1,5 @@
 is_global = true
-build_property.GodotProjectDir = C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\
-build_property.GodotProjectDirBase64 = 
+build_property.GodotProjectDir = /home/redfox/Desktop/RedFoX's Studio/Creator/project-trapped-in-hellbody/
 build_property.GodotSourceGenerators = 
 build_property.IsGodotToolsProject = 
 build_property.TargetFramework = net6.0
@@ -12,4 +11,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Projecttrappedinhellbody
-build_property.ProjectDir = C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\
+build_property.ProjectDir = /home/redfox/Desktop/RedFoX's Studio/Creator/project-trapped-in-hellbody/
