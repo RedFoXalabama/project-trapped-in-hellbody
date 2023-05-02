@@ -7,12 +7,14 @@ public partial class TTBCScript : Node
 	//PLAYER VARIABLES
 	private Marker2D playerPosition;
 	private PlayerInfoManager playerInfoManager;
+	private Boolean wasPlayerTurn = true;
 
 	//ALLY VARIABLES
 	private Marker2D ally1Position;
 	private Marker2D ally2Position;
 	private AllyInfoManager ally1;
 	private AllyInfoManager ally2;
+	private AllyInfoManager attackingAlly;
 	AllyManager allyManager = ResourceLoader.Load("res://Characters/Ally/AllyManager.tres") as AllyManager;
 	private PackedScene[] allyPS = new PackedScene[4];
 
@@ -135,9 +137,11 @@ public partial class TTBCScript : Node
 			enemyListOption.GetButton(i).OfPointerSignal += EnemyListOption_ButtonFocused;
 			enemyListOption.GetButton(i).Pressed += EnemyListOption_ButtonPressed;
 		}
+		//controllo velocità
 		if (playerVelocity > ((enemy1Velocity + enemy2Velocity + enemy3Velocity)/3)-10){ //formula calcolo velocità complessiva da aggiustare
 			SelectMoveQueue.Enqueue(playerPosition); //messo in coda il player
 			playerInfoManager.SelectMove();//subito il player scelgie la mossa
+			/*HD*/ally1.StartTimer();
 			enemy1.StartTimer();
 			enemy2.StartTimer();
 			enemy3.StartTimer();
@@ -229,7 +233,7 @@ public partial class TTBCScript : Node
 	}
 
 	//CREAZIONE MENU NEMICI + AGGIORNAMENTO POINTER
-	public void CreateEnemyListOptionMenu(){
+	public void CreateEnemyListOptionMenu(Boolean ally, AllyInfoManager aim){
 		//CREA IL MENU DA CUI SELEZIONARE I NEMICI
 		String[] enemyListName = new String[EnemyList.Length];
 		for (int i = 0; i < EnemyList.Length; i ++){
@@ -237,10 +241,53 @@ public partial class TTBCScript : Node
 		}	
 		var nButtonNew = enemyListOption.OverrideButton(enemyListName);
 		enemyListOption.SetFocusPrevioustTo(playerInfoManager.SkillBattleMenu);
-		for (int i = (enemyListName.Length - nButtonNew); i < enemyListName.Length; i++){//aggiorna solo i nuovi button
-			enemyListOption.GetButton(i).OfPointer = true;
-			enemyListOption.GetButton(i).OfPointerSignal += EnemyListOption_ButtonFocused;
-			enemyListOption.GetButton(i).Pressed += EnemyListOption_ButtonPressed;
+		//CONTROLLO SE È IL TURNO DEL PLAYER O DELL'ALLEATO
+		switch (wasPlayerTurn){
+			//È IL TURNO DEL PLAYER ED ERA IL TURNO DEL PLAYER
+    		case true when !ally:
+        		for (int i = (enemyListName.Length - nButtonNew); i < enemyListName.Length; i++){//aggiorna solo i nuovi button
+            		enemyListOption.GetButton(i).OfPointer = true;
+            		enemyListOption.GetButton(i).OfPointerSignal += EnemyListOption_ButtonFocused;
+           			enemyListOption.GetButton(i).Pressed += EnemyListOption_ButtonPressed;
+       			}
+        		break;
+			//È IL TURNO DELL'ALLEATO ED ERA IL TURNO DEL PLAYER
+			case true when ally:
+        		for (int i = (enemyListName.Length - nButtonNew); i < enemyListName.Length; i++){//aggiorna solo i nuovi button
+            		enemyListOption.GetButton(i).OfPointer = true;
+            		enemyListOption.GetButton(i).OfPointerSignal += EnemyListOption_ButtonFocused;
+        		}
+        		for (int i = 0; i < enemyListName.Length; i++){
+					//non dovrebbe essere necessario disconettere prima se si usa +=
+					enemyListOption.GetButton(i).Pressed -= EnemyListOption_ButtonPressed;
+					enemyListOption.GetButton(i).Pressed += AllyEnemyListOption_ButtonPressed;
+        		}
+        		wasPlayerTurn = false;
+        		attackingAlly = aim;
+        		break;
+			//È IL TURNO DELL'ALLEATO ED ERA IL TURNO DELL'ALLEATO
+			case false when ally:
+        		for (int i = (enemyListName.Length - nButtonNew); i < enemyListName.Length; i++){//aggiorna solo i nuovi button
+           		enemyListOption.GetButton(i).OfPointer = true;
+            	enemyListOption.GetButton(i).OfPointerSignal += EnemyListOption_ButtonFocused;
+            	enemyListOption.GetButton(i).Pressed += AllyEnemyListOption_ButtonPressed;
+        		}
+				wasPlayerTurn = false;
+        		attackingAlly = aim;
+        		break;
+			//È IL TURNO DEL PLAYER ED ERA IL TURNO DELL'ALLEATO
+   			case false when !ally:
+        		for (int i = (enemyListName.Length - nButtonNew); i < enemyListName.Length; i++){//aggiorna solo i nuovi button
+            	enemyListOption.GetButton(i).OfPointer = true;
+            	enemyListOption.GetButton(i).OfPointerSignal += EnemyListOption_ButtonFocused;
+        		}
+        		for (int i = 0; i < enemyListName.Length; i++){
+					//non dovrebbe essere necessario disconettere prima se si usa +=
+					enemyListOption.GetButton(i).Pressed -= AllyEnemyListOption_ButtonPressed;
+            		enemyListOption.GetButton(i).Pressed += EnemyListOption_ButtonPressed;
+				}
+        		wasPlayerTurn = true;
+        	break;
 		}
 		enemyListOption.GetParent<Node2D>().Show();
 		enemyListOption.ShowUp();
@@ -255,6 +302,12 @@ public partial class TTBCScript : Node
 		playerInfoManager.SelectedEnemy = EnemyList[enemyListOption.Id_ButtonFocused];
 		enemyListOption.GetParent<Node2D>().Hide();
 		playerInfoManager.EndSelectMove();
+	}
+	public void AllyEnemyListOption_ButtonPressed(){
+		attackingAlly.SelectedEnemy = EnemyList[enemyListOption.Id_ButtonFocused];
+		enemyListOption.GetParent<Node2D>().Hide();
+		attackingAlly.EndSelectMove();
+		attackingAlly = null;
 	}
 
 	//funzione che serve ad aggiornare la EnemyList cosi da ridurla eliminando gli spazi vuoti (nemici morti)

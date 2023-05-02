@@ -10,5 +10,5 @@ res://Characters/Player/PlayerInfoManager.tscn
 res://Characters/Enemy/Demo_Enemy1/Demo_Enemy1.tscn
 res://Characters/Enemy/Demo_Enemy2/Demo_Enemy2.tscn
 res://Characters/Enemy/Demo_Enemy3/Demo_Enemy3.tscn
-res://Characters/Ally/Demo_Ally/Demo_Ally.tscn
 res://Combat System/BattleMenu/OptionMenu.tscn
+res://Characters/Ally/Demo_Ally/Demo_Ally.tscn

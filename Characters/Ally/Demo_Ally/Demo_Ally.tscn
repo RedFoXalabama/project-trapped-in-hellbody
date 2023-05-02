@@ -1,8 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://waf2cs00oi31"]
+[gd_scene load_steps=28 format=3 uid="uid://waf2cs00oi31"]
 
 [ext_resource type="PackedScene" path="res://Combat System/Characters Bar/NameBar.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://n374n2pjpajg" path="res://Combat System/Characters Bar/Bar Theme/Ally ManaBar.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://b612182tsxtrw" path="res://Combat System/BattleMenu/OptionMenu.tscn" id="2_ftbuh"]
 [ext_resource type="Theme" uid="uid://dk81v6oyu65mw" path="res://Combat System/Characters Bar/Bar Theme/player_mana_bar_theme.tres" id="3"]
+[ext_resource type="Texture2D" uid="uid://cj7ehsqob10eh" path="res://Combat System/BattleMenu/AllyBattleMenu_bg.png" id="3_fn4t4"]
 [ext_resource type="Theme" uid="uid://q5ssavd7ph1h" path="res://Combat System/Characters Bar/Bar Theme/player_name_bar.tres" id="4"]
 [ext_resource type="PackedScene" uid="uid://bsfkx0yubqwj6" path="res://Combat System/Characters Bar/GameBar.tscn" id="5"]
 [ext_resource type="Texture2D" uid="uid://wwusbc68a7of" path="res://Combat System/Characters Bar/Bar Theme/Ally LifeBar.png" id="6"]
@@ -196,9 +198,20 @@ _data = {
 [node name="AllyInfoManager" type="Node2D"]
 script = ExtResource("7")
 cname = "Ally1"
-free = false
 
-[node name="BattleMenu" type="PopupMenu" parent="."]
+[node name="BattleMenu" parent="." instance=ExtResource("2_ftbuh")]
+offset_left = 128.0
+offset_top = -128.0
+offset_right = 224.0
+offset_bottom = -32.0
+option = PackedStringArray("TEMP")
+
+[node name="Sprite2D" parent="BattleMenu" index="0"]
+texture = ExtResource("3_fn4t4")
+
+[node name="VBoxContainer" parent="BattleMenu" index="1"]
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="BattleAnimation" parent="." instance=ExtResource("9")]
 texture = ExtResource("10")
@@ -241,6 +254,7 @@ one_shot = true
 
 [connection signal="timeout" from="BattleTimer" to="." method="_on_BattleTimer_timeout"]
 
+[editable path="BattleMenu"]
 [editable path="BattleAnimation"]
 [editable path="LifeBar"]
 [editable path="ManaBar"]

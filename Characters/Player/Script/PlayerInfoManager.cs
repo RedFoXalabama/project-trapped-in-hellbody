@@ -161,7 +161,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	//SELEZIONARE UN NEMICO + relativi segnali
 	public void SelectEnemy(){ //popupa il menu di scelta nemici e quando il segnale è inviato dal popmn il nemico viene selezionato
 		//funzioni per decidere il nemico
-		tTBCScript.CreateEnemyListOptionMenu();
+		tTBCScript.CreateEnemyListOptionMenu(false, null);
 		//il nemico si seleziona nel TTBCScript
 	}
 	public void DoAction(){ //Data il nome della mossa memorizzata, prende la funzione dal dictionary ed esegue l'azione

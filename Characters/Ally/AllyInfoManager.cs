@@ -19,7 +19,8 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 	private EnemyInfoManager selectedEnemy;
 	private AllyInfoManager selectedAlly;
 	private String selectedAction;
-
+	private OptionMenu battleMenu;
+	AllyManager allyManager = ResourceLoader.Load<AllyManager>("res://Characters/Ally/AllyManager.tres") as AllyManager;
 	public override void _Ready(){
 		//Timer
 		timer = GetNode<Timer>("BattleTimer");
@@ -36,6 +37,10 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 		manaBar.ChangeMaxValue(Mana); //al momento il mana non avendo un valore esplicito è zero
 		//TTBCSRIPT
 		tTBCScript = GetParent().GetParent<TTBCScript>();
+		//BATTLE MENU
+		battleMenu = GetNode<OptionMenu>("BattleMenu");
+		allyManager.CreateAllySkillManager();
+		AllBattleMenu_CreateSignals();
 	}
 
 	//FUNZIONI INTERFACCIA BASEMOVES
@@ -58,9 +63,19 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 	public void BackToIdle(){
 		AnimateCharacter("Idle");
 	}
-	public void SelectMove(){}
+	public void SelectMove(){
+		battleMenu.ShowUp();
+	}
+	public void EndSelectMove(){
+		battleMenu.Hide();
+		tTBCScript.UpdateMoveQueue(tTBCScript.SelectMoveQueue);
+	}
 	public void DoAction(){
-
+		//Data il nome della mossa memorizzata, prende la funzione dal dictionary ed esegue l'azione
+		//vai in stato notFree dall'animazione
+		//esecuzione mossa
+		allyManager.DoAction(selectedAction, this);
+		//pulizia variabili
 		CleanSelectedMove();
 	}
 
@@ -80,6 +95,30 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 			status = true;
 		}
 		return status;
+	}
+	//FUNZIONI PER IL BATTLE MENU
+	public void AllBattleMenu_CreateSignals(){
+		var skills = allyManager.AllySkillManagerDictionary[cname];
+		battleMenu.OverrideButton(skills);
+		for (int i = 0; i < skills.Length; i++){
+			battleMenu.GetButton(i).OfPointer = true;
+			battleMenu.GetButton(i).OfPointerSignal += BattleMenu_ButtonFocused;
+			battleMenu.GetButton(i).Pressed += BattleMenu_ButtonPressed;
+		}
+		//FOCUS
+		battleMenu.SetFocusPrevioustTo(battleMenu);
+	}
+	public void BattleMenu_ButtonFocused(int id){
+		battleMenu.Id_ButtonFocused = id;
+	}
+	public void BattleMenu_ButtonPressed(){
+		selectedAction = allyManager.AllySkillManagerDictionary[cname][battleMenu.Id_ButtonFocused];
+		allyManager.PrepareAction(selectedAction, this);
+	}
+	public void SelectEnemy(){ //popupa il menu di scelta nemici e quando il segnale è inviato dal popmn il nemico viene selezionato
+		//funzioni per decidere il nemico
+		tTBCScript.CreateEnemyListOptionMenu(true, this);
+		//il nemico si seleziona nel TTBCScript
 	}
 	//GETTER AND SETTER
 	public String Cname {
@@ -106,9 +145,13 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 		get => velocity;
 		set => velocity = value;
 	}
-		public Boolean FreeForFight{
+	public Boolean FreeForFight{
 		get => free;
 		set => free = value;
+	}
+	public EnemyInfoManager SelectedEnemy{
+		get => selectedEnemy;
+		set => selectedEnemy = value;
 	}
 }
 
