@@ -17,7 +17,8 @@ public partial class TTBCScript : Node
 	private AllyInfoManager attackingAlly;
 	AllyManager allyManager = ResourceLoader.Load("res://Characters/Ally/AllyManager.tres") as AllyManager;
 	private PackedScene[] allyPS = new PackedScene[4];
-
+	private Dictionary<String,AllyInfoManager> allyList = new Dictionary<string, AllyInfoManager>();
+	private Dictionary<String,AllyInfoManager> diedAllyList = new Dictionary<string, AllyInfoManager>();
 	//ENEMY VARIABLES
 	private Marker2D enemy1Position;
 	private Marker2D enemy2Position;
@@ -46,7 +47,7 @@ public partial class TTBCScript : Node
 		//ALLY STARTING
 		/*HD*/allyManager.CreateDataBase(); //funzione da inserire fuori dal combattimento cosi da non essere creato ogni volta	
 		createAllyPS();
-		spawnAlly(allyPS[0]);
+		///*hd*/SpawnAlly(allyPS[0]);
 		//ENEMY STARTING
 		/*HD*/enemyManager.CreateDatabase(); //funzione da inserire fuori dal combattimento cosi da non essere creato ogni volta	
 		//enemyPS = PackedScene[] caricato dal nemico, io lo hardcodo per farlo funzionare
@@ -72,24 +73,28 @@ public partial class TTBCScript : Node
 	}
 	//ALLY FUNCTIONS
 	public void createAllyPS(){
-		/*HD*/allyManager.EquipAlly("Demo_Ally", 0); //funzione da spostare nel menu della gestione alleati
+		///*HD*/allyManager.EquipAlly("Demo_Ally", 0); //funzione da spostare nel menu della gestione alleati
+		///*HD*/allyManager.EquipAlly("", 1); //funzione da spostare nel menu della gestione alleati
 		for(int i = 0; i < allyManager.EquippedAlly.Length; i++){
 			if (allyManager.EqAllyPath(i) != null && !(allyManager.EqAllyPath(i).Equals(""))){
 				allyPS[i] = GD.Load<PackedScene>(allyManager.EqAllyPath(i));
 			}	
 		}
 	}
-	public void spawnAlly(PackedScene ally){
+	public void SpawnAlly(PackedScene ally){
 		ally1Position = GetNode<Marker2D>("Ally1Position");
 		ally2Position = GetNode<Marker2D>("Ally2Position");
-		if (ally1Position.HasNode("Ally1Position/Ally1") == false){
+		if (ally1Position.GetChildCount() > 0 == false){
 			ally1Position.AddChild(ally.Instantiate());
 			ally1 = ally1Position.GetChild<AllyInfoManager>(0);
-		} else {
-			ally2Position.AddChild(ally.Instantiate());
+			allyList.Add(ally1.Cname, ally1);
+			ally1.StartTimer(); //avviamo il timer per metterlo in coda
+		} else if (ally2Position.GetChildCount() > 0 == false){
+			ally2Position.AddChild(ally.Instantiate()); //genera un fracasso di errori
 			ally2 = ally2Position.GetChild<AllyInfoManager>(0);
+			allyList.Add(ally2.Cname, ally2);
+			ally2.StartTimer();//avviamo il timer per metterlo in coda
 		}
-
 	}
 	//ENEMY FUNCTIONS
 	public void spawnEnemy(PackedScene[] enemy){
@@ -141,7 +146,7 @@ public partial class TTBCScript : Node
 		if (playerVelocity > ((enemy1Velocity + enemy2Velocity + enemy3Velocity)/3)-10){ //formula calcolo velocità complessiva da aggiustare
 			SelectMoveQueue.Enqueue(playerPosition); //messo in coda il player
 			playerInfoManager.SelectMove();//subito il player scelgie la mossa
-			/*HD*/ally1.StartTimer();
+			///*HD*/ally1.StartTimer();
 			enemy1.StartTimer();
 			enemy2.StartTimer();
 			enemy3.StartTimer();
@@ -216,6 +221,7 @@ public partial class TTBCScript : Node
 					break;
 			}
 			CheckEnemyList();//controllerà i nemici ad fine di ogni esecuzione mossa, se si muore per altre cause ex veleno non si viene considerati
+			CheckAllyList();//controllerà gli alleati e nel caso li sposterà nella diedAllyList
 		}
 		//CheckEnemyList() ogni frame controlli se un nemico è morto
 	}
@@ -328,6 +334,16 @@ public partial class TTBCScript : Node
 		enemyList = temp;
 		enemiesPosition = tempPosition;
 	}
+	public void CheckAllyList(){
+		for (int i = 0; i < allyManager.EquippedAlly.Length; i++){
+			if(allyList.ContainsKey(allyManager.EquippedAlly[i])){
+				if(allyList[allyManager.EquippedAlly[i]].Life <= 0){
+					diedAllyList.Add(allyManager.EquippedAlly[i], allyList[allyManager.EquippedAlly[i]]);
+					allyList.Remove(allyManager.EquippedAlly[i]);
+				}
+			}
+		}
+	}
 	//GETTER E SETTER
 	public Queue<Marker2D> WaitingQueue{
 		get => waitingQueue;
@@ -360,5 +376,17 @@ public partial class TTBCScript : Node
 	public OptionMenu EnemyListOption{
 		get => enemyListOption;
 		set => enemyListOption = value;
+	}
+	public Dictionary<String, AllyInfoManager> AllyList{
+		get => allyList;
+		set => allyList = value;
+	}
+	public Dictionary<String, AllyInfoManager> DiedAllyList{
+		get => diedAllyList;
+		set => diedAllyList = value;
+	}
+	public PackedScene[] AllyPS{
+		get => allyPS;
+		set => allyPS = value;
 	}
 }	

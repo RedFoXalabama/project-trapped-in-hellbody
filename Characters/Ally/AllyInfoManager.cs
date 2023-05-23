@@ -10,6 +10,7 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 	[Export] private int defense;
 	[Export] private int velocity;
 	[Export] private Boolean free = true; //VARIA TRAMITE ANIMAZIONE CHE MODIFICA IL VALORE
+	private Boolean inBattle = false;
 	private Timer timer;
 	private AnimationNodeStateMachinePlayback animationState;
 	private GameBar lifeBar;
@@ -152,6 +153,10 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 	public EnemyInfoManager SelectedEnemy{
 		get => selectedEnemy;
 		set => selectedEnemy = value;
+	}
+	public Boolean InBattle{
+		get => inBattle;
+		set => inBattle = value;
 	}
 }
 

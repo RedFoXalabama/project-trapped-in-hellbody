@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cx6whld67qflu"
-path="res://.godot/imported/Battle Ally.png-c55eaf8074748a841863cce47f2b1543.ctex"
+path="res://.godot/imported/Battle Ally.png-97ac9ceaaeca5b5426f343900be033e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Ally/Demo_Ally/Battle Ally.png"
-dest_files=["res://.godot/imported/Battle Ally.png-c55eaf8074748a841863cce47f2b1543.ctex"]
+source_file="res://Characters/Ally/Ally/Battle Ally.png"
+dest_files=["res://.godot/imported/Battle Ally.png-97ac9ceaaeca5b5426f343900be033e4.ctex"]
 
 [params]
 

@@ -310,11 +310,25 @@ offset_left = 128.0
 offset_top = 64.0
 offset_right = 224.0
 offset_bottom = 160.0
-option = PackedStringArray("Ally 1", "Ally 2")
+option = PackedStringArray("temp")
 subMenu = true
 
 [node name="Sprite2D" parent="BattleMenu/AllyManagerMenu" index="0"]
 texture = ExtResource("5_hv1jf")
+
+[node name="AllyOptionMenu" parent="BattleMenu/AllyManagerMenu" instance=ExtResource("11_evtcp")]
+offset_left = 96.0
+offset_right = 192.0
+offset_bottom = 96.0
+option = PackedStringArray("temp")
+subMenu = true
+
+[node name="Sprite2D" parent="BattleMenu/AllyManagerMenu/AllyOptionMenu" index="0"]
+texture = ExtResource("5_hv1jf")
+
+[node name="VBoxContainer" parent="BattleMenu/AllyManagerMenu/AllyOptionMenu" index="1"]
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="InventoryBattleMenu" parent="BattleMenu" instance=ExtResource("11_evtcp")]
 offset_left = 128.0
@@ -380,6 +394,7 @@ one_shot = true
 [editable path="BattleMenu"]
 [editable path="BattleMenu/SkillBattleMenu"]
 [editable path="BattleMenu/AllyManagerMenu"]
+[editable path="BattleMenu/AllyManagerMenu/AllyOptionMenu"]
 [editable path="BattleMenu/InventoryBattleMenu"]
 [editable path="BattleAnimation"]
 [editable path="ManaBar"]

@@ -1,0 +1,261 @@
+[gd_scene load_steps=28 format=3 uid="uid://dqcw6eva88m7w"]
+
+[ext_resource type="Script" path="res://Characters/Ally/AllyInfoManager.cs" id="1_cehjp"]
+[ext_resource type="PackedScene" uid="uid://b612182tsxtrw" path="res://Combat System/BattleMenu/OptionMenu.tscn" id="2_uaupb"]
+[ext_resource type="Texture2D" uid="uid://cj7ehsqob10eh" path="res://Combat System/BattleMenu/AllyBattleMenu_bg.png" id="3_qnx4o"]
+[ext_resource type="PackedScene" uid="uid://covgueuo1i1e7" path="res://Characters/BattleAnimation.tscn" id="4_td0fd"]
+[ext_resource type="Texture2D" uid="uid://ccoqq0b5517ue" path="res://Characters/Ally/Ally2/Battle Ally2.png" id="5_tlvkv"]
+[ext_resource type="PackedScene" uid="uid://bsfkx0yubqwj6" path="res://Combat System/Characters Bar/GameBar.tscn" id="6_gd75b"]
+[ext_resource type="Theme" uid="uid://bhv5y0p0r2e37" path="res://Combat System/Characters Bar/Bar Theme/ally_life_bar_theme.tres" id="7_f82ly"]
+[ext_resource type="Texture2D" uid="uid://wwusbc68a7of" path="res://Combat System/Characters Bar/Bar Theme/Ally LifeBar.png" id="8_p8q0j"]
+[ext_resource type="Theme" uid="uid://dk81v6oyu65mw" path="res://Combat System/Characters Bar/Bar Theme/player_mana_bar_theme.tres" id="9_5sr4h"]
+[ext_resource type="Texture2D" uid="uid://n374n2pjpajg" path="res://Combat System/Characters Bar/Bar Theme/Ally ManaBar.png" id="10_37smh"]
+[ext_resource type="PackedScene" path="res://Combat System/Characters Bar/NameBar.tscn" id="11_tuf55"]
+[ext_resource type="Theme" uid="uid://q5ssavd7ph1h" path="res://Combat System/Characters Bar/Bar Theme/player_name_bar.tres" id="12_qltce"]
+
+[sub_resource type="AnimationNodeAnimation" id="7"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="8"]
+animation = &"Damage"
+
+[sub_resource type="AnimationNodeAnimation" id="9"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="10"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="11"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="12"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="13"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ex4yd"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="1"]
+states/Attack/node = SubResource("7")
+states/Attack/position = Vector2(520.333, 79)
+states/Damage/node = SubResource("8")
+states/Damage/position = Vector2(179, 79)
+states/End/position = Vector2(636, 80)
+states/Idle/node = SubResource("9")
+states/Idle/position = Vector2(344.333, 80.3333)
+states/Start/position = Vector2(344.888, 20)
+transitions = ["Idle", "Attack", SubResource("10"), "Attack", "Idle", SubResource("11"), "Idle", "Damage", SubResource("12"), "Damage", "Idle", SubResource("13"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ex4yd")]
+graph_offset = Vector2(-92.5401, 0)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="14"]
+
+[sub_resource type="Animation" id="15"]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:free")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"BackToIdle"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"StartTimer"
+}]
+}
+
+[sub_resource type="Animation" id="16"]
+resource_name = "Damage"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:free")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"BackToIdle"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="17"]
+resource_name = "Idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:free")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="18"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3c06k"]
+_data = {
+"Attack": SubResource("15"),
+"Damage": SubResource("16"),
+"Idle": SubResource("17"),
+"RESET": SubResource("18")
+}
+
+[node name="AllyInfoManager" type="Node2D"]
+script = ExtResource("1_cehjp")
+cname = "Ally2"
+life = 100
+
+[node name="BattleMenu" parent="." instance=ExtResource("2_uaupb")]
+offset_left = 128.0
+offset_top = -128.0
+offset_right = 224.0
+offset_bottom = -32.0
+option = PackedStringArray("TEMP")
+
+[node name="Sprite2D" parent="BattleMenu" index="0"]
+texture = ExtResource("3_qnx4o")
+
+[node name="VBoxContainer" parent="BattleMenu" index="1"]
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="BattleAnimation" parent="." instance=ExtResource("4_td0fd")]
+texture = ExtResource("5_tlvkv")
+hframes = 3
+
+[node name="AnimationTree" parent="BattleAnimation" index="0"]
+tree_root = SubResource("1")
+parameters/playback = SubResource("14")
+
+[node name="AnimationPlayer" parent="BattleAnimation" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_3c06k")
+}
+
+[node name="LifeBar" parent="." instance=ExtResource("6_gd75b")]
+theme = ExtResource("7_f82ly")
+show_percentage = false
+
+[node name="Bar_Background" parent="LifeBar" index="0"]
+texture = ExtResource("8_p8q0j")
+
+[node name="ManaBar" parent="." instance=ExtResource("6_gd75b")]
+offset_top = 24.0
+offset_right = 1.0
+offset_bottom = 25.0
+theme = ExtResource("9_5sr4h")
+show_percentage = false
+
+[node name="Bar_Background" parent="ManaBar" index="0"]
+texture = ExtResource("10_37smh")
+
+[node name="NameBar" parent="." instance=ExtResource("11_tuf55")]
+theme = ExtResource("12_qltce")
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="BattleTimer" type="Timer" parent="."]
+wait_time = 9.0
+one_shot = true
+
+[connection signal="timeout" from="BattleTimer" to="." method="_on_BattleTimer_timeout"]
+
+[editable path="BattleMenu"]
+[editable path="BattleAnimation"]
+[editable path="LifeBar"]
+[editable path="ManaBar"]

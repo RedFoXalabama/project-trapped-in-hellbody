@@ -19,11 +19,13 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	private OptionMenu battleMenu;
 	private OptionMenu skillBattleMenu;
 	private OptionMenu allyManagerMenu;
+	private OptionMenu allyOptionMenu;
 	private OptionMenu inventoryBattleMenu;
 	private TTBCScript tTBCScript;
 	//VARIABILI PER LA SCELTA MOSSA
 	SkillManager skillManager = ResourceLoader.Load<SkillManager>("res://Characters/Player/SkillManager.tres") as SkillManager;
 	InventoryManager inventoryManager = ResourceLoader.Load<InventoryManager>("res://Inventory/Inventory.tres") as InventoryManager;
+	AllyManager allyManager = ResourceLoader.Load<AllyManager>("res://Characters/Ally/AllyManager.tres") as AllyManager;
 	private EnemyInfoManager selectedEnemy;
 	private AllyInfoManager selectedAlly;
 	private String selectedAction;
@@ -47,6 +49,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		skillBattleMenu = battleMenu.GetNode<OptionMenu>("SkillBattleMenu");
 		allyManagerMenu = battleMenu.GetNode<OptionMenu>("AllyManagerMenu");
 		inventoryBattleMenu = battleMenu.GetNode<OptionMenu>("InventoryBattleMenu");
+		allyOptionMenu = allyManagerMenu.GetNode<OptionMenu>("AllyOptionMenu");
 		//TTBCSRIPT
 		tTBCScript = GetParent().GetParent<TTBCScript>();
 		//SKILL MANAGER
@@ -54,7 +57,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		/*HD*/skillManager.CreateEquippedSkill(new String[2] {"BasicAttack1","BasicAttack2"});
 		inventoryManager.CreateInventoryManager();
 		/*HD*/inventoryManager.CreateEquippedItem(new String[1] {"BasicObject1"});
-		
+
 		AllBattleMenu_CreateSignals();//crea i segnali dei vari pulsanti 
 	}
 
@@ -90,6 +93,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		//si libera la SelectMoveQueue
 		skillBattleMenu.Hide();
 		allyManagerMenu.Hide();
+		allyOptionMenu.Hide();
 		inventoryBattleMenu.Hide();
 		battleMenu.Hide();
 		tTBCScript.UpdateMoveQueue(tTBCScript.SelectMoveQueue);
@@ -111,6 +115,17 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 			inventoryBattleMenu.GetButton(i).OfPointer = true;
 			inventoryBattleMenu.GetButton(i).OfPointerSignal += InventoryBattleMenu_ButtonFocused;
 			inventoryBattleMenu.GetButton(i).Pressed += InventoryBattleMenu_ButtonPressed;
+		}
+
+		/*HD*/allyManager.EquipAlly("Ally1", 0); //funzione da spostare nel menu della gestione alleati
+		/*HD*/allyManager.EquipAlly("Ally2", 1); //funzione da spostare nel menu della gestione alleati
+		/*HD*/allyManager.EquipAlly("", 2); //funzione da spostare nel menu della gestione alleati
+		/*HD*/allyManager.EquipAlly("", 3); //funzione da spostare nel menu della gestione alleati
+		allyManagerMenu.OverrideButton(allyManager.EquippedAlly);
+		for (int i = 0; i < allyManager.EquippedAlly.Length; i++){//aggiorna solo i nuovi button
+			allyManagerMenu.GetButton(i).OfPointer = true;
+			allyManagerMenu.GetButton(i).OfPointerSignal += AllyManagerMenu_ButtonFocused;
+			allyManagerMenu.GetButton(i).Pressed += AllyManagerMenu_ButtonPressed;
 		}
 		//aggiungere gli altri menu
 		//SISTEMA FOCUS PRECEDENTI
@@ -158,6 +173,13 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		selectedAction = inventoryManager.EquippedItem[inventoryBattleMenu.Id_ButtonFocused];
 		inventoryManager.PrepareAction(selectedAction, this);
 	}
+	public void AllyManagerMenu_ButtonFocused(int id){
+		allyManagerMenu.Id_ButtonFocused = id;
+	}
+	public void AllyManagerMenu_ButtonPressed(){
+		selectedAction = allyManager.EquippedAlly[allyManagerMenu.Id_ButtonFocused];
+		allyManager.SelectAlly(selectedAction, this, tTBCScript.DiedAllyList, allyManagerMenu.Id_ButtonFocused) ;
+	}
 	//SELEZIONARE UN NEMICO + relativi segnali
 	public void SelectEnemy(){ //popupa il menu di scelta nemici e quando il segnale è inviato dal popmn il nemico viene selezionato
 		//funzioni per decidere il nemico
@@ -169,6 +191,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		//esecuzione mossa
 		skillManager.DoAction(selectedAction, this);
 		inventoryManager.DoAction(selectedAction, this);
+		allyManager.SummonAlly();
 		//pulizia variabili
 		CleanSelectedMove();
 	}
@@ -237,6 +260,26 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	public String SelectedAction{
 		get => selectedAction;
 		set => selectedAction = value;
+	}
+	public OptionMenu AllyManagerMenu{
+		get => allyManagerMenu;
+		set => allyManagerMenu = value;
+	}
+	public AllyInfoManager GetAllyInfoManager(String allyName){
+		//prende tramite nome l'AllyInfoManager solo quelli presenti in campo
+		if (tTBCScript.AllyList.ContainsKey(allyName)){
+			return tTBCScript.AllyList[allyName];
+		} else { //se non è presente restituisce null
+			return null;
+		}
+	}
+	public OptionMenu AllyOptionMenu{
+		get => allyOptionMenu;
+		set => allyOptionMenu = value;
+	}
+	public TTBCScript TTBCScript{
+		get => tTBCScript;
+		set => tTBCScript = value;
 	}
 }
 
