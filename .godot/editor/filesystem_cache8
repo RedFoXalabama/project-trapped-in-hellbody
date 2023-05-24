@@ -1,5 +1,5 @@
 2a60927148abd1d33b818b535e306557
-::res://::1684832609
+::res://::1684960413
 default_env.tres::Environment::4216191505853608392::1684831270::0::1::::<><>::
 icon.png::CompressedTexture2D::8469594021551961142::1682174787::1682174787::1::::<><>::
 mono_crash.0.0.json::JSON::-1::1682174787::0::1::::<><>::
@@ -9,7 +9,7 @@ BattleAnimation.cs::CSharpScript::-1::1682174787::0::1::::<><>::
 BattleAnimation.tscn::PackedScene::5799237370649281712::1682174787::0::1::::<><>::res://Characters/BattleAnimation.cs
 ::res://Characters/Ally/::1684790501
 AllyInfoManager.cs::CSharpScript::-1::1684185547::0::1::::<><>::
-AllyManager.cs::CSharpScript::-1::1684832032::0::1::::<><>::
+AllyManager.cs::CSharpScript::-1::1684876110::0::1::::<><>::
 AllyManager.tres::Resource::-1::1682174787::0::1::::<><>::res://Characters/Ally/AllyManager.cs
 ::res://Characters/Ally/Ally/::1684831270
 Ally.tscn::PackedScene::4158233266140419314::1684831270::0::1::::<><>::res://Characters/Ally/AllyInfoManager.cs<>uid://b612182tsxtrw<>uid://cj7ehsqob10eh<>uid://covgueuo1i1e7<>uid://cx6whld67qflu<>uid://bsfkx0yubqwj6<>uid://bhv5y0p0r2e37<>uid://wwusbc68a7of<>uid://dk81v6oyu65mw<>uid://n374n2pjpajg<>res://Combat System/Characters Bar/NameBar.tscn<>uid://q5ssavd7ph1h
@@ -39,7 +39,7 @@ SkillManager.cs::CSharpScript::-1::1682702944::0::1::::<><>::
 SkillManager.tres::Resource::7992821512528711190::1682174787::0::1::::<><>::res://Characters/Player/SkillManager.cs
 ::res://Characters/Player/Script/::1682174787
 Player.cs::CSharpScript::-1::1682174787::0::1::::<><>::
-PlayerInfoManager.cs::CSharpScript::-1::1684790366::0::1::::<><>::
+PlayerInfoManager.cs::CSharpScript::-1::1684876316::0::1::::<><>::
 ::res://Characters/Player/Tscn/::1682174787
 Player.tscn::PackedScene::-1::1682174787::0::1::::<><>::res://Characters/Script/Player.cs
 ::res://Combat System/::1682174787

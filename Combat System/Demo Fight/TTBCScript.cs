@@ -137,11 +137,7 @@ public partial class TTBCScript : Node
 		}
 		var nButtonNew = enemyListOption.OverrideButton(enemyListName);
 		enemyListOption.SetFocusPrevioustTo(playerInfoManager.SkillBattleMenu);
-		for (int i = 0; i < enemyListName.Length; i++){//aggiorna solo i nuovi button
-			enemyListOption.GetButton(i).OfPointer = true;
-			enemyListOption.GetButton(i).OfPointerSignal += EnemyListOption_ButtonFocused;
-			enemyListOption.GetButton(i).Pressed += EnemyListOption_ButtonPressed;
-		}
+		EnemyListOption.SetPressed(enemyListName, true, EnemyListOption_ButtonFocused, EnemyListOption_ButtonPressed);
 		//controllo velocità
 		if (playerVelocity > ((enemy1Velocity + enemy2Velocity + enemy3Velocity)/3)-10){ //formula calcolo velocità complessiva da aggiustare
 			SelectMoveQueue.Enqueue(playerPosition); //messo in coda il player

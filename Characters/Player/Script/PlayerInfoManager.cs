@@ -104,29 +104,19 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		battleMenu.GetButton(1).Pressed += AllyManagerPressed;
 		battleMenu.GetButton(2).Pressed += InventoryPressed;
 		battleMenu.GetButton(3).Pressed += EscapePressed;
+		
 		skillBattleMenu.OverrideButton(skillManager.EquippedSkill);
-		for (int i = 0; i < skillManager.EquippedSkill.Length; i++){//aggiorna solo i nuovi button
-			skillBattleMenu.GetButton(i).OfPointer = true;
-			skillBattleMenu.GetButton(i).OfPointerSignal += SkillBattleMenu_ButtonFocused;
-			skillBattleMenu.GetButton(i).Pressed += SkillBattleMenu_ButtonPressed;
-		}
-		inventoryBattleMenu.OverrideButton(inventoryManager.EquippedItem);
-		for (int i = 0; i < inventoryManager.EquippedItem.Length; i++){//aggiorna solo i nuovi button
-			inventoryBattleMenu.GetButton(i).OfPointer = true;
-			inventoryBattleMenu.GetButton(i).OfPointerSignal += InventoryBattleMenu_ButtonFocused;
-			inventoryBattleMenu.GetButton(i).Pressed += InventoryBattleMenu_ButtonPressed;
-		}
+		skillBattleMenu.SetPressed(skillManager.EquippedSkill, true, SkillBattleMenu_ButtonFocused, SkillBattleMenu_ButtonPressed);
 
+		inventoryBattleMenu.OverrideButton(inventoryManager.EquippedItem);
+		inventoryBattleMenu.SetPressed(inventoryManager.EquippedItem, true, InventoryBattleMenu_ButtonFocused, InventoryBattleMenu_ButtonPressed);
+		
 		/*HD*/allyManager.EquipAlly("Ally1", 0); //funzione da spostare nel menu della gestione alleati
 		/*HD*/allyManager.EquipAlly("Ally2", 1); //funzione da spostare nel menu della gestione alleati
 		/*HD*/allyManager.EquipAlly("", 2); //funzione da spostare nel menu della gestione alleati
 		/*HD*/allyManager.EquipAlly("", 3); //funzione da spostare nel menu della gestione alleati
 		allyManagerMenu.OverrideButton(allyManager.EquippedAlly);
-		for (int i = 0; i < allyManager.EquippedAlly.Length; i++){//aggiorna solo i nuovi button
-			allyManagerMenu.GetButton(i).OfPointer = true;
-			allyManagerMenu.GetButton(i).OfPointerSignal += AllyManagerMenu_ButtonFocused;
-			allyManagerMenu.GetButton(i).Pressed += AllyManagerMenu_ButtonPressed;
-		}
+		allyManagerMenu.SetPressed(allyManager.EquippedAlly, true, AllyManagerMenu_ButtonFocused, AllyManagerMenu_ButtonPressed);
 		//aggiungere gli altri menu
 		//SISTEMA FOCUS PRECEDENTI
 		battleMenu.SetFocusPrevioustTo(battleMenu); 

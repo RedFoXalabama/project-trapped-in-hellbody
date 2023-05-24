@@ -101,11 +101,7 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 	public void AllBattleMenu_CreateSignals(){
 		var skills = allyManager.AllySkillManagerDictionary[cname];
 		battleMenu.OverrideButton(skills);
-		for (int i = 0; i < skills.Length; i++){
-			battleMenu.GetButton(i).OfPointer = true;
-			battleMenu.GetButton(i).OfPointerSignal += BattleMenu_ButtonFocused;
-			battleMenu.GetButton(i).Pressed += BattleMenu_ButtonPressed;
-		}
+		battleMenu.SetPressed(skills, true, BattleMenu_ButtonFocused, BattleMenu_ButtonPressed);
 		//FOCUS
 		battleMenu.SetFocusPrevioustTo(battleMenu);
 	}

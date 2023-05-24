@@ -78,21 +78,19 @@ public partial class AllyManager : Resource
                     //FUNZIONI PER EVOCARLO
                     String[] option = new String[]{"Evoca"};
                     pim.AllyOptionMenu.OverrideButton(option);
-                    Callable prepareAllySummon = new Callable(this, nameof(this.PrepareAllySummon));
-                    if (!pim.AllyOptionMenu.GetButton(0).IsConnected("pressed", prepareAllySummon)){
+                    if (!previouslyEvoked){ //controllo per evitare di aggiungere più volte lo stesso segnale
                         pim.AllyOptionMenu.GetButton(0).Pressed += PrepareAllySummon;
                     } 
-                    /*if (!previouslyEvoked){
-                        pim.AllyOptionMenu.GetButton(0).Pressed += PrepareAllySummon;
-                    }*/
-                    pim.AllyOptionMenu.ShowUp();  
+                    pim.AllyOptionMenu.ShowUp();
+                    previouslyEvoked = true;  
                 } else { //se è già stato evocato
+                    previouslyEvoked = false;
                     GD.Print("Ally already summoned");
                 }
                 break;
             default: //È presente nella lista degli alleati in campo
                 //funzioni per gestire alleato
-                
+                previouslyEvoked = false;
                 break;
         }
         
