@@ -247,11 +247,7 @@ public partial class TTBCScript : Node
 		switch (wasPlayerTurn){
 			//È IL TURNO DEL PLAYER ED ERA IL TURNO DEL PLAYER
     		case true when !ally:
-        		for (int i = (enemyListName.Length - nButtonNew); i < enemyListName.Length; i++){//aggiorna solo i nuovi button
-            		enemyListOption.GetButton(i).OfPointer = true;
-            		enemyListOption.GetButton(i).OfPointerSignal += EnemyListOption_ButtonFocused;
-           			enemyListOption.GetButton(i).Pressed += EnemyListOption_ButtonPressed;
-       			}
+				enemyListOption.SetPressed(enemyListName, (enemyListName.Length - nButtonNew), true, EnemyListOption_ButtonFocused, EnemyListOption_ButtonPressed);
         		break;
 			//È IL TURNO DELL'ALLEATO ED ERA IL TURNO DEL PLAYER
 			case true when ally:
@@ -269,11 +265,8 @@ public partial class TTBCScript : Node
         		break;
 			//È IL TURNO DELL'ALLEATO ED ERA IL TURNO DELL'ALLEATO
 			case false when ally:
-        		for (int i = (enemyListName.Length - nButtonNew); i < enemyListName.Length; i++){//aggiorna solo i nuovi button
-           		enemyListOption.GetButton(i).OfPointer = true;
-            	enemyListOption.GetButton(i).OfPointerSignal += EnemyListOption_ButtonFocused;
-            	enemyListOption.GetButton(i).Pressed += AllyEnemyListOption_ButtonPressed;
-        		}
+				enemyListOption.SetPressed(enemyListName, (enemyListName.Length - nButtonNew), true, EnemyListOption_ButtonFocused, AllyEnemyListOption_ButtonPressed);
+				break;
 				wasPlayerTurn = false;
         		attackingAlly = aim;
         		break;

@@ -84,12 +84,14 @@ public partial class AllyManager : Resource
                     pim.AllyOptionMenu.ShowUp();
                     previouslyEvoked = true;  
                 } else { //se è già stato evocato
+                    pim.AllyOptionMenu.GetButton(0).Pressed -= PrepareAllySummon;
                     previouslyEvoked = false;
                     GD.Print("Ally already summoned");
                 }
                 break;
             default: //È presente nella lista degli alleati in campo
                 //funzioni per gestire alleato
+                pim.AllyOptionMenu.GetButton(0).Pressed -= PrepareAllySummon;
                 previouslyEvoked = false;
                 break;
         }

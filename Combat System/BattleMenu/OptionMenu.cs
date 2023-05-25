@@ -95,6 +95,13 @@ public partial class OptionMenu : Control
 		}
 
 	}
+	public void SetPressed(String[] array, int start ,Boolean ofPointer ,OptionMenuButton.OfPointerSignalEventHandler ButtonFocused, Action ButtonPressed){
+		for (int i = start; i < array.Length; i++){
+			GetButton(i).OfPointer = ofPointer;
+			GetButton(i).OfPointerSignal += ButtonFocused;
+			GetButton(i).Pressed += ButtonPressed;
+		}
+	}
 	// Imposta i vicini di focus per ogni pulsante
 	public void SetFocusNeighbourTopBottom(){
 		for (int i = 0; i < option.Length; i++){
