@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8uftbgvx24o"]
+
+[ext_resource type="Script" path="res://Combat System/Characters Bar/ManaBar.cs" id="1_hoyqa"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_hoyqa")

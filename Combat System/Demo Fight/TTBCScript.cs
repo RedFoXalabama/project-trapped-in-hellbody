@@ -44,9 +44,10 @@ public partial class TTBCScript : Node
 		//PLAYER STARTING
 		playerPosition = GetNode<Marker2D>("PlayerPosition");
 		playerInfoManager = playerPosition.GetNode<PlayerInfoManager>("PlayerInfoManager");
-		//ALLY STARTING
+		//ALLY STARTING (creazione del database degli alleati, del packedScene[] e del database delle skill)
 		/*HD*/allyManager.CreateDataBase(); //funzione da inserire fuori dal combattimento cosi da non essere creato ogni volta	
 		createAllyPS();
+		allyManager.CreateAllySkillManager(); //funzione da inserire fuori dal combattimento cosi da non essere creato ogni volta
 		///*hd*/SpawnAlly(allyPS[0]);
 		//ENEMY STARTING
 		/*HD*/enemyManager.CreateDatabase(); //funzione da inserire fuori dal combattimento cosi da non essere creato ogni volta	
@@ -242,13 +243,13 @@ public partial class TTBCScript : Node
 			enemyListName[i] = EnemyList[i].Cname;
 		}	
 		var nButtonNew = enemyListOption.OverrideButton(enemyListName);
-		enemyListOption.SetFocusPrevioustTo(playerInfoManager.SkillBattleMenu);
 		//CONTROLLO SE È IL TURNO DEL PLAYER O DELL'ALLEATO
 		switch (wasPlayerTurn){
 			//È IL TURNO DEL PLAYER ED ERA IL TURNO DEL PLAYER
     		case true when !ally:
 				enemyListOption.SetPressed(enemyListName, (enemyListName.Length - nButtonNew), true, EnemyListOption_ButtonFocused, EnemyListOption_ButtonPressed);
-        		break;
+        		enemyListOption.SetFocusPrevioustTo(playerInfoManager.SkillBattleMenu);
+				break;
 			//È IL TURNO DELL'ALLEATO ED ERA IL TURNO DEL PLAYER
 			case true when ally:
         		for (int i = (enemyListName.Length - nButtonNew); i < enemyListName.Length; i++){//aggiorna solo i nuovi button
@@ -260,13 +261,14 @@ public partial class TTBCScript : Node
 					enemyListOption.GetButton(i).Pressed -= EnemyListOption_ButtonPressed;
 					enemyListOption.GetButton(i).Pressed += AllyEnemyListOption_ButtonPressed;
         		}
+				enemyListOption.SetFocusPrevioustTo(aim.BattleMenu);
         		wasPlayerTurn = false;
         		attackingAlly = aim;
         		break;
 			//È IL TURNO DELL'ALLEATO ED ERA IL TURNO DELL'ALLEATO
 			case false when ally:
 				enemyListOption.SetPressed(enemyListName, (enemyListName.Length - nButtonNew), true, EnemyListOption_ButtonFocused, AllyEnemyListOption_ButtonPressed);
-				break;
+				enemyListOption.SetFocusPrevioustTo(aim.BattleMenu);
 				wasPlayerTurn = false;
         		attackingAlly = aim;
         		break;
@@ -281,6 +283,7 @@ public partial class TTBCScript : Node
 					enemyListOption.GetButton(i).Pressed -= AllyEnemyListOption_ButtonPressed;
             		enemyListOption.GetButton(i).Pressed += EnemyListOption_ButtonPressed;
 				}
+				enemyListOption.SetFocusPrevioustTo(playerInfoManager.SkillBattleMenu);
         		wasPlayerTurn = true;
         	break;
 		}

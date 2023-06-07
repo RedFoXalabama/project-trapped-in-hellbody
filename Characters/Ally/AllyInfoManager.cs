@@ -40,7 +40,6 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 		tTBCScript = GetParent().GetParent<TTBCScript>();
 		//BATTLE MENU
 		battleMenu = GetNode<OptionMenu>("BattleMenu");
-		allyManager.CreateAllySkillManager();
 		AllBattleMenu_CreateSignals();
 	}
 
@@ -153,6 +152,10 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 	public Boolean InBattle{
 		get => inBattle;
 		set => inBattle = value;
+	}
+	public OptionMenu BattleMenu{
+		get => battleMenu;
+		set => battleMenu = value;
 	}
 }
 

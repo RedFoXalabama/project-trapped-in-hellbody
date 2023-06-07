@@ -1,3 +1,6 @@
+Node2D
+Node
+HBoxContainer
 Button
 ItemList
 Sprite2D
@@ -10,5 +13,4 @@ HFlowContainer
 Control
 MenuBar
 PopupMenu
-Node2D
 Window

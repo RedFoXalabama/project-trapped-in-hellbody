@@ -9,6 +9,7 @@ public partial class AllyManager : Resource
     public void CreateDataBase(){
         dataBase.Add("Ally1", "res://Characters/Ally/Ally/Ally.tscn");
         dataBase.Add("Ally2", "res://Characters/Ally/Ally2/Ally2.tscn");
+        dataBase.Add("Ally3", "res://Characters/Ally/Ally3/Ally3.tscn");
         dataBase.Add("", "");
     }
 
@@ -39,6 +40,7 @@ public partial class AllyManager : Resource
     public void CreateAllySkillManager(){
         AllySkillManager.Add("Ally1", new String[]{"BasicAttack1", "BasicAttack2"});
         AllySkillManager.Add("Ally2", new String[]{"BasicAttack1", "BasicAttack2"});
+        AllySkillManager.Add("Ally3", new String[]{"BasicAttack1", "BasicAttack2"});
     }
     public void PrepareAction(string action, AllyInfoManager aim){
         switch(action){
@@ -75,14 +77,18 @@ public partial class AllyManager : Resource
         switch (aim){
             case null: //NON è presente nella lista degli alleati in campo
                 if (!dal.ContainsKey(selectedAlly) && !allyList.ContainsKey(selectedAlly)){ //se non è ancora stato evocato
-                    //FUNZIONI PER EVOCARLO
-                    String[] option = new String[]{"Evoca"};
-                    pim.AllyOptionMenu.OverrideButton(option);
+                    if (allyList.Count < 2){
+                        //FUNZIONI PER EVOCARLO
+                    pim.AllyOptionMenu.OverrideButton(new String[]{"Evoca"});
                     if (!previouslyEvoked){ //controllo per evitare di aggiungere più volte lo stesso segnale
                         pim.AllyOptionMenu.GetButton(0).Pressed += PrepareAllySummon;
                     } 
                     pim.AllyOptionMenu.ShowUp();
                     previouslyEvoked = true;  
+                    } else {
+                        //aggiungere un effetto grafico o sonoro per indicare che non si può evocare
+                        GD.Print("Too many allies in field");
+                    }    
                 } else { //se è già stato evocato
                     pim.AllyOptionMenu.GetButton(0).Pressed -= PrepareAllySummon;
                     previouslyEvoked = false;
@@ -90,8 +96,11 @@ public partial class AllyManager : Resource
                 }
                 break;
             default: //È presente nella lista degli alleati in campo
+            //IMPORTANTE: allo stato attuale se si seleziona un alleato in campo non ancora evocato per poi tornare indietro sen
                 //funzioni per gestire alleato
-                pim.AllyOptionMenu.GetButton(0).Pressed -= PrepareAllySummon;
+                if (previouslyEvoked){
+                    pim.AllyOptionMenu.GetButton(0).Pressed -= PrepareAllySummon;
+                }
                 previouslyEvoked = false;
                 break;
         }

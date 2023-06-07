@@ -44,7 +44,7 @@ public partial class OptionMenu : Control
 		}
 
 		// Imposta i vicini di focus per ogni pulsante
-		SetFocusNeighbourTopBottom();
+		SetFocusNeighbour();
 
 		// Nasconde il menu
 		Hide();
@@ -83,7 +83,7 @@ public partial class OptionMenu : Control
 		}
 
 		// Imposta i vicini di focus per ogni pulsante
-		SetFocusNeighbourTopBottom();
+		SetFocusNeighbour();
 		return nButtonNew;
 	}
 
@@ -103,7 +103,8 @@ public partial class OptionMenu : Control
 		}
 	}
 	// Imposta i vicini di focus per ogni pulsante
-	public void SetFocusNeighbourTopBottom(){
+	public void SetFocusNeighbour(){
+		//imposta i focus sopra e sotto per navigare verticalmente
 		for (int i = 0; i < option.Length; i++){
 			if( i == 0){ //BOTTONE SOPRA
 				GetButton(0).FocusNeighborTop = GetButton(option.Length-1).GetPath();
@@ -115,6 +116,9 @@ public partial class OptionMenu : Control
 			} else {
 				GetButton(i).FocusNeighborBottom = GetButton(i+1).GetPath();
 			}
+			//imposta i focus a destra e sinistra per EVITARE DI NAVIGARE ORIZZONTALMENTE
+			GetButton(i).FocusNeighborLeft = GetButton(i).GetPath();
+			GetButton(i).FocusNeighborRight = GetButton(i).GetPath();
 		}
 	}
 

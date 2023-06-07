@@ -14,7 +14,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	private Timer timer;
 	private AnimationNodeStateMachinePlayback animationState;
 	private GameBar lifeBar;
-	private GameBar manaBar;
+	private ManaBar manaBar;
 	private NameBar nameBar;
 	private OptionMenu battleMenu;
 	private OptionMenu skillBattleMenu;
@@ -29,6 +29,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	private EnemyInfoManager selectedEnemy;
 	private AllyInfoManager selectedAlly;
 	private String selectedAction;
+	private String choosedMove;
 
 	public override void _Ready(){
 		//Timer
@@ -38,12 +39,12 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		GetNode<Sprite2D>("BattleAnimation").GetNode<AnimationTree>("AnimationTree").Active = true;
 		//All Bars
 		lifeBar = GetNode<GameBar>("LifeBar");
-		manaBar = GetNode<GameBar>("ManaBar");
+		manaBar = GetNode<ManaBar>("ManaBar");
 		nameBar = GetNode<NameBar>("NameBar");
 		//Impostazione Bars
 		nameBar.SetNameBar(Cname);
 		lifeBar.ChangeMaxValue(Life); //al momento la vita non avendo un valore esplicito è zero
-		manaBar.ChangeMaxValue(Mana); //al momento il mana non avendo un valore esplicito è zero
+		//manaBar.ChangeMaxValue(Mana); //al momento il mana non avendo un valore esplicito è zero
 		//ALL Menu
 		battleMenu = GetNode<OptionMenu>("BattleMenu");
 		skillBattleMenu = battleMenu.GetNode<OptionMenu>("SkillBattleMenu");
@@ -113,7 +114,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		
 		/*HD*/allyManager.EquipAlly("Ally1", 0); //funzione da spostare nel menu della gestione alleati
 		/*HD*/allyManager.EquipAlly("Ally2", 1); //funzione da spostare nel menu della gestione alleati
-		/*HD*/allyManager.EquipAlly("", 2); //funzione da spostare nel menu della gestione alleati
+		/*HD*/allyManager.EquipAlly("Ally3", 2); //funzione da spostare nel menu della gestione alleati
 		/*HD*/allyManager.EquipAlly("", 3); //funzione da spostare nel menu della gestione alleati
 		allyManagerMenu.OverrideButton(allyManager.EquippedAlly);
 		allyManagerMenu.SetPressed(allyManager.EquippedAlly, true, AllyManagerMenu_ButtonFocused, AllyManagerMenu_ButtonPressed);
@@ -122,6 +123,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		battleMenu.SetFocusPrevioustTo(battleMenu); 
 		skillBattleMenu.SetFocusPrevioustTo(battleMenu);
 		allyManagerMenu.SetFocusPrevioustTo(battleMenu);
+		allyOptionMenu.SetFocusPrevioustTo(allyManagerMenu);
 		inventoryBattleMenu.SetFocusPrevioustTo(battleMenu);
 	}
 	public void AttackPressed(){
@@ -153,6 +155,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		skillBattleMenu.Id_ButtonFocused = id;
 	}
 	public void SkillBattleMenu_ButtonPressed(){
+		choosedMove = "Skill";
 		selectedAction = skillManager.EquippedSkill[skillBattleMenu.Id_ButtonFocused];
 		skillManager.PrepareAction(selectedAction, this);
 	}
@@ -160,6 +163,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		inventoryBattleMenu.Id_ButtonFocused = id;
 	}
 	public 	void InventoryBattleMenu_ButtonPressed(){
+		choosedMove = "Inventory";
 		selectedAction = inventoryManager.EquippedItem[inventoryBattleMenu.Id_ButtonFocused];
 		inventoryManager.PrepareAction(selectedAction, this);
 	}
@@ -167,6 +171,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		allyManagerMenu.Id_ButtonFocused = id;
 	}
 	public void AllyManagerMenu_ButtonPressed(){
+		choosedMove = "AllyManager";
 		selectedAction = allyManager.EquippedAlly[allyManagerMenu.Id_ButtonFocused];
 		allyManager.SelectAlly(selectedAction, this, tTBCScript.DiedAllyList, allyManagerMenu.Id_ButtonFocused) ;
 	}
@@ -179,13 +184,24 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	public void DoAction(){ //Data il nome della mossa memorizzata, prende la funzione dal dictionary ed esegue l'azione
 		//vai in stato notFree dall'animazione
 		//esecuzione mossa
-		skillManager.DoAction(selectedAction, this);
-		inventoryManager.DoAction(selectedAction, this);
-		allyManager.SummonAlly();
+		switch (choosedMove){
+			case "Skill":
+				skillManager.DoAction(selectedAction, this);
+				break;
+			case "Inventory":
+				inventoryManager.DoAction(selectedAction, this);
+				break;
+			case "AllyManager":
+				allyManager.SummonAlly();
+				break;
+			default:
+				break;
+		}	
 		//pulizia variabili
 		CleanSelectedMove();
 	}
 	public void CleanSelectedMove(){//da far eseguire ogni volta che si termina la mossa per evitare che si conservi la scelta
+		choosedMove = null;
 		selectedAction = null;
 		selectedEnemy = null;
 		selectedAlly = null;

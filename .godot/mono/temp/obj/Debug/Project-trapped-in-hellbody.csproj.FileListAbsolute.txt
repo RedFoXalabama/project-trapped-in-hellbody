@@ -32,20 +32,20 @@
 /home/redfox/Desktop/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.pdb
 /home/redfox/Desktop/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.genruntimeconfig.cache
 /home/redfox/Desktop/RedFoX's Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/ref/Project-trapped-in-hellbody.dll
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\obj\Debug\Project-trapped-in-hellbody.csproj.AssemblyReference.cache
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\obj\Debug\Project-trapped-in-hellbody.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\obj\Debug\Project-trapped-in-hellbody.AssemblyInfoInputs.cache
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\obj\Debug\Project-trapped-in-hellbody.AssemblyInfo.cs
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\obj\Debug\Project-trapped-in-hellbody.csproj.CoreCompileInputs.cache
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\obj\Debug\Project-trapped-in-hellbody.dll
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\obj\Debug\refint\Project-trapped-in-hellbody.dll
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\obj\Debug\Project-trapped-in-hellbody.pdb
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\bin\Debug\Project-trapped-in-hellbody.deps.json
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\bin\Debug\Project-trapped-in-hellbody.runtimeconfig.json
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\bin\Debug\Project-trapped-in-hellbody.dll
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\bin\Debug\Project-trapped-in-hellbody.pdb
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\bin\Debug\GodotSharp.dll
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\obj\Debug\Project-trapped-in-hellbody.csproj.CopyComplete
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\obj\Debug\Project-trapped-in-hellbody.genruntimeconfig.cache
-C:\Users\Gianfranco Baccarell\Desktop\RedFoX Studio\Creator\project-trapped-in-hellbody\.godot\mono\temp\obj\Debug\ref\Project-trapped-in-hellbody.dll
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.csproj.AssemblyReference.cache
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.AssemblyInfoInputs.cache
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.AssemblyInfo.cs
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.csproj.CoreCompileInputs.cache
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.dll
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/refint/Project-trapped-in-hellbody.dll
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.pdb
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/bin/Debug/Project-trapped-in-hellbody.deps.json
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/bin/Debug/Project-trapped-in-hellbody.runtimeconfig.json
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/bin/Debug/Project-trapped-in-hellbody.dll
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/bin/Debug/Project-trapped-in-hellbody.pdb
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/bin/Debug/GodotSharp.dll
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/bin/Debug/GodotSharpEditor.dll
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.csproj.CopyComplete
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/Project-trapped-in-hellbody.genruntimeconfig.cache
+C:/Users/Gianfranco Baccarell/Desktop/RedFoX Studio/Creator/project-trapped-in-hellbody/.godot/mono/temp/obj/Debug/ref/Project-trapped-in-hellbody.dll
