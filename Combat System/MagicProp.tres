@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://3ux18tibrxj6"]
+
+[ext_resource type="Script" path="res://Combat System/MagicProp.cs" id="1_0illx"]
+
+[resource]
+script = ExtResource("1_0illx")

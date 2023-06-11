@@ -9,12 +9,19 @@ public partial class EnemyInfoManager : Node2D, BaseMoves
 	[Export] private int attack;
 	[Export] private int defense;
 	[Export] private int velocity;
+	[Export] private int manaStart;
+	[Export] private int maxMana;
+	[Export] private int manaVelocity;
+	[Export] private MagicProp.MagicType magicType;
+	[Export] private float magicPower;
 	[Export] private Boolean free = true; //VARIA TRAMITE ANIMAZIONE CHE MODIFICA IL VALORE
 	private Timer timer;
 	private AnimationNodeStateMachinePlayback animationState;
 	private GameBar lifeBar;
 	private NameBar nameBar;
+	private ManaBar manaBar;
 	private TTBCScript tTBCScript;
+	MagicProp magicProp = ResourceLoader.Load<MagicProp>("res://Combat System/MagicProp.tres") as MagicProp;
 	private EnemyInfoManager selectedEnemy;
 	private AllyInfoManager selectedAlly;
 	private String selectedAction;
@@ -27,12 +34,16 @@ public partial class EnemyInfoManager : Node2D, BaseMoves
 		GetNode<Sprite2D>("BattleAnimation").GetNode<AnimationTree>("AnimationTree").Active = true;
 		//All Bars
 		lifeBar = GetNode<GameBar>("LifeBar");
+		manaBar = GetNode<ManaBar>("ManaBar");
 		nameBar = GetNode<NameBar>("NameBar");
+		manaBar.Set_StartManaBar(manaStart, maxMana, manaVelocity);
 		//Impostazione Bars
 		nameBar.SetNameBar(Cname);
 		lifeBar.ChangeMaxValue(Life); //al momento la vita non avendo un valore esplicito è zero
 		//TTBCSRIPT
 		tTBCScript = GetParent().GetParent<TTBCScript>();
+		//PROPENSIONE MAGICA
+		magicProp = new MagicProp(magicType, magicPower);
 	}
 
 	//FUNZIONI INTERFACCIA BASEMOVES
@@ -107,5 +118,13 @@ public partial class EnemyInfoManager : Node2D, BaseMoves
 		public Boolean FreeForFight{
 		get => free;
 		set => free = value;
+	}
+	public ManaBar ManaBar{
+		get => manaBar;
+		set => manaBar = value;
+	}
+	public MagicProp MagicProp{
+		get => magicProp;
+		set => magicProp = value;
 	}
 }

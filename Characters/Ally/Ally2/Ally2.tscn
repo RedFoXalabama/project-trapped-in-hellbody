@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dqcw6eva88m7w"]
+[gd_scene load_steps=27 format=3 uid="uid://dqcw6eva88m7w"]
 
 [ext_resource type="Script" path="res://Characters/Ally/AllyInfoManager.cs" id="1_cehjp"]
 [ext_resource type="PackedScene" uid="uid://b612182tsxtrw" path="res://Combat System/BattleMenu/OptionMenu.tscn" id="2_uaupb"]
@@ -6,10 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://covgueuo1i1e7" path="res://Characters/BattleAnimation.tscn" id="4_td0fd"]
 [ext_resource type="Texture2D" uid="uid://ccoqq0b5517ue" path="res://Characters/Ally/Ally2/Battle Ally2.png" id="5_tlvkv"]
 [ext_resource type="PackedScene" uid="uid://bsfkx0yubqwj6" path="res://Combat System/Characters Bar/GameBar.tscn" id="6_gd75b"]
+[ext_resource type="PackedScene" uid="uid://bq8uftbgvx24o" path="res://Combat System/Characters Bar/ManaBar.tscn" id="6_icmk7"]
 [ext_resource type="Theme" uid="uid://bhv5y0p0r2e37" path="res://Combat System/Characters Bar/Bar Theme/ally_life_bar_theme.tres" id="7_f82ly"]
 [ext_resource type="Texture2D" uid="uid://wwusbc68a7of" path="res://Combat System/Characters Bar/Bar Theme/Ally LifeBar.png" id="8_p8q0j"]
-[ext_resource type="Theme" uid="uid://dk81v6oyu65mw" path="res://Combat System/Characters Bar/Bar Theme/player_mana_bar_theme.tres" id="9_5sr4h"]
-[ext_resource type="Texture2D" uid="uid://n374n2pjpajg" path="res://Combat System/Characters Bar/Bar Theme/Ally ManaBar.png" id="10_37smh"]
 [ext_resource type="PackedScene" path="res://Combat System/Characters Bar/NameBar.tscn" id="11_tuf55"]
 [ext_resource type="Theme" uid="uid://q5ssavd7ph1h" path="res://Combat System/Characters Bar/Bar Theme/player_name_bar.tres" id="12_qltce"]
 
@@ -199,6 +198,9 @@ _data = {
 script = ExtResource("1_cehjp")
 cname = "Ally2"
 life = 100
+manaStart = 1
+maxMana = 7
+manaVelocity = 2
 
 [node name="BattleMenu" parent="." instance=ExtResource("2_uaupb")]
 offset_left = 128.0
@@ -227,22 +229,14 @@ libraries = {
 "": SubResource("AnimationLibrary_3c06k")
 }
 
+[node name="ManaBar" parent="." instance=ExtResource("6_icmk7")]
+
 [node name="LifeBar" parent="." instance=ExtResource("6_gd75b")]
 theme = ExtResource("7_f82ly")
 show_percentage = false
 
 [node name="Bar_Background" parent="LifeBar" index="0"]
 texture = ExtResource("8_p8q0j")
-
-[node name="ManaBar" parent="." instance=ExtResource("6_gd75b")]
-offset_top = 24.0
-offset_right = 1.0
-offset_bottom = 25.0
-theme = ExtResource("9_5sr4h")
-show_percentage = false
-
-[node name="Bar_Background" parent="ManaBar" index="0"]
-texture = ExtResource("10_37smh")
 
 [node name="NameBar" parent="." instance=ExtResource("11_tuf55")]
 theme = ExtResource("12_qltce")
@@ -258,4 +252,3 @@ one_shot = true
 [editable path="BattleMenu"]
 [editable path="BattleAnimation"]
 [editable path="LifeBar"]
-[editable path="ManaBar"]

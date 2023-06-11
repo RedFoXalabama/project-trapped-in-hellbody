@@ -1,8 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq8uftbgvx24o"]
+[gd_scene load_steps=3 format=3 uid="uid://bq8uftbgvx24o"]
 
 [ext_resource type="Script" path="res://Combat System/Characters Bar/ManaBar.cs" id="1_hoyqa"]
+[ext_resource type="Texture2D" uid="uid://b3402dys0s8vg" path="res://Risorse/Base Number.png" id="2_f6okn"]
 
-[node name="HBoxContainer" type="HBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ManaBar" type="Node2D"]
 script = ExtResource("1_hoyqa")
+
+[node name="Indicator" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.384)
+texture = ExtResource("2_f6okn")
+hframes = 11
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 16.0
+offset_top = -8.0
+offset_right = 32.0
+offset_bottom = 8.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

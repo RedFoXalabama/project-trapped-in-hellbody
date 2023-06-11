@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://bl5721evijvmy"]
+[gd_scene load_steps=25 format=3 uid="uid://bl5721evijvmy"]
 
 [ext_resource type="Theme" uid="uid://ca4361g560a7m" path="res://Combat System/Characters Bar/Bar Theme/enemy_name_bar.tres" id="1"]
 [ext_resource type="Theme" uid="uid://bh13qn1sh1r2n" path="res://Combat System/Characters Bar/Bar Theme/enemy_life_bar_theme.tres" id="2"]
 [ext_resource type="PackedScene" path="res://Combat System/Characters Bar/NameBar.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bsfkx0yubqwj6" path="res://Combat System/Characters Bar/GameBar.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bq8uftbgvx24o" path="res://Combat System/Characters Bar/ManaBar.tscn" id="4_x05kx"]
 [ext_resource type="Texture2D" uid="uid://cx8cpl8md4xee" path="res://Combat System/Characters Bar/Bar Theme/Enemy LifeBar.png" id="5"]
 [ext_resource type="PackedScene" uid="uid://covgueuo1i1e7" path="res://Characters/BattleAnimation.tscn" id="6"]
 [ext_resource type="Script" path="res://Characters/Enemy/EnemyInfoManager.cs" id="7"]
@@ -194,6 +195,13 @@ position = Vector2(1, 0)
 script = ExtResource("7")
 cname = "Enemy2"
 life = 100
+attack = 4
+defense = 4
+velocity = 4
+maxMana = 8
+manaVelocity = 2
+magicType = 1
+magicPower = 1.3
 free = false
 
 [node name="EnemyMoveSet" type="Node" parent="."]
@@ -211,6 +219,8 @@ parameters/playback = SubResource("9")
 libraries = {
 "": SubResource("AnimationLibrary_rh0og")
 }
+
+[node name="ManaBar" parent="." instance=ExtResource("4_x05kx")]
 
 [node name="LifeBar" parent="." instance=ExtResource("4")]
 offset_bottom = 2.0

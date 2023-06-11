@@ -275,6 +275,12 @@ script = ExtResource("7")
 cname = "Player"
 life = 100
 mana = 100
+attack = 10
+defense = 7
+velocity = 8
+maxMana = 10
+manaVelocity = 2
+magicPower = 1.0
 
 [node name="BattleMenu" parent="." instance=ExtResource("11_evtcp")]
 offset_left = 192.0
@@ -359,6 +365,7 @@ libraries = {
 }
 
 [node name="ManaBar" parent="." instance=ExtResource("10_dm52y")]
+position = Vector2(-64, -32)
 
 [node name="LifeBar" parent="." instance=ExtResource("4")]
 offset_right = 1.0

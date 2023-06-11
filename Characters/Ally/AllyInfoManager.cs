@@ -9,19 +9,26 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 	[Export] private int attack;
 	[Export] private int defense;
 	[Export] private int velocity;
+	[Export] private int manaStart;
+	[Export] private int maxMana;
+	[Export] private int manaVelocity;
+	[Export] private MagicProp.MagicType magicType;
+	[Export] private float magicPower;
 	[Export] private Boolean free = true; //VARIA TRAMITE ANIMAZIONE CHE MODIFICA IL VALORE
 	private Boolean inBattle = false;
 	private Timer timer;
 	private AnimationNodeStateMachinePlayback animationState;
 	private GameBar lifeBar;
-	private GameBar manaBar;
+	private ManaBar manaBar;
 	private NameBar nameBar;
 	private TTBCScript tTBCScript;
+	MagicProp magicProp = ResourceLoader.Load<MagicProp>("res://Combat System/MagicProp.tres") as MagicProp;
+	AllyManager allyManager = ResourceLoader.Load<AllyManager>("res://Characters/Ally/AllyManager.tres") as AllyManager;
 	private EnemyInfoManager selectedEnemy;
 	private AllyInfoManager selectedAlly;
 	private String selectedAction;
 	private OptionMenu battleMenu;
-	AllyManager allyManager = ResourceLoader.Load<AllyManager>("res://Characters/Ally/AllyManager.tres") as AllyManager;
+
 	public override void _Ready(){
 		//Timer
 		timer = GetNode<Timer>("BattleTimer");
@@ -30,14 +37,16 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 		GetNode<Sprite2D>("BattleAnimation").GetNode<AnimationTree>("AnimationTree").Active = true;
 		//All Bars
 		lifeBar = GetNode<GameBar>("LifeBar");
-		manaBar = GetNode<GameBar>("ManaBar");
+		manaBar = GetNode<ManaBar>("ManaBar");
 		nameBar = GetNode<NameBar>("NameBar");
 		//Impostazione Bars
 		nameBar.SetNameBar(Cname);
 		lifeBar.ChangeMaxValue(Life); //al momento la vita non avendo un valore esplicito è zero
-		manaBar.ChangeMaxValue(Mana); //al momento il mana non avendo un valore esplicito è zero
+		manaBar.Set_StartManaBar(manaStart, maxMana, manaVelocity); //al momento il mana non avendo un valore esplicito è zero
 		//TTBCSRIPT
 		tTBCScript = GetParent().GetParent<TTBCScript>();
+		//PROPENSIONE MAGICA
+		magicProp = new MagicProp(magicType, magicPower);
 		//BATTLE MENU
 		battleMenu = GetNode<OptionMenu>("BattleMenu");
 		AllBattleMenu_CreateSignals();
@@ -156,6 +165,14 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 	public OptionMenu BattleMenu{
 		get => battleMenu;
 		set => battleMenu = value;
+	}
+	public ManaBar ManaBar{
+		get => manaBar;
+		set => manaBar = value;
+	}
+	public MagicProp MagicProp{
+		get => magicProp;
+		set => magicProp = value;
 	}
 }
 

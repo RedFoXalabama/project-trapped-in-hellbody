@@ -15,6 +15,11 @@ public partial class SkillManager : Resource
     public void CreateEquippedSkill(String[] equippedSkill){
         this.equippedSkill = equippedSkill;
     }
+    //FORMULA DEL DANNO
+    MagicProp magicProp = ResourceLoader.Load<MagicProp>("res://Combat System/MagicProp.tres") as MagicProp;
+    public int DamageFormula(PlayerInfoManager pim, EnemyInfoManager eim){
+        return (int)((pim.Attack) - (eim.Defense/magicProp.CalcMagicEffect(pim, eim)));
+    }
     public void PrepareAction(String action, PlayerInfoManager playerInfoManager){
         switch(action){
             case "BasicAttack1":
@@ -31,8 +36,8 @@ public partial class SkillManager : Resource
 				//funzione da creare per l'attacco base
 				pim.AnimateCharacter("Attack");
 				pim.SelectedEnemy.AnimateCharacter("Damage");
-                /*HD*/pim.SelectedEnemy.TakeDamage(100); //SOSTITUIRE CON LA FORMULA DEL DANNO
-				pim.StartTimer();
+                pim.SelectedEnemy.TakeDamage(DamageFormula(pim, pim.SelectedEnemy));
+                pim.StartTimer();
 				break;
 			case "BasicAttack2":
 				break;

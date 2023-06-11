@@ -10,6 +10,11 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	[Export] private int attack;
 	[Export] private int defense;
 	[Export] private int velocity;
+	[Export] private int manaStart;
+	[Export] private int maxMana;
+	[Export] private int manaVelocity;
+	[Export] private MagicProp.MagicType magicType;
+	[Export] private float magicPower;
 	[Export] private Boolean free = true; //VARIA TRAMITE ANIMAZIONE CHE MODIFICA IL VALORE
 	private Timer timer;
 	private AnimationNodeStateMachinePlayback animationState;
@@ -26,6 +31,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	SkillManager skillManager = ResourceLoader.Load<SkillManager>("res://Characters/Player/SkillManager.tres") as SkillManager;
 	InventoryManager inventoryManager = ResourceLoader.Load<InventoryManager>("res://Inventory/Inventory.tres") as InventoryManager;
 	AllyManager allyManager = ResourceLoader.Load<AllyManager>("res://Characters/Ally/AllyManager.tres") as AllyManager;
+	MagicProp magicProp = ResourceLoader.Load<MagicProp>("res://Combat System/MagicProp.tres") as MagicProp;
 	private EnemyInfoManager selectedEnemy;
 	private AllyInfoManager selectedAlly;
 	private String selectedAction;
@@ -44,7 +50,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		//Impostazione Bars
 		nameBar.SetNameBar(Cname);
 		lifeBar.ChangeMaxValue(Life); //al momento la vita non avendo un valore esplicito è zero
-		//manaBar.ChangeMaxValue(Mana); //al momento il mana non avendo un valore esplicito è zero
+		manaBar.Set_StartManaBar(manaStart, maxMana, manaVelocity); //al momento il mana non avendo un valore esplicito è zero
 		//ALL Menu
 		battleMenu = GetNode<OptionMenu>("BattleMenu");
 		skillBattleMenu = battleMenu.GetNode<OptionMenu>("SkillBattleMenu");
@@ -58,7 +64,8 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		/*HD*/skillManager.CreateEquippedSkill(new String[2] {"BasicAttack1","BasicAttack2"});
 		inventoryManager.CreateInventoryManager();
 		/*HD*/inventoryManager.CreateEquippedItem(new String[1] {"BasicObject1"});
-
+		//PROPENSIONE MAGICA
+		magicProp = new MagicProp(magicType, magicPower);
 		AllBattleMenu_CreateSignals();//crea i segnali dei vari pulsanti 
 	}
 
@@ -286,6 +293,14 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	public TTBCScript TTBCScript{
 		get => tTBCScript;
 		set => tTBCScript = value;
+	}
+	public ManaBar ManaBar{
+		get => manaBar;
+		set => manaBar = value;
+	}
+	public MagicProp MagicProp{
+		get => magicProp;
+		set => magicProp = value;
 	}
 }
 

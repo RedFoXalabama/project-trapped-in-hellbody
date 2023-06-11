@@ -90,11 +90,13 @@ public partial class TTBCScript : Node
 			ally1 = ally1Position.GetChild<AllyInfoManager>(0);
 			allyList.Add(ally1.Cname, ally1);
 			ally1.StartTimer(); //avviamo il timer per metterlo in coda
+			ally1.ManaBar.StartManaBar();
 		} else if (ally2Position.GetChildCount() > 0 == false){
 			ally2Position.AddChild(ally.Instantiate()); //genera un fracasso di errori
 			ally2 = ally2Position.GetChild<AllyInfoManager>(0);
 			allyList.Add(ally2.Cname, ally2);
 			ally2.StartTimer();//avviamo il timer per metterlo in coda
+			ally2.ManaBar.StartManaBar();
 		}
 	}
 	//ENEMY FUNCTIONS
@@ -158,6 +160,13 @@ public partial class TTBCScript : Node
 				}
 			}
 			enemyWaitingQueue.Enqueue(enemyVelocityMax.GetParent<Marker2D>());
+		}
+		//START MANA BARS
+		//player
+		playerInfoManager.ManaBar.StartManaBar();
+		//enemies
+		for (int i = 0; i < enemyList.Length; i++){
+			enemyList[i].ManaBar.StartManaBar();
 		}
 		battleStated = true;
 	}
