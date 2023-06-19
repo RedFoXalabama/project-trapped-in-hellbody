@@ -1,0 +1,152 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlniy3jpgxpjb"]
+
+[ext_resource type="Texture2D" uid="uid://dswy8gndk7pji" path="res://icon.png" id="1_0n0gu"]
+[ext_resource type="Script" path="res://Combat System/BattleMenu/SkillBattleMenu.cs" id="2_x5j76"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yomq8"]
+bg_color = Color(0.972549, 0.384314, 0.270588, 1)
+
+[sub_resource type="Theme" id="Theme_hrcpk"]
+Label/styles/normal = SubResource("StyleBoxFlat_yomq8")
+
+[node name="SkillBattleMenu" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_x5j76")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemList" type="ItemList" parent="Panel"]
+custom_minimum_size = Vector2(445.352, 316.408)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.089
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.0800018
+theme_override_constants/h_separation = 136
+theme_override_constants/v_separation = 34
+item_count = 24
+max_columns = 6
+same_column_width = true
+icon_mode = 0
+item_0/text = "1"
+item_0/icon = ExtResource("1_0n0gu")
+item_1/text = "2"
+item_1/icon = ExtResource("1_0n0gu")
+item_2/text = "3"
+item_2/icon = ExtResource("1_0n0gu")
+item_3/text = "4"
+item_3/icon = ExtResource("1_0n0gu")
+item_4/text = "5"
+item_4/icon = ExtResource("1_0n0gu")
+item_5/text = "6"
+item_5/icon = ExtResource("1_0n0gu")
+item_6/text = "7"
+item_6/icon = ExtResource("1_0n0gu")
+item_7/text = "8"
+item_7/icon = ExtResource("1_0n0gu")
+item_8/text = "9"
+item_8/icon = ExtResource("1_0n0gu")
+item_9/text = "10"
+item_9/icon = ExtResource("1_0n0gu")
+item_10/text = "11"
+item_10/icon = ExtResource("1_0n0gu")
+item_11/text = "12"
+item_11/icon = ExtResource("1_0n0gu")
+item_12/text = "13"
+item_12/icon = ExtResource("1_0n0gu")
+item_13/text = "14"
+item_13/icon = ExtResource("1_0n0gu")
+item_14/text = "15"
+item_14/icon = ExtResource("1_0n0gu")
+item_15/text = "16"
+item_15/icon = ExtResource("1_0n0gu")
+item_16/text = "17"
+item_16/icon = ExtResource("1_0n0gu")
+item_17/text = "18"
+item_17/icon = ExtResource("1_0n0gu")
+item_18/text = "19"
+item_18/icon = ExtResource("1_0n0gu")
+item_19/text = "20"
+item_19/icon = ExtResource("1_0n0gu")
+item_20/text = "21"
+item_20/icon = ExtResource("1_0n0gu")
+item_21/text = "22"
+item_21/icon = ExtResource("1_0n0gu")
+item_22/text = "23"
+item_22/icon = ExtResource("1_0n0gu")
+item_23/text = "24"
+item_23/icon = ExtResource("1_0n0gu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_right = 1.0
+anchor_bottom = 0.089
+offset_bottom = -0.0800018
+grow_horizontal = 2
+theme_override_constants/separation = 136
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "Scuola 1"
+
+[node name="Label2" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "Scuola 2"
+
+[node name="Label3" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "Scuola 3"
+
+[node name="Label4" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "Scuola 4"
+
+[node name="Label5" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "Scuola 5"
+
+[node name="Label6" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "Scuola 6"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.089
+anchor_right = 0.05
+anchor_bottom = 1.0
+offset_top = -0.0800018
+grow_vertical = 2
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Fuoco" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_hrcpk")
+text = "Fuoco"
+
+[node name="Erba" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Erba"
+
+[node name="Terra" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Terra"
+
+[node name="Acqua" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Acqua"

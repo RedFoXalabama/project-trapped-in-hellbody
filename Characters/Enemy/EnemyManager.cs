@@ -5,6 +5,9 @@ using System.Collections.Generic;
 public partial class EnemyManager : Resource
 {
     //DATABASE NEMICI
+    //crea un database con i nomi dei nemici e i loro percorsi
+    //viene usato nella funzione EnemyPath per trovare il percorso del nemico ed evocarlo tramite il nome identificativo
+    //sostituire i dati con un file json
     Dictionary<string,string> dataBase = new Dictionary<string,string>();
     public void CreateDatabase(){
         dataBase.Add("Demo_Enemy1", "res://Characters/Enemy/Demo_Enemy1/Demo_Enemy1.tscn");

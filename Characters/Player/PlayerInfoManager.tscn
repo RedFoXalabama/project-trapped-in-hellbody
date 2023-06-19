@@ -1,7 +1,8 @@
-[gd_scene load_steps=45 format=3 uid="uid://b2j8iyj3rk8sw"]
+[gd_scene load_steps=46 format=3 uid="uid://b2j8iyj3rk8sw"]
 
 [ext_resource type="PackedScene" path="res://Combat System/Characters Bar/NameBar.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://bsfkx0yubqwj6" path="res://Combat System/Characters Bar/GameBar.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dlniy3jpgxpjb" path="res://Combat System/BattleMenu/SkillBattleMenu.tscn" id="4_ll4ub"]
 [ext_resource type="Texture2D" uid="uid://d1bhmdssaclel" path="res://Combat System/BattleMenu/SkillBattleMenu_bg.png" id="4_svyav"]
 [ext_resource type="Theme" uid="uid://dm4whkvae8ion" path="res://Combat System/Characters Bar/Bar Theme/player_life_bar_theme.tres" id="5"]
 [ext_resource type="Texture2D" uid="uid://cj7ehsqob10eh" path="res://Combat System/BattleMenu/AllyBattleMenu_bg.png" id="5_hv1jf"]
@@ -295,6 +296,13 @@ texture = ExtResource("12_2k5br")
 [node name="VBoxContainer" parent="BattleMenu" index="1"]
 offset_right = 0.0
 offset_bottom = 0.0
+
+[node name="SkillBattleMenu2" parent="BattleMenu" instance=ExtResource("4_ll4ub")]
+layout_mode = 1
+offset_left = -440.0
+offset_top = -192.0
+offset_right = 456.0
+offset_bottom = 192.32
 
 [node name="SkillBattleMenu" parent="BattleMenu" instance=ExtResource("11_evtcp")]
 offset_left = 128.0

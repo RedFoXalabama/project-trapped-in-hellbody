@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public partial class AllyManager : Resource
 {
     //DATABASE ALLEATI
+    //crea un database con i nomi degli alleati e i loro percorsi
+    //sostituire i dati con un file json
     Dictionary<String, String> dataBase = new Dictionary<String, String>();
     public void CreateDataBase(){
         dataBase.Add("Ally1", "res://Characters/Ally/Ally/Ally.tscn");
@@ -13,17 +15,13 @@ public partial class AllyManager : Resource
         dataBase.Add("", "");
     }
 
-    //ALLEATI EQUIPAGGIATI
-    private String[] equippedAlly = new String[4];
-
-    public String[] EquippedAlly{
-        get => equippedAlly;
-        set => equippedAlly = value;
-    }
-    public void EquipAlly(String allyName, int position){
+    //FUNZIONI ALLEATI EQUIPAGGIATI
+    private String[] equippedAlly = new String[4]; //array che contiene i nomi degli alleati equipaggiati
+    //il valore 4 è il numero massimo di alleati equipaggiabili, da modificare e riempire gli spazi vuoti nel caso
+    public void EquipAlly(String allyName, int position){ //equipaggia un alleato in una posizione dell'array
         EquippedAlly[position] = allyName;
     }
-    public String EqAllyPath(int position){
+    public String EqAllyPath(int position){ //ritorna il percorso dell'alleato equipaggiato in una posizione dell'array
         if (EquippedAlly[position] != null){
             return dataBase[EquippedAlly[position]];
         }  
@@ -32,17 +30,22 @@ public partial class AllyManager : Resource
     }
      
     //FUNZIONI PER IL BATTLE MENU
+    //crea un database con i nomi degli alleati e un array con i nomi delle loro mosse
+    //sostituire i dati con un file json
     Dictionary<String, String[]> AllySkillManager = new Dictionary<String, String[]>();
     TTBCScript tTBCScript;
     PlayerInfoManager pim;
     int EvokeAllyNumber;
     Boolean previouslyEvoked = false;
-    public void CreateAllySkillManager(){
+    public void CreateAllySkillManager(){ //crea il database con i nomi degli alleati e un array con i nomi delle loro mosse
+        //l'array con le mosse viene utilizzato per creare i button del menu della scelta mosse alleato
+        //tramite il nome della mossa si identifica la funzione da eseguire
         AllySkillManager.Add("Ally1", new String[]{"BasicAttack1", "BasicAttack2"});
         AllySkillManager.Add("Ally2", new String[]{"BasicAttack1", "BasicAttack2"});
         AllySkillManager.Add("Ally3", new String[]{"BasicAttack1", "BasicAttack2"});
     }
-    public void PrepareAction(string action, AllyInfoManager aim){
+    //FUNZIONI PER LE AZIONI
+    public void PrepareAction(string action, AllyInfoManager aim){ //prepara l'azione
         switch(action){
             case "BasicAttack1":
                 BasicAttack1(aim);
@@ -52,7 +55,7 @@ public partial class AllyManager : Resource
                 break;
         }
     }
-    public void DoAction(string action, AllyInfoManager aim){
+    public void DoAction(string action, AllyInfoManager aim){ //esegue l'azione
         switch (action){
             case "BasicAttack1":
                 aim.AnimateCharacter("Attack");
@@ -67,6 +70,9 @@ public partial class AllyManager : Resource
         }
     }
     //FUNZIONI PER EVOCARE L'ALLEATO
+    //questa funzione permette di evocare un alleato selezionato: SOLO SE È POSSIBILE FARLO
+    //quindi se non è mai stato evocato e non è morto
+    //questa funzione permette di selezionare un alleato vivo ed evocato per aprire un menu per la sua gestione
     public void SelectAlly(string selectedAlly, PlayerInfoManager pim, Dictionary<String, AllyInfoManager> dal, int allyNumber){
         this.pim = pim;
         AllyInfoManager aim = pim.GetAllyInfoManager(selectedAlly);
@@ -89,13 +95,13 @@ public partial class AllyManager : Resource
                         //aggiungere un effetto grafico o sonoro per indicare che non si può evocare
                         GD.Print("Too many allies in field");
                     }    
-                } else { //se è già stato evocato
+                } else { //se è già stato evocato ed è morto
                     pim.AllyOptionMenu.GetButton(0).Pressed -= PrepareAllySummon;
                     previouslyEvoked = false;
                     GD.Print("Ally already summoned");
                 }
                 break;
-            default: //È presente nella lista degli alleati in campo
+            default: //È presente nella lista degli alleati in campo: GESTIONE ALLEATI IN CAMPO
             //IMPORTANTE: allo stato attuale se si seleziona un alleato in campo non ancora evocato per poi tornare indietro sen
                 //funzioni per gestire alleato
                 if (previouslyEvoked){
@@ -106,14 +112,15 @@ public partial class AllyManager : Resource
         }
         
     }
-    public void PrepareAllySummon(){
+    public void PrepareAllySummon(){ //prepara l'evocazione dell'alleato
         pim.EndSelectMove();
     }
-    public void SummonAlly(){
+    public void SummonAlly(){ //EVOCA L'ALLEATO
         tTBCScript.SpawnAlly(tTBCScript.AllyPS[EvokeAllyNumber]);
         pim.StartTimer();
         //poichè non posso rimettere a null l'EvokeAllyNumber non lo modifico, se le funzioni si eseguono correttamente verrà sempre sovrascritto
     }
+    
     //ELENCO MOSSE
     public void BasicAttack1(AllyInfoManager aim){
         aim.SelectEnemy();
@@ -121,9 +128,14 @@ public partial class AllyManager : Resource
     public void BasicAttack2(AllyInfoManager aim){
         aim.SelectEnemy();
     }
+
     //GETTER AND SETTER
     public Dictionary<String, String[]> AllySkillManagerDictionary{
         get => AllySkillManager;
         set => AllySkillManager = value;
+    }
+    public String[] EquippedAlly{
+        get => equippedAlly;
+        set => equippedAlly = value;
     }
 }

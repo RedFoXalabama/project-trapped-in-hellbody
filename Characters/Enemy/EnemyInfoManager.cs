@@ -3,6 +3,7 @@ using System;
 
 public partial class EnemyInfoManager : Node2D, BaseMoves
 {
+	//PROPRIETIES, [EXPORT] modificate tramite engine
 	[Export] private String cname;
 	[Export] private int life;
 	[Export] private int mana;
@@ -39,7 +40,7 @@ public partial class EnemyInfoManager : Node2D, BaseMoves
 		manaBar.Set_StartManaBar(manaStart, maxMana, manaVelocity);
 		//Impostazione Bars
 		nameBar.SetNameBar(Cname);
-		lifeBar.ChangeMaxValue(Life); //al momento la vita non avendo un valore esplicito è zero
+		lifeBar.ChangeMaxValue(Life);
 		//TTBCSRIPT
 		tTBCScript = GetParent().GetParent<TTBCScript>();
 		//PROPENSIONE MAGICA

@@ -3,7 +3,7 @@ using System;
 
 public partial class PlayerInfoManager : Node2D , BaseMoves
 {
-	//PROPRIETIES
+	//PROPRIETIES, [EXPORT] modificate tramite engine
 	[Export] private String cname;
 	[Export] private int life;
 	[Export] private int mana;
@@ -50,7 +50,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		//Impostazione Bars
 		nameBar.SetNameBar(Cname);
 		lifeBar.ChangeMaxValue(Life); //al momento la vita non avendo un valore esplicito è zero
-		manaBar.Set_StartManaBar(manaStart, maxMana, manaVelocity); //al momento il mana non avendo un valore esplicito è zero
+		manaBar.Set_StartManaBar(manaStart, maxMana, manaVelocity);
 		//ALL Menu
 		battleMenu = GetNode<OptionMenu>("BattleMenu");
 		skillBattleMenu = battleMenu.GetNode<OptionMenu>("SkillBattleMenu");
@@ -94,10 +94,10 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 	}
 
 	//SELEZIONE MOSSA
-	public void SelectMove(){
+	public void SelectMove(){//mostra il menu di selezione delle mosse
 		battleMenu.ShowUp();
 	}
-	public void EndSelectMove(){ //da inserire quando si scelie una mossa
+	public void EndSelectMove(){ //da inserire quando si scelie una mossa, per terminare la scelta
 		//si libera la SelectMoveQueue
 		skillBattleMenu.Hide();
 		allyManagerMenu.Hide();
@@ -107,12 +107,12 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		tTBCScript.UpdateMoveQueue(tTBCScript.SelectMoveQueue);
 	}
 	//FUNZIONI CREZIONE BOTTONI
-	public void AllBattleMenu_CreateSignals(){
+	public void AllBattleMenu_CreateSignals(){//crezione dei segnali dei vari pulsanti
 		battleMenu.GetButton(0).Pressed += AttackPressed;
 		battleMenu.GetButton(1).Pressed += AllyManagerPressed;
 		battleMenu.GetButton(2).Pressed += InventoryPressed;
 		battleMenu.GetButton(3).Pressed += EscapePressed;
-		
+		//ovveride dei bottoni per riempierli con le mosse e gli oggetti equipaggiati
 		skillBattleMenu.OverrideButton(skillManager.EquippedSkill);
 		skillBattleMenu.SetPressed(skillManager.EquippedSkill, true, SkillBattleMenu_ButtonFocused, SkillBattleMenu_ButtonPressed);
 
@@ -126,13 +126,15 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		allyManagerMenu.OverrideButton(allyManager.EquippedAlly);
 		allyManagerMenu.SetPressed(allyManager.EquippedAlly, true, AllyManagerMenu_ButtonFocused, AllyManagerMenu_ButtonPressed);
 		//aggiungere gli altri menu
-		//SISTEMA FOCUS PRECEDENTI
+		//SISTEMA FOCUS PRECEDENTI per tornare al menu precedente col tasto z (impostato su engine come focusprevious)
 		battleMenu.SetFocusPrevioustTo(battleMenu); 
 		skillBattleMenu.SetFocusPrevioustTo(battleMenu);
 		allyManagerMenu.SetFocusPrevioustTo(battleMenu);
 		allyOptionMenu.SetFocusPrevioustTo(allyManagerMenu);
 		inventoryBattleMenu.SetFocusPrevioustTo(battleMenu);
 	}
+	//FUNZIONI PRESSED DEI MENU
+	//servono per nascondere gli altri menù quando uno di essi viene mostrato
 	public void AttackPressed(){
 		skillBattleMenu.ShowUp();
 		if (allyManagerMenu.Visible || inventoryBattleMenu.Visible){
@@ -155,9 +157,13 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 			allyManagerMenu.Visible = false;
 		}
 	}
+	//per ora non fa nulla, serve per scappare dalla battaglia
 	public void EscapePressed(){
 
 	}
+	//funzioni per i bottoni dei menu FOCUSED e PRESSED
+	//La funzione focused serve per identificare il bottone che si sta puntando
+	//la funzione pressed serve per identificare il bottone che si sta premendo (l'ultimo bottone puntato)
 	public void SkillBattleMenu_ButtonFocused(int id){
 		skillBattleMenu.Id_ButtonFocused = id;
 	}
@@ -189,7 +195,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		//il nemico si seleziona nel TTBCScript
 	}
 	public void DoAction(){ //Data il nome della mossa memorizzata, prende la funzione dal dictionary ed esegue l'azione
-		//vai in stato notFree dall'animazione
+		//vai in stato notFree dall'animazione, nell'animationPlayer
 		//esecuzione mossa
 		switch (choosedMove){
 			case "Skill":
@@ -213,7 +219,7 @@ public partial class PlayerInfoManager : Node2D , BaseMoves
 		selectedEnemy = null;
 		selectedAlly = null;
 	}
-	public Boolean IsTargetFree(){ //controlla se il target è libero
+	public Boolean IsTargetFree(){ //controlla se il target è libero, serve per capire se si può essere bersaglio o bersagliere
 		//se è libero ritorna true se non è libero ritorna false
 		Boolean status = false;
 		if (selectedEnemy != null){

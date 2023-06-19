@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "MO5LyDpux6+bnsc+7YsH9MrGae+p6fOEuRE8MqHeNncb9oobleBKLvOVtt9LHx9caA3o8PkGSYaGRafWuwpQ4A==",
+  "dgSpecHash": "0W1ELDjsWtVlDCRDO2aMDJllD4F6MhYb/Tu3iTBYUAsURKBDshPZfGapuN8CQ4szeL6Kpd7caMIjCiLpjB76YA==",
   "success": true,
   "projectFilePath": "/home/redfox/Desktop/RedFoX's Studio/Creator/project-trapped-in-hellbody/Project-trapped-in-hellbody.csproj",
   "expectedPackageFiles": [
     "/home/redfox/.local/share/godot/mono/GodotNuGetFallbackFolder/godot.sourcegenerators/4.0.0/godot.sourcegenerators.4.0.0.nupkg.sha512",
     "/home/redfox/.local/share/godot/mono/GodotNuGetFallbackFolder/godotsharp/4.0.0/godotsharp.4.0.0.nupkg.sha512",
     "/home/redfox/.local/share/godot/mono/GodotNuGetFallbackFolder/godotsharpeditor/4.0.0/godotsharpeditor.4.0.0.nupkg.sha512",
-    "/home/redfox/.nuget/packages/microsoft.netcore.app.ref/6.0.16/microsoft.netcore.app.ref.6.0.16.nupkg.sha512",
-    "/home/redfox/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.16/microsoft.aspnetcore.app.ref.6.0.16.nupkg.sha512"
+    "/home/redfox/.nuget/packages/microsoft.netcore.app.ref/6.0.18/microsoft.netcore.app.ref.6.0.18.nupkg.sha512",
+    "/home/redfox/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.18/microsoft.aspnetcore.app.ref.6.0.18.nupkg.sha512"
   ],
   "logs": []
 }

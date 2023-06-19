@@ -19,6 +19,7 @@ public partial class TTBCScript : Node
 	private PackedScene[] allyPS = new PackedScene[4];
 	private Dictionary<String,AllyInfoManager> allyList = new Dictionary<string, AllyInfoManager>();
 	private Dictionary<String,AllyInfoManager> diedAllyList = new Dictionary<string, AllyInfoManager>();
+	
 	//ENEMY VARIABLES
 	private Marker2D enemy1Position;
 	private Marker2D enemy2Position;
@@ -27,8 +28,8 @@ public partial class TTBCScript : Node
 	private EnemyInfoManager enemy1;
 	private EnemyInfoManager enemy2;
 	private EnemyInfoManager enemy3;
-	private EnemyInfoManager[] enemyList;
-	private OptionMenu enemyListOption;
+	private EnemyInfoManager[] enemyList; //lista degli enemy vivi
+	private OptionMenu enemyListOption; //menu per la scelta tra gli enemy vivi da attaccare
 	EnemyManager enemyManager = ResourceLoader.Load("res://Characters/Enemy/EnemyManager.tres") as EnemyManager;
 	private PackedScene[] enemyPS /*HD*/= new PackedScene[3];// in modo tale da non dare errore
 
@@ -64,16 +65,16 @@ public partial class TTBCScript : Node
 		
 	}
 	public override void _Process(double delta){
-		CheckBattleEnd();
-		FightUpdate();
+		CheckBattleEnd(); //controlla se la battaglia è finita
+		FightUpdate(); //aggiorna la battaglia
 	}
 	//INIZIO BATTAGLIA
-	public void _on_play_button_pressed(){
+	public void _on_play_button_pressed(){ //fa partire la battaglia
 		GetNode<BaseButton>("PlayButton").Hide();
 		BattleStart();
 	}
 	//ALLY FUNCTIONS
-	public void createAllyPS(){
+	public void createAllyPS(){ //funzione che crea il packedScene[] degli alleati equipaggiati
 		///*HD*/allyManager.EquipAlly("Demo_Ally", 0); //funzione da spostare nel menu della gestione alleati
 		///*HD*/allyManager.EquipAlly("", 1); //funzione da spostare nel menu della gestione alleati
 		for(int i = 0; i < allyManager.EquippedAlly.Length; i++){
@@ -82,25 +83,26 @@ public partial class TTBCScript : Node
 			}	
 		}
 	}
-	public void SpawnAlly(PackedScene ally){
+	public void SpawnAlly(PackedScene ally){ //funzione che spawna un alleato
 		ally1Position = GetNode<Marker2D>("Ally1Position");
 		ally2Position = GetNode<Marker2D>("Ally2Position");
-		if (ally1Position.GetChildCount() > 0 == false){
+		if (ally1Position.GetChildCount() > 0 == false){ //se la prima posizione è vuota riempi
 			ally1Position.AddChild(ally.Instantiate());
 			ally1 = ally1Position.GetChild<AllyInfoManager>(0);
-			allyList.Add(ally1.Cname, ally1);
+			allyList.Add(ally1.Cname, ally1); //aggiungo alla lista degli alleati vivi in campo
 			ally1.StartTimer(); //avviamo il timer per metterlo in coda
-			ally1.ManaBar.StartManaBar();
-		} else if (ally2Position.GetChildCount() > 0 == false){
+			ally1.ManaBar.StartManaBar(); //start del mana bar
+		} else if (ally2Position.GetChildCount() > 0 == false){ // se la seconda posizione è vuota riempi
 			ally2Position.AddChild(ally.Instantiate()); //genera un fracasso di errori
 			ally2 = ally2Position.GetChild<AllyInfoManager>(0);
-			allyList.Add(ally2.Cname, ally2);
+			allyList.Add(ally2.Cname, ally2); //aggiungo alla lista degli alleati vivi in campo
 			ally2.StartTimer();//avviamo il timer per metterlo in coda
-			ally2.ManaBar.StartManaBar();
+			ally2.ManaBar.StartManaBar(); //start del mana bar
 		}
+		//non fa nulla se entrambi gli slot alleati sono pieni
 	}
 	//ENEMY FUNCTIONS
-	public void spawnEnemy(PackedScene[] enemy){
+	public void spawnEnemy(PackedScene[] enemy){ //funzione che spawna i nemici dato un packedscene
 		enemy1Position = GetNode<Marker2D>("Enemy1Position");
 		enemy2Position = GetNode<Marker2D>("Enemy2Position");
 		enemy3Position = GetNode<Marker2D>("Enemy3Position");
@@ -110,27 +112,28 @@ public partial class TTBCScript : Node
 		}
 	}
 	//FUNZIONI TTBC
-	public void BattleStart(){
+	public void BattleStart(){ //funzioni per inizio battaglia
 		//CONTROLLO VELOCITÀ E SELEZIONE DI CHI INIZIA
 		var playerVelocity = playerInfoManager.Velocity;
 		EnemyList = new EnemyInfoManager[enemyPS.Length];
+		//controllo chi inizia prendendo le velocità dei nemici in campo
 		var enemy1Velocity = 0;
 		var enemy2Velocity = 0;
 		var enemy3Velocity = 0;
-		if (enemy1Position.GetChildCount() == 1){
+		if (enemy1Position.GetChildCount() == 1){ //se c'è un nemico nello slot 1
 			enemy1 = enemy1Position.GetChild<EnemyInfoManager>(0);
 			EnemyList[0] = enemy1;
-			enemy1Velocity = enemy1.Velocity;
+			enemy1Velocity = enemy1.Velocity; //prendo la velocità del nemico
 		}
-		if (enemy2Position.GetChildCount() == 1){
+		if (enemy2Position.GetChildCount() == 1){ //se c'è un nemico nello slot 2
 			enemy2 = enemy2Position.GetChild<EnemyInfoManager>(0);
 			EnemyList[1] = enemy2;
-			enemy2Velocity = enemy2.Velocity;
+			enemy2Velocity = enemy2.Velocity; //prendo la velocità del nemico
 		}
-		if (enemy3Position.GetChildCount() == 1){
+		if (enemy3Position.GetChildCount() == 1){ //se c'è un nemico nello slot 3
 			enemy3 = enemy3Position.GetChild<EnemyInfoManager>(0);
 			EnemyList[2] = enemy3;
-			enemy3Velocity = enemy3.Velocity;
+			enemy3Velocity = enemy3.Velocity; //prendo la velocità del nemico
 		}
 		
 		//Creo per la prima volta la lista dei nemici
@@ -138,11 +141,14 @@ public partial class TTBCScript : Node
 		for (int i = 0; i < EnemyList.Length; i ++){
 			enemyListName[i] = EnemyList[i].Cname;
 		}
+		//imposto il menu per la selezione del nemico da attaccare
 		var nButtonNew = enemyListOption.OverrideButton(enemyListName);
 		enemyListOption.SetFocusPrevioustTo(playerInfoManager.SkillBattleMenu);
 		EnemyListOption.SetPressed(enemyListName, true, EnemyListOption_ButtonFocused, EnemyListOption_ButtonPressed);
-		//controllo velocità
+		
+		//controllo velocità per decidere chi inizia
 		if (playerVelocity > ((enemy1Velocity + enemy2Velocity + enemy3Velocity)/3)-10){ //formula calcolo velocità complessiva da aggiustare
+			//il player è più veloce
 			SelectMoveQueue.Enqueue(playerPosition); //messo in coda il player
 			playerInfoManager.SelectMove();//subito il player scelgie la mossa
 			///*HD*/ally1.StartTimer();
@@ -150,6 +156,7 @@ public partial class TTBCScript : Node
 			enemy2.StartTimer();
 			enemy3.StartTimer();
 		} else {
+			//i nemici sono più veloci, il nemico più veloce inizia, gli altri fanno paritre il timer
 			playerInfoManager.StartTimer();
 			var enemyVelocityMax = enemy1; 
 			for (int i = 0; i < EnemyList.Length; i++){ //cerchiamo il nemico più veloce
@@ -184,11 +191,11 @@ public partial class TTBCScript : Node
 			}		
 		}
 	}
-	public void UpdateEnemySelectMoveQueue(){
+	public void UpdateEnemySelectMoveQueue(){ //sposta il primo nemico della waiting alla select e lo rimuove dalla waiting
 		//PASSAGGIO DA WAITING -> SELECT enemy
 		if(EnemySelectMoveQueue.Count == 0 && EnemyWaitingQueue.Count != 0){
 			EnemySelectMoveQueue.Enqueue(EnemyWaitingQueue.Dequeue());
-			//SCELTA MOSSA
+			//SCELTA MOSSA (da programmare ancora)
 			EnemySelectMoveQueue.Peek().GetChild<EnemyInfoManager>(0).SelectMove();
 		}
 	}
@@ -202,11 +209,12 @@ public partial class TTBCScript : Node
 		}
 	}
 
-	public void FightUpdate(){
+	public void FightUpdate(){ //funzione che permette di eseguire la mossa del primo personaggio della movequeue
+		//la mosssa viene eseguita solo se il personaggio sul picco è libero e il target è libero
 		//PASSAGGIO MOVEQUEUE -> ESECUZIONE MOSSA
 		if(MoveQueue.Count != 0){
 			var peek = MoveQueue.Peek();
-			switch (peek.GetChild(0).Name){
+			switch (peek.GetChild(0).Name){ //controlla il nome del nodo, DELLE CLASSE, del figlio per capire se è un player o un nemico o un alleato
 				case "PlayerInfoManager":
 					if(peek.GetChild<PlayerInfoManager>(0).FreeForFight && peek.GetChild<PlayerInfoManager>(0).IsTargetFree()){
 						peek.GetChild<PlayerInfoManager>(0).DoAction();
@@ -232,12 +240,12 @@ public partial class TTBCScript : Node
 		//CheckEnemyList() ogni frame controlli se un nemico è morto
 	}
 	//CONTROLLO AVANZAMENTO BATTAGLIA
-	public void CheckBattleEnd(){
+	public void CheckBattleEnd(){ //Controllo se la battaglia è finita
 		if (battleStated){
-			if (EnemyList.Length == 0){
+			if (EnemyList.Length == 0){ //se non ci sono più nemici
 			//VITTORIA
 			GD.Print("VITTORIA");
-			} else if (playerInfoManager.Life <= 0){
+			} else if (playerInfoManager.Life <= 0){ //se il player è morto
 			//SCONFITTA
 			GD.Print("SCONFITTA");
 			}
@@ -246,13 +254,19 @@ public partial class TTBCScript : Node
 
 	//CREAZIONE MENU NEMICI + AGGIORNAMENTO POINTER
 	public void CreateEnemyListOptionMenu(Boolean ally, AllyInfoManager aim){
+		//funzione che crea il menu per la scelta dei nemici da attaccare, sia per il player che per l'alleato
 		//CREA IL MENU DA CUI SELEZIONARE I NEMICI
-		String[] enemyListName = new String[EnemyList.Length];
-		for (int i = 0; i < EnemyList.Length; i ++){
+		String[] enemyListName = new String[EnemyList.Length]; //creo un array di stringhe con i nomi dei nemici
+		for (int i = 0; i < EnemyList.Length; i ++){ //riempio l'array con i nomi dei nemici
 			enemyListName[i] = EnemyList[i].Cname;
 		}	
-		var nButtonNew = enemyListOption.OverrideButton(enemyListName);
+		var nButtonNew = enemyListOption.OverrideButton(enemyListName); //aggiorno i button e mi salvo quanti nuovi ne ho creati
 		//CONTROLLO SE È IL TURNO DEL PLAYER O DELL'ALLEATO
+		//in base al caso aggiorno i bottoni vecchi e nuovi modificando i segnali a cui devono fare riferimento
+		//questo perchè i segnali del player sono diversi da quelli dell'alleato
+		//serve per evitare che si riassegni nuovamente lo stesso segnale a un button 
+		//o per evitare che si chiami il segnale sbagliato
+		//se era il turno del giocatore aggiorno wasPlayerTurn = true, altrimenti se era dell'alleato wasPlayerTurn = false
 		switch (wasPlayerTurn){
 			//È IL TURNO DEL PLAYER ED ERA IL TURNO DEL PLAYER
     		case true when !ally:
@@ -296,10 +310,13 @@ public partial class TTBCScript : Node
         		wasPlayerTurn = true;
         	break;
 		}
+		//mostro il menu
 		enemyListOption.GetParent<Node2D>().Show();
 		enemyListOption.ShowUp();
 	}
 
+	//FUNZIONI PER I SEGNALI DEI BUTTON
+	//funzioni focus, servono per aggioranre la posizione del pointer (capire quale button è focussato)
 	public void EnemyListOption_ButtonFocused(int id){
 		EnemyListOption.GetNode<Sprite2D>("../Pointer").GlobalPosition = EnemiesPosition[id].Position; 
 		EnemyListOption.GetNode<Sprite2D>("../Pointer").Show();
@@ -317,9 +334,10 @@ public partial class TTBCScript : Node
 		attackingAlly = null;
 	}
 
-	//funzione che serve ad aggiornare la EnemyList cosi da ridurla eliminando gli spazi vuoti (nemici morti)
-	//bisogna aggiornare anche l'array dell'enemyPosition cosi da non far sfasare il puntatore
+	//FUNZIONI CHECK ENEMYLIST E ALLYLIST
 	public void CheckEnemyList(){
+		//funzione che serve ad aggiornare la EnemyList cosi da ridurla eliminando gli spazi vuoti (nemici morti)
+		//bisogna aggiornare anche l'array dell'enemyPosition cosi da non far sfasare il puntatore
 		/*HD*/EnemyInfoManager[] temp = new EnemyInfoManager[3]; //3 Vlore massimo dei nemici
 		/*HD*/Marker2D[] tempPosition = new Marker2D[3];
 		int j = 0;
@@ -335,7 +353,8 @@ public partial class TTBCScript : Node
 		enemyList = temp;
 		enemiesPosition = tempPosition;
 	}
-	public void CheckAllyList(){
+	public void CheckAllyList(){ //aggiorna la lista degli alleati vivi presenti in campo e la lista degli alleati morti
+		//serve per capire quali alleati sono morti e quali no, cosi da evitare di rievocarli
 		for (int i = 0; i < allyManager.EquippedAlly.Length; i++){
 			if(allyList.ContainsKey(allyManager.EquippedAlly[i])){
 				if(allyList[allyManager.EquippedAlly[i]].Life <= 0){

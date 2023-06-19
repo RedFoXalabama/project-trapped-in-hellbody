@@ -86,7 +86,8 @@ public partial class OptionMenu : Control
 		SetFocusNeighbour();
 		return nButtonNew;
 	}
-
+	//FUNZIONI SETPRESSED, servono a imposare i pulsanti per le opzioni del menu
+	//start da 0
 	public void SetPressed(String[] array,Boolean ofPointer ,OptionMenuButton.OfPointerSignalEventHandler ButtonFocused, Action ButtonPressed){
 		for (int i = 0; i < array.Length; i++){
 			GetButton(i).OfPointer = ofPointer;
@@ -95,6 +96,7 @@ public partial class OptionMenu : Control
 		}
 
 	}
+	//start diverso da 0
 	public void SetPressed(String[] array, int start ,Boolean ofPointer ,OptionMenuButton.OfPointerSignalEventHandler ButtonFocused, Action ButtonPressed){
 		for (int i = start; i < array.Length; i++){
 			GetButton(i).OfPointer = ofPointer;

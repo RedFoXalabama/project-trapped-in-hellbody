@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public partial class MagicProp : Resource
 {
+    //propensione magica che si aggiorna in base al tipo di magia e alla potenza
+    //serve a impostare la propensione tramite la proprietà dell'infomanager, usato nel ready dell'infomanager
+
 	//ATTRIBUTI
 	public enum MagicType{
         FIRE,
@@ -12,8 +15,8 @@ public partial class MagicProp : Resource
         WATER,
         CAOS
     }
-	private MagicType type;
-	private float magicPower;
+	private MagicType type; //tipo di magia
+	private float magicPower; //potenza della magia
     
 	//COSTRUTTORE
     public MagicProp()
@@ -34,6 +37,7 @@ public partial class MagicProp : Resource
         //restituisce il valore della propensione se è superefficace (divide la difesa riducendola)
         //restituisce l'INVERSO DEL VALORE il valore dell'effetto se è poco efficace (divide la difesa aumentandola)
     //CALCOLO DELL'EFFETTO PLAYER -> ENEMY
+    //                                      IMPORTANTE È SOSTITUIRE IL VALORE DELLA PROPENSIONE CON IL VALORE DELLA MOSSA
     public float CalcMagicEffect(PlayerInfoManager pim, EnemyInfoManager eim){
         float effectValue = 1;
         switch (pim.MagicProp.Type){ //SOSTITUIRE CON LA PROPENSIONE DELLA MOSSA

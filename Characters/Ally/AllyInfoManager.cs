@@ -3,6 +3,7 @@ using System;
 
 public partial class AllyInfoManager : Node2D , BaseMoves
 {
+	//PROPRIETIES, [EXPORT] modificate tramite engine
 	[Export] private String cname;
 	[Export] private int life;
 	[Export] private int mana;
@@ -41,7 +42,7 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 		nameBar = GetNode<NameBar>("NameBar");
 		//Impostazione Bars
 		nameBar.SetNameBar(Cname);
-		lifeBar.ChangeMaxValue(Life); //al momento la vita non avendo un valore esplicito è zero
+		lifeBar.ChangeMaxValue(Life);
 		manaBar.Set_StartManaBar(manaStart, maxMana, manaVelocity); //al momento il mana non avendo un valore esplicito è zero
 		//TTBCSRIPT
 		tTBCScript = GetParent().GetParent<TTBCScript>();
@@ -106,13 +107,16 @@ public partial class AllyInfoManager : Node2D , BaseMoves
 		return status;
 	}
 	//FUNZIONI PER IL BATTLE MENU
-	public void AllBattleMenu_CreateSignals(){
+	public void AllBattleMenu_CreateSignals(){ //crezione dei segnali dei vari pulsanti
 		var skills = allyManager.AllySkillManagerDictionary[cname];
-		battleMenu.OverrideButton(skills);
+		battleMenu.OverrideButton(skills); //ovveride dei bottoni per riempierli con le mosse equipaggiati
 		battleMenu.SetPressed(skills, true, BattleMenu_ButtonFocused, BattleMenu_ButtonPressed);
 		//FOCUS
 		battleMenu.SetFocusPrevioustTo(battleMenu);
 	}
+	//funzioni per i bottoni dei menu FOCUSED e PRESSED
+	//La funzione focused serve per identificare il bottone che si sta puntando
+	//la funzione pressed serve per identificare il bottone che si sta premendo (l'ultimo bottone puntato)
 	public void BattleMenu_ButtonFocused(int id){
 		battleMenu.Id_ButtonFocused = id;
 	}
